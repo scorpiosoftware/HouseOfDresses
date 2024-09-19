@@ -31,8 +31,17 @@
     </div>
 
     <div class="flex justify-end md:max-w-[80rem] space-x-1 mt-10">
-        <button class="rounded-xl border border-[#b69357] px-6 py-1 text-xl text-[#b69357] font-semibold">Filter</button>
+        <button id="filter_btn" class="rounded-xl border border-[#b69357] px-6 py-1 text-xl text-[#b69357] font-semibold">Filter</button>
         <button class="rounded-xl border border-[#b69357] px-6 py-1 text-xl text-[#b69357] font-semibold">Sort by</button>
     </div>
     <livewire:product-show :products='$products'>
+        <script>
+            $(document).ready(function(){
+                $("#filter").hide();
+                $('#filter_btn').click(function(){
+                    $("#filter").toggle();
+                })
+    
+            });
+        </script>
 @endsection

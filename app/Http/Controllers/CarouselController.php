@@ -72,7 +72,6 @@ class CarouselController extends Controller
             $record->logo_url =  $inputs['logo_url'];
             $record->save();
         }
-
         if ($request->has('images')) {
             $record = GetCarousel::execute($id);
             foreach ($record->images as $image) {

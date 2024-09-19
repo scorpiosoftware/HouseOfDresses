@@ -4,5 +4,6 @@
 <script src="https://cdn.ckeditor.com/4.16.2/standard/ckeditor.js"></script>
 
 <script src="/js/main.js"></script>
+{{-- <script src="/js/tom_select.js"></script> --}}
 <script src="/js/lang.js"></script>
 <script src="/js/toast.js"></script>

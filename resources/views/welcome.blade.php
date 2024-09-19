@@ -54,21 +54,8 @@
                                             <livewire:product-slider>
                                                 <livewire:post-section :posts='$posts'>
                                                     <livewire:footer>
-                                                        {{-- <x-home.speed-dial /> --}}
-                                                        <div id="top"
-                                                            class="fixed bottom-10 right-10 Z-50 text-xl font-bold text-[#b69357] rounded-full  cursor-pointer transition-all delay-0 hover:scale-110">
-                                                            <div class="flex justify-center text-3xl translate-y-3">^
-                                                            </div>
-                                                            <div>TOP</div>
-                                                        </div>
-                                                        <script>
-                                                            $("#top").click(function() {
-                                                                $('html,body').animate({
-                                                                        scrollTop: $("#home").offset().top
-                                                                    },
-                                                                    'slow');
-                                                            });
-                                                        </script>
+                                                        <x-home.speed-dial />
+                                                    <livewire:top>
     </div>
     </div>
     <x-section.scripts />

@@ -111,6 +111,7 @@ class ShopController extends Controller
     {
         $inputs = $request->all();
         $products = ListProduct::execute($inputs);
+        $collection = GetCollection::execute(1);
         $categories = Category::all();
         $brands = Brand::all();
         $request->visit();

@@ -7,12 +7,9 @@
                     <img class="absolute top-0 mx-auto w-full  opacity-0 transition-opacity delay-150 hover:opacity-100 rounded-lg"
                     src="{{ URL::to('storage/' . $product->colors()->first()->images()->first()->image_url) }}"
                     alt="">
-                {{-- <div class="absolute top-0 z-10 w-64">
-
-                </div> --}}
             </div>
         </a>
-        <h3 class="text-center  text-white font-bold text-xl underline leading-loose underline-offset-8 drop-shadow-2xl">
+        <h3 class="text-center {{$textcolor}}  font-bold text-xl underline leading-loose underline-offset-8 drop-shadow-2xl">
             {{ $product->categories()->first()->name_en }}</h3>
         <h3 class="text-center text-[#b69357] font-bold text-lg">{{ $product->name_en }}</h3>
         <h3 class="text-center"><span class="text-[#b69357] font-bold text-lg" data-amount="799">Dhs

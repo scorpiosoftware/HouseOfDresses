@@ -1,5 +1,5 @@
 <div class="py-10 max-w-screen-xl mx-auto">
-    <div class="text-center text-4xl basis-1/2 text-white font-bold drop-shadow-2xl py-10 dancing-script">INSTA SHOP</div>
+    <div class="text-center md:text-4xl text-2xl basis-1/2 text-white font-bold drop-shadow-2xl py-10 dancing-script">INSTA SHOP</div>
     <div class=" flex items-center justify-between space-x-2 overflow-x-auto">
         @foreach ($posts as $post)
         <livewire:post :url='$post->image_url' :post_url='$post->post_url'>

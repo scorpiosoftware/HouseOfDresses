@@ -15,20 +15,26 @@ class categories extends Seeder
     public function run(): void
     {
         DB::table('users')->insert(
-        [
-            'name'=>'admin',
-            'email' => 'admin@admin.com',
-            'password' => Hash::make('12345678'),
-            'role_id' => 1
-        ]
+            [
+                'name' => 'admin',
+                'email' => 'admin@admin.com',
+                'password' => Hash::make('12345678'),
+                'role_id' => 1
+            ]
+        );
+        DB::table('carousels')->insert(
+            [
+                'id' => 1,
+            ]
         );
         DB::table('categories')->insert(
             [
-                [ 'name_en' =>"Best Seller",],
-                [ 'name_en' =>"HAIR CARE",],
-                [ 'name_en' =>"BODY CARE",],
-                [ 'name_en' =>"FACE CARE",],
-                [ 'name_en' =>"SUN CARE",],
+                ['name_en' => "ABAYAS",],
+                ['name_en' => "SUMMER DRESSES",],
+                ['name_en' => "FALL / WINTER",],
+                ['name_en' => "RAMADAN / EID",],
+                ['name_en' => "SALES",],
+                ['name_en' => "COLLECTIONS",],
             ]
         );
     }

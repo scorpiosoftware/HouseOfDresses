@@ -19,7 +19,7 @@
         aria-label="Breadcrumb">
         <ol class="inline-flex items-center space-x-1 md:space-x-2 rtl:space-x-reverse">
             <li class="inline-flex items-center">
-                <a href="/dashboard"
+                <a href="/dashboard/dashboard"
                     class="inline-flex items-center text-sm font-medium text-gray-700 hover:text-blue-600 dark:text-gray-400 dark:hover:text-white">
                     <svg class="w-3 h-3 me-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                         fill="currentColor" viewBox="0 0 20 20">
@@ -85,23 +85,19 @@
                         </div>
                     </div>
                     <div id="gallery"
-                        class="grid md:grid-cols-2 grid-cols-1 gap-4 overflow-x-scroll">
-
+                        class="grid md:grid-cols-1 grid-cols-1 gap-4">
                         {{-- Main Image --}}
-
                         <input class="hidden" type="text" name="image" value="{{ $record->logo_url }}">
                         @if (!empty($record->logo_url))
                         <div class="relative">
-                            <img class="h-[300px] max-w-full w-[100%] rounded-lg"
+                            <img class=" max-w-full w-[100%] rounded-lg"
                                 src="{{ URL::to('storage/' . $record->logo_url) }}" alt="">
                         </div> 
                         @endif
-  
-
                         {{-- Other Images --}}
                         @foreach ($record->images as $image)
                         <div class="relative">
-                            <img class="h-[300px] max-w-full w-[100%] rounded-lg"
+                            <img class=" max-w-full w-[100%] rounded-lg"
                                 src="{{ URL::to('storage/' . $image->url) }}" alt="">
                         </div>
                         @endforeach

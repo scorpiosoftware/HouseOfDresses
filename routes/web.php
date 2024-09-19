@@ -81,7 +81,8 @@ Route::group(['prefix' => ''], function () {
 });
 
 
-Route::post('/shop/', [ShopController::class, 'filter'])->name('filter.products');
+Route::post('/shop', [ShopController::class, 'filter'])->name('filter.products');
+Route::get('/shop/collection/{name}', [ShopController::class, 'index'])->name('filter.products');
 Route::get('/add-to-cart/{id}/', [CartController::class, 'addToCart'])->name('cart.add');
 Route::get('/decrement-to-cart/{id}', [CartController::class, 'decrementToCart'])->name('cart.decrease');
 Route::get('/show-cart', [CartController::class, 'index'])->name('cart.show');

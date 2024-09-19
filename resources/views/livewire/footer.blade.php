@@ -198,7 +198,7 @@
         </div>
     </div>
 
-    <div class="flex justify-center items-start space-x-2 pt-12 overflow-auto">
+    <div class="md:flex justify-center items-start space-x-2 pt-12 overflow-auto">
         <div class="flex justify-start space-x-3">
             <img src="{{ URL::to('media/new/logo.png') }}" alt="">
             <div class="px-[1px] h-44 bg-[#b69357]"></div>
