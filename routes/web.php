@@ -42,10 +42,17 @@ Route::get('/lang/{locale}',function(string $locale){
     return redirect()->back();
 });
 
+Route::get('/currency/{currency}',function(string $currency){
+    session()->forget('currency');
+    session()->put('currency',$currency);
+    return redirect('/');
+});
+
 Route::group(['prefix' => ''], function () {
     
     Route::get('/', function () {
         $locale = session()->get('lang');
+        $currency = session()->get('currency');
         // session()->put('lang',$locale);
         if($locale == 'en'){
             session()->forget('lang');
@@ -58,6 +65,21 @@ Route::group(['prefix' => ''], function () {
             session()->forget('lang');
             session()->put('lang','en');
         }
+
+        //set currency
+        if($currency == 'usd'){
+            session()->forget('currency');
+            session()->put('currency','usd');
+        }else if($currency == 'ade'){
+            session()->forget('currency');
+            session()->put('currency',value: 'ade');
+        }
+        else{
+            session()->forget('currency');
+            session()->put('currency','ade');
+        }
+
+
         $bestSeller = ListProductsByCategory::execute(1);
         $hair_care = ListProductsByCategory::execute(2);
         $body_care = ListProductsByCategory::execute(3);

@@ -55,7 +55,6 @@
                     @foreach ($collections as $collection)
                         <option value="{{ $collection->id }}">{{ $collection->name_en }}</option>
                     @endforeach
-
                 </select>
             </div>
         </div>
@@ -65,7 +64,7 @@
         </div>
     </div>
 
-    <div class="max-w-6xl  grid md:grid-cols-4 mt-12 md:mx-auto mx-8 grid-cols-2 gap-x-2">
+    <div class="max-w-6xl  grid md:grid-cols-4 items-start mt-12 md:mx-auto mx-8 grid-cols-2 gap-x-2">
         @foreach ($products as $product)
             <livewire:product :product='$product' textcolor='text-black'>
         @endforeach

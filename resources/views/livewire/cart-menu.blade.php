@@ -9,7 +9,13 @@
                 </svg>
             </button>
             <p>My Cart</p>
-            <div>0 Item(s)</div>
+            
+            <div>@if (!empty(session('cart')))
+                  {{count(session('cart'))}}
+                @else
+                0
+                @endif
+                Item(s)</div>
         </div>
         @if (!empty(session('cart')))
                    <livewire:cart-items>

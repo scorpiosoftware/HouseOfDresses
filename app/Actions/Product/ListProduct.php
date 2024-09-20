@@ -14,6 +14,10 @@ class ListProduct {
         }else{
             $records = $records->where('status','!=','out_of_stock');
         }
+        if (!empty($inputs['brands'])) {
+            $collection_id = $inputs['collection'];
+            $records = $records->whereIn('brand_id', $collection_id);
+        }
       
         if (!empty($inputs['search'])) {
             $records = $records->where('name_en','LIKE',"%{$inputs['search']}%")
@@ -29,13 +33,16 @@ class ListProduct {
                 $query->whereIn('category_id', $categoriesArray);
             });
         }
+
         if (!empty($inputs['min_price']) && !empty($inputs['max_price'])) {
             $records = $records->whereBetween('price', [$inputs['min_price'], $inputs['max_price']]);
         }
+
         if (!empty($inputs['brands'])) {
             $brandsArray = $inputs['brands'];
             $records = $records->whereIn('brand_id', $brandsArray);
         }
+
         if(!empty($inputs['sorting'])) {
             switch ($inputs['sorting']) {
                 case 'asc': $records = $records->orderBy('id','ASC');break;

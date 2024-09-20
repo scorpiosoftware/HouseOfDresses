@@ -101,7 +101,7 @@ class ColorController extends Controller
     public function update(Request $request, string $id)
     {
         $request->validate([]);
-
+    
         $inputs = $request->all();
 
         $record = Color::find($id);
@@ -119,12 +119,12 @@ class ColorController extends Controller
         }
         // delete images and add new images
         if ($request->has('images')) {
-            $record = Color::execute($id);
+            $record = Color::find($id);
             foreach ($record->images as $image) {
                 DeleteMedia::execute($image->image_url);
-            }
-            $record->images()->delete();
+            }            $record->images()->delete();
             $record->save();
+
             // add other product images
             foreach ($request->file('images') as $imagefile) {
                 $image = new ProductImage();

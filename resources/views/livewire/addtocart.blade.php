@@ -1,11 +1,11 @@
 <div>
     <div class="mt-10">
-        <p>Size : </p>
+        <p>Size : {{$selected_size}}</p>
         {{--  onclick='this.classList.add("bg-[#b69357]","text-white","font-bold")' --}}
         <div class="flex justify-start items-center space-x-2">
             @foreach ($color->product->sizes as $size)
                 <button id="size_btn"
-                    wire:click='setSize({{ $size->name }})' onclick='this.classList.add("bg-[#b69357]","text-white","font-bold")' class="px-4 py-2.5 border @if($selected_size == $size->name) bg-[#b69357] text-white font-bold @endif">{{ $size->name }}</button>
+                    wire:click="setSize('{{$size->name}}')" wire:model="selected_size" onclick='this.classList.add("bg-[#b69357]","text-white","font-bold")' class="px-4 py-2.5 border @if($selected_size == $size->name) bg-[#b69357] text-white font-bold @endif">{{ $size->name }}</button>
             @endforeach
         </div>
     </div>
@@ -26,9 +26,9 @@
     </div>
 
     <div class="flex justify-center items-center w-full bg-[] mt-10">
-        <button wire:click='addToWishlist()'>
+        <button wire:click='addToWishlist()' id='wishlist_btn'>
             <div class="flex items-center justify-center space-x-2">
-                <svg class="frcp-wishlist__icon" width="20px" height="20px" fill="none"
+                <svg id="wishlist_svg" class="frcp-wishlist__icon" width="20px" height="20px" fill="black"
                     stroke="#b69357" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                     viewBox="0 0 24 24">
                     <path
@@ -38,5 +38,16 @@
                 <span class="font-bold text-base text-[#b69357]">Add to wishlist</span>
             </div>
         </button>
+        <script>
+            $(document).ready(function(){
+
+                $('#wishlist_btn').click(function(){
+
+                     $("#wishlist_svg").attr("fill",'#b69357')
+
+                });
+
+            });
+        </script>
     </div>
 </div>

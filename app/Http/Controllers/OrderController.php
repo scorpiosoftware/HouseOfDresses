@@ -78,6 +78,8 @@ class OrderController extends Controller
             foreach (session('cart') as $id => $details) {
                 $item = new OrderItem();
                 $item->product_id = $id;
+                $item->color = $details['color'];
+                $item->size = $details['size'];
                 $item->order_id = $order->id;
                 $item->quantity = $details['quantity'];
                 $item->subtotal = $details['price'];

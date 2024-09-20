@@ -10,7 +10,7 @@
             <div class="w-96 mx-auto">
                 <img src="{{ URL::to('storage/' . $record->images()->first()->image_url) }}" class="rounded-lg" alt="">
             </div>
-            <div class="md:hidden md:overflow-y-auto overflow-x-auto flex justify-center items-center gap-x-2 px-4 py-2">
+            <div class="md:hidden md:overflow-y-auto overflow-x-auto flex justify-start items-center gap-x-2 px-4 py-2">
                 @foreach ($record->images as $image)
                     <img class="md:w-32 w-28 rounded-lg" src="{{ URL::to('storage/' . $image->image_url) }}" alt="">
                 @endforeach

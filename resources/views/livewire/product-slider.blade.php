@@ -7,9 +7,9 @@
         {{-- <a href="/shop"></a> --}}
     </div>
     <div class="text-center mx-auto md:text-4xl text-2xl basis-1/2 text-white font-bold drop-shadow-2xl pt-4 dancing-script">BEST SELLER</div>
-    <div class="flex md:justify-center justify-start items-center space-x-3 overflow-x-auto mt-10 max-w-screen-2xl mx-auto">
+    <div class="flex md:justify-center justify-start items-start space-x-3 overflow-x-auto mt-10 max-w-screen-2xl mx-auto">
         @foreach ($products as $product)
-        <livewire:product :product='$product' textcolor='text-white'> 
+        <livewire:product :product='$product' textcolor='text-white' lazy> 
         @endforeach
     </div>
 </div>

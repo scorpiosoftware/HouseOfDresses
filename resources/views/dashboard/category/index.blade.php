@@ -48,9 +48,9 @@
         <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
             <thead class="text-xs text-gray-700 uppercase text-nowrap bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                 <tr>
-                    <th scope="col" class="px-6 py-3 ">
+                    {{-- <th scope="col" class="px-6 py-3 ">
                         Image
-                    </th>
+                    </th> --}}
                     <th scope="col" class="px-6 py-3">
                         name en
                     </th>
@@ -66,10 +66,10 @@
             <tbody>
                 @foreach ($records as $record)
                     <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                        <th scope="row" class="p-2  text-gray-900 whitespace-nowrap dark:text-white">
+                        {{-- <th scope="row" class="p-2  text-gray-900 whitespace-nowrap dark:text-white">
                             <img src="{{ URL::to('storage/' . $record->image_url) }}" alt=""
                                 class="rounded-full w-16 h-16 shadow-lg ">
-                        </th>
+                        </th> --}}
 
                         <td class="px-6 py-4 font-extrabold text-black text-base">
                             {{ $record->name_en }}
@@ -88,8 +88,6 @@
                                 <button class=" text-red-600 hover:text-red-700">Delete</button>
                             </form>
                         </td>
-
-
                     </tr>
                 @endforeach
 

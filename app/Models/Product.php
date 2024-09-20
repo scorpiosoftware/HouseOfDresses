@@ -15,6 +15,7 @@ class Product extends Model
         'name_en',
         'name_ar',
         'price',
+        'price2',
         'offer_price',
         'description_en',
         'description_ar',

@@ -52,9 +52,9 @@ class CategoryController extends Controller
         }
         $record = StoreCategory::execute($inputs);
 
-        if($record){
+        if ($record) {
             return redirect()->back()->with("success", "Append Record Success !");
-        }else{
+        } else {
             return redirect()->back()->with("error", "Check requirments error on validation !");
         }
     }
@@ -87,7 +87,7 @@ class CategoryController extends Controller
         ]);
         $inputs = $request->all();
         $record = GetCategory::execute($id);
-        if(!empty($request->file('image_url'))){
+        if (!empty($request->file('image_url'))) {
             DeleteMedia::execute($record->image_url);
             $inputs['image_url'] = StoreMedia::execute(
                 $request->file('image_url'),
@@ -97,9 +97,9 @@ class CategoryController extends Controller
         }
 
         $update = $record->update($inputs);
-        if($update){
+        if ($update) {
             return redirect()->back()->with("success", "Append Record Success !");
-        }else{
+        } else {
             return redirect()->back()->with("error", "Check requirments error on validation !");
         }
     }
@@ -110,15 +110,13 @@ class CategoryController extends Controller
     public function destroy(string $id)
     {
         $record = GetCategory::execute($id);
-        $delete_image = DeleteMedia::execute($record->image_url);
-        if($delete_image){
-            $record = DestroyCategory::execute($record->id);
-            if($record){
-                return redirect()->back()->with("success", "Append Record Success !");
-            }else{
-                return redirect()->back()->with("error", "Error On delete Record !");
-            }
-        }else{
+        if (!empty($record->image_url)) {
+            $delete_image = DeleteMedia::execute($record->image_url);
+        }
+        $record = DestroyCategory::execute($record->id);
+        if ($record) {
+            return redirect()->back()->with("success", "Append Record Success !");
+        } else {
             return redirect()->back()->with("error", "Error On delete Record !");
         }
     }

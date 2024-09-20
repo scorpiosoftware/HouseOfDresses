@@ -12,6 +12,9 @@ class Addtocart extends Component
     public $selected_size;
     public $qty = 1;
 
+    public function mount(){
+     
+    }
     public function setSize($size){
         $this->size = $size;
         $this->selected_size = $size;
@@ -60,7 +63,7 @@ class Addtocart extends Component
     public function addToCart(){
         $product = $this->product;
         $color = $this->color;
-        $size = $this->size;
+        $size =  $this->size != null ? $this->size : $product->sizes->first()->name;
         $qty = $this->qty;
         $id = $product->id;
 

@@ -29,9 +29,9 @@
             </div>
         </form>
 
-        <a href="">
+        <a href="/show-cart">
             <div class="flex items-center justify-between space-x-3 p-4 border mt-5 cursor-pointer">
-                <p>MY CART(0)</p>
+                <p>MY CART</p>
                 <div>
                     <svg width="24px" height="24px" viewBox="0 0 24 24" fill="none"
                         xmlns="http://www.w3.org/2000/svg">
@@ -54,7 +54,10 @@
 
             {{-- categories --}}
             <div class="text-sm font-normal">
-                <p class="border px-4 py-1 mt-5"><a href="/">END OF SEASON SALE</a></p>
+                @foreach ($categories as $category)
+                <p class="border px-4 py-1 mt-5"><a href="/shop/category/{{$category->id}}">{{$category->name_en}}</a></p>
+                @endforeach
+                {{-- <p class="border px-4 py-1 mt-5"><a href="/">END OF SEASON SALE</a></p>
                 <p class="border px-4 py-1 mt-5"><a href="/">NEW ARRIVAL</a></p>
                 <p class="border px-4 py-1 mt-5"><a href="/">DRESSES</a></p>
                 <p class="border px-4 py-1 mt-5"><a href="/">PLAYSUITS + JUMPSUITS + SETS</a></p>
@@ -64,10 +67,10 @@
                 <p class="border px-4 py-1 mt-5"><a href="/">LINEN</a></p>
                 <p class="border px-4 py-1 mt-5"><a href="/">SWIMWEAR</a></p>
                 <p class="border px-4 py-1 mt-5"><a href="/">ACCESSORIES</a></p>
-                <p class="border px-4 py-1 mt-5"><a href="/">ALL</a></p>
+                <p class="border px-4 py-1 mt-5"><a href="/">ALL</a></p> --}}
             </div>
 
-            <div class="text-sm border font-normal flex justify-between space-x-2 items-center w-full mt-5 py-1">
+            {{-- <div class="text-sm border font-normal flex justify-between space-x-2 items-center w-full mt-5 py-1">
                 <p class="px-4 w-full"><a href="/">CONTACT US</a></p>
                 <div>
                     <svg width="24px" height="24px" viewBox="0 0 24 24" fill="none"
@@ -84,7 +87,7 @@
                         <path d="M13 12H7" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                         </svg>
                 </div>
-            </div>
+            </div> --}}
 
             <div class="flex justify-between items-center  w-full mt-5 py-1 border font-normal text-sm">
                 <div>
@@ -93,13 +96,13 @@
                         <path d="M19.9975 18C20 17.8358 20 17.669 20 17.5C20 15.0147 16.4183 13 12 13C7.58172 13 4 15.0147 4 17.5C4 19.9853 4 22 12 22C14.231 22 15.8398 21.8433 17 21.5634" stroke="#1C274C" stroke-width="1.5" stroke-linecap="round"/>
                         </svg>
                 </div>
-                <p class="px-4 w-full"><a href="">LOGIN</a></p>
+                <p class="px-4 w-full"><a href="/login">LOGIN</a></p>
             </div>
             <div class="flex justify-between items-center  w-full mt-5 py-1 border font-normal text-sm">
                 <div>
                     <svg width="24px" height="24px" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" stroke-width="3" stroke="#000000" fill="none"><path d="M9.06,25C7.68,17.3,12.78,10.63,20.73,10c7-.55,10.47,7.93,11.17,9.55a.13.13,0,0,0,.25,0c3.25-8.91,9.17-9.29,11.25-9.5C49,9.45,56.51,13.78,55,23.87c-2.16,14-23.12,29.81-23.12,29.81S11.79,40.05,9.06,25Z"/></svg>
                 </div>
-                <p class="px-4 w-full"><a href="">WISHLIST</a></p>
+                <p class="px-4 w-full"><a href="/wishlist">WISHLIST</a></p>
             </div>
         </div>
     </div>

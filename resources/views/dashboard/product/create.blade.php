@@ -188,44 +188,52 @@
             <div class="grid grid-cols-1 gap-4 border-2 p-4 md:grid-cols-2">
                 <div>
                     <label for="price"
-                        class="block mb-2 text-sm font-medium text-gray-900  dark:text-white">Price</label>
+                        class="block mb-2 text-sm font-medium text-gray-900  dark:text-white">USD Price</label>
 
-                    <input type="number" id="price" value="" name="price" step=".01"
+                    <input type="number" id="price" name="price" value="0.0" step=".01"
                         class="bg-gray-50 h-12 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                         placeholder="" required />
                 </div>
                 <div>
-                    <label for="offer_price"
-                        class="block mb-2 text-sm font-medium text-gray-900  dark:text-white">Offer Price</label>
+                    <label for="price2"
+                        class="block mb-2 text-sm font-medium text-gray-900  dark:text-white">ADE Price</label>
 
-                    <input type="number" id="offer_price" value="" name="offer_price" step=".01"
+                    <input type="number" id="price2" name="price2" value="0.0" step=".01"
                         class="bg-gray-50 h-12 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                        placeholder="" />
+                        placeholder="" required />
                 </div>
-                <div>
+                {{-- <div>
+                    <label for="price2"
+                        class="block mb-2 text-sm font-medium text-gray-900  dark:text-white">ADE Price</label>
+
+                    <input type="number" id="offer_price" value="0.0" name="price2" step=".01"
+                        class="bg-gray-50 h-12 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                        placeholder="" required/>
+                </div> --}}
+                {{-- <div>
                     <label for="stock_quantity"
                         class="block mb-2 text-sm font-medium text-gray-900  dark:text-white">Quantity</label>
 
-                    <input type="number" id="stock_quantity" value="" name="stock_quantity"
+                    <input type="number" id="stock_quantity" value="0" name="stock_quantity"
                         class="bg-gray-50 h-12 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                         placeholder="" />
-                </div>
-                <div class="">
+                </div> --}}
+                {{-- <div class="">
                     <label for="minimum_quantity"
                         class="block mb-2 text-sm font-medium text-gray-900  dark:text-white">Minimum Quantity</label>
 
                     <input type="number" id="minimum_quantity" value="1" name="minimum_quantity"
                         class="bg-gray-50 h-12 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                         placeholder="" />
-                </div>
-                <div class="">
-                    <label for="maximum_quantity"
-                        class="block mb-2 text-sm font-medium text-gray-900  dark:text-white">Maximum Quantity</label>
+                </div> --}}
+                    {{-- <div class="">
+                        <label for="maximum_quantity"
+                            class="block mb-2 text-sm font-medium text-gray-900  dark:text-white">Maximum Quantity</label>
 
-                    <input type="number" id="maximum_quantity" value="5" name="maximum_quantity"
-                        class="bg-gray-50 h-12 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                        placeholder="" />
-                </div>
+                        <input type="number" id="maximum_quantity" value="5" name="maximum_quantity"
+                            class="bg-gray-50 h-12 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                            placeholder="" />
+                    </div> --}}
             </div>
 
             <div class="grid grid-cols-1 gap-4 border-2 p-4 md:grid-cols-2">
