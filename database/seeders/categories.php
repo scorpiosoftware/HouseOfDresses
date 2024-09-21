@@ -24,17 +24,33 @@ class categories extends Seeder
         );
         DB::table('carousels')->insert(
             [
-                'id' => 1,
+                ['id' => "1",],
+                ['id' => "2",],
             ]
         );
         DB::table('categories')->insert(
             [
                 ['name_en' => "ABAYAS",],
-                ['name_en' => "SUMMER DRESSES",],
-                ['name_en' => "FALL / WINTER",],
-                ['name_en' => "RAMADAN / EID",],
-                ['name_en' => "SALES",],
-                ['name_en' => "COLLECTIONS",],
+                ['name_en' => "DRESSES",],
+                ['name_en' => "KAFTANS",],
+                ['name_en' => "MUKHAWE",],
+            ]
+        );
+        DB::table(table: 'collections')->insert(
+            [
+                ['name_en' => "YOU ARE A GEM",],
+                ['name_en' => "RAMADAN EID 2024",],
+                ['name_en' => "SUMMER 2023",],
+                ['name_en' => "LOVE YOURSELF",],
+            ]
+        );
+        DB::table(table: 'sizes')->insert(
+            [
+                ['name' => "XS",],
+                ['name_en' => "S",],
+                ['name_en' => "M",],
+                ['name_en' => "L",],
+                ['name_en' => "XL",],
             ]
         );
     }

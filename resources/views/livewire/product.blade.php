@@ -1,5 +1,5 @@
 <div class="flex justify-start items-center space-x-4 ">
-    <div class="md:w-64 w-44 ">
+    <div class="md:w-64 w-44">
         <a href="{{ route('shop.show', $product->colors()->first()->id) }}">
             <div class="relative">
                 <img class="relative mx-auto md:w-64 w-56 object-cover rounded-lg"
@@ -12,7 +12,7 @@
             </div>
         </a>
         <h3 class="text-center {{$textcolor}}  font-bold text-xl underline leading-loose underline-offset-8 drop-shadow-2xl">
-            {{ $product->categories()->first()->name_en }}</h3>
+           {{ $product->categories()->first()->name_en }}</h3>
         <h3 class="text-center text-[#b69357] font-bold text-lg">{{ $product->name_en }}</h3>
         <h3 class="text-center"><span class="text-[#b69357] font-bold text-lg" data-amount="799">
             @if(session('currency') == 'ade')

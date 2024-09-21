@@ -14,9 +14,10 @@ class ListProduct {
         }else{
             $records = $records->where('status','!=','out_of_stock');
         }
-        if (!empty($inputs['brands'])) {
+
+        if (!empty($inputs['collection'])) {
             $collection_id = $inputs['collection'];
-            $records = $records->whereIn('brand_id', $collection_id);
+            $records = $records->where('collection_id', $collection_id);
         }
       
         if (!empty($inputs['search'])) {

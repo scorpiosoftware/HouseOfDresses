@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>{{ env('APP_NAME') }}</title>
-    <link rel="icon" href="{{ URL::to('media/logo/jamesia.png') }}">
+    <link rel="icon" href="{{ URL::to('media/new/logo.png') }}">
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />

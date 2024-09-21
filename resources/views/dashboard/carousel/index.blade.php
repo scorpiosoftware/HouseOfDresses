@@ -14,99 +14,76 @@
         </div>
     @endif
     <div class="text-2xl py-4 font-bold underline text-gray-900 d:text-white">Carousel</div>
-    <!-- Breadcrumb -->
-    <nav class="flex px-5 py-3 text-gray-700 border border-gray-200 rounded-lg bg-gray-50 d:bg-gray-800 d:border-gray-700"
-        aria-label="Breadcrumb">
-        <ol class="inline-flex items-center space-x-1 md:space-x-2 rtl:space-x-reverse">
-            <li class="inline-flex items-center">
-                <a href="/dashboard/dashboard"
-                    class="inline-flex items-center text-sm font-medium text-gray-700 hover:text-blue-600 d:text-gray-400 d:hover:text-white">
-                    <svg class="w-3 h-3 me-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                        fill="currentColor" viewBox="0 0 20 20">
-                        <path
-                            d="m19.707 9.293-2-2-7-7a1 1 0 0 0-1.414 0l-7 7-2 2a1 1 0 0 0 1.414 1.414L2 10.414V18a2 2 0 0 0 2 2h3a1 1 0 0 0 1-1v-4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v4a1 1 0 0 0 1 1h3a2 2 0 0 0 2-2v-7.586l.293.293a1 1 0 0 0 1.414-1.414Z" />
-                    </svg>
-                    Dashboard
-                </a>
-            </li>
-            <li aria-current="page">
-                <div class="flex items-center">
-                    <svg class="rtl:rotate-180  w-3 h-3 mx-1 text-gray-400" aria-hidden="true"
-                        xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+    <div class="relative m-4 md:flex justify-between items-center">
+        {{-- <a href="{{ route('brand.create') }}"> <button type="button"
+                class="focus:outline-none shadow-lg text-white bg-green-400 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 d:bg-green-600 d:hover:bg-green-700 d:focus:ring-green-800">
+                Create</button></a> --}}
+
+        <form action="{{ route('carousel.index', 'search') }}" class="w-full max-w-md " method="GET">
+            @csrf
+            @method('GET')
+            <label for="search" class="mb-2 text-sm font-medium text-gray-900 sr-only d:text-white">Search</label>
+            <div class="relative">
+                <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+                    <svg class="w-4 h-4 text-gray-500 d:text-gray-400" aria-hidden="true"
+                        xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="m1 9 4-4-4-4" />
+                            d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
                     </svg>
-                    <span class="ms-1 text-sm font-medium text-gray-500 md:ms-2 d:text-gray-400">Edit</span>
                 </div>
-            </li>
-        </ol>
-    </nav>
-    {{-- End Breadcrumb  --}}
-    <form class="pt-4" action="{{ route('carousel.update', $record->id) }}" enctype="multipart/form-data"
-        method="POST">
-        @csrf
-        @method('PUT')
-        <div class="grid gap-6 mb-6 md:grid-cols-1">
-            <div class="grid grid-cols-1 gap-4 border-2 p-4 md:grid-cols-2">
-                <div class="grid grid-cols-1 gap-4 border-2 p-4 md:grid-cols-2 md:col-start-1 md:col-end-3">
-
-                    <div class="w-full mt-2">
-                        <div class="flex justify-between items-center">
-                            <label for="logo_url"
-                                class="block mb-2 text-sm font-medium text-gray-900 d:text-white">Logo</label>
-                        </div>
-                        <div class="mt-4">
-                            <input type="file" id="logo_url" name="logo_url"
-                                value="{{ $record->logo_url }}"
-                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 d:bg-gray-700 d:border-gray-600 d:placeholder-gray-400 d:text-white d:focus:ring-blue-500 d:focus:border-blue-500"
-                                placeholder="choose image" />
-                        </div>
-
-                    </div>
-
-                    <div class="w-full mt-2">
-                        <div class="flex justify-between items-center">
-                            <label for="images"
-                                class="block mb-2 text-sm font-medium text-gray-900 d:text-white">Carousel 
-                                Images</label>
-                        </div>
-                        <div class="mt-4">
-                            <input type="file" multiple id="images" name="images[]" value="{{ $record->images }}"
-                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 d:bg-gray-700 d:border-gray-600 d:placeholder-gray-400 d:text-white d:focus:ring-blue-500 d:focus:border-blue-500"
-                                placeholder="choose image" />
-                        </div>
-
-                    </div>
-                    <div class="flex justify-center items-center md:col-start-1 md:col-end-3">
-
-                        <div aria-controls="gallery" data-collapse-toggle="gallery"
-                            class="cursor-pointer transition-all w-full text-center bg-blue-300 container mx-auto delay-75 hover:scale-95">
-                            Toggle Gallery
-                        </div>
-                    </div>
-                    <div id="gallery"
-                        class="grid md:grid-cols-1 grid-cols-1 gap-4">
-                        {{-- Main Image --}}
-                        <input class="hidden" type="text" name="image" value="{{ $record->logo_url }}">
-                        @if (!empty($record->logo_url))
-                        <div class="relative">
-                            <img class=" max-w-full w-[100%] rounded-lg"
-                                src="{{ URL::to('storage/' . $record->logo_url) }}" alt="">
-                        </div> 
-                        @endif
-                        {{-- Other Images --}}
-                        @foreach ($record->images as $image)
-                        <div class="relative">
-                            <img class=" max-w-full w-[100%] rounded-lg"
-                                src="{{ URL::to('storage/' . $image->url) }}" alt="">
-                        </div>
-                        @endforeach
-                    </div>
-                </div>
-
+                <input type="search" id="search" name="search"
+                    value="@if (!empty($inputs['search'])) {{ $inputs['search'] }} @endif"
+                    class="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 d:bg-gray-700 d:border-gray-600 d:placeholder-gray-400 d:text-white d:focus:ring-blue-500 d:focus:border-blue-500"
+                    placeholder="Search by name ..." />
+                <button type="submit"
+                    class="text-white absolute end-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 d:bg-blue-600 d:hover:bg-blue-700 d:focus:ring-blue-800">Search</button>
             </div>
-        </div>
-        <button type="submit"
-            class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center d:bg-blue-600 d:hover:bg-blue-700 d:focus:ring-blue-800">Submit</button>
-    </form>
+        </form>
+
+
+
+    </div>
+
+    <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+        <table class="w-full text-sm text-left rtl:text-right text-gray-500 d:text-gray-400">
+            <thead class="text-xs text-gray-700 uppercase text-nowrap bg-gray-50 d:bg-gray-700 d:text-gray-400">
+                <tr>
+                    <th scope="col" class="px-6 py-3 ">
+                        ID
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        <span class="">Actions</span>
+                    </th>
+
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($records as $record)
+                    <tr class="bg-white border-b d:bg-gray-800 d:border-gray-700">
+                        <td class="px-6 py-4 font-extrabold whitespace-nowrap text-black text-base">
+                            {{ $record->id }}
+                        </td>
+
+                        <td class="px-6 py-3 text-right flex justify-start items-center pt-4 space-x-4">
+                            <a href="{{ route('carousel.edit', $record->id) }}"
+                                class="font-medium text-blue-600 d:text-blue-500 hover:underline">Edit</a>
+
+                            {{-- <form action="{{ route('brand.destroy', $record->id) }}" method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <button class=" text-red-600 hover:text-red-700">Delete</button>
+                            </form> --}}
+                        </td>
+
+
+                    </tr>
+                @endforeach
+
+
+            </tbody>
+        </table>
+        {{-- <nav aria-label="Page navigation example" class="p-4">
+            {{ $records->links() }}
+        </nav> --}}
+    </div>
 </x-app-layout>

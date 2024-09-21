@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>{{ env('APP_NAME') }}</title>
-    <link rel="icon" href="{{ URL::to('media/logo/jamesia.png') }}">
+    <link rel="icon" href="{{ URL::to('media/new/logo.png') }}">
     <!-- Fonts -->
 
     <link rel="preconnect" href="https://fonts.bunny.net">
@@ -43,10 +43,10 @@
                 <livewire:menu>
                     <livewire:news-lable>
                         <livewire:navbar>
-                            <livewire:carousel url='carousel-2.jpg' title='UNIQUE DRESSES'
+                            <livewire:carousel :record='$carousel1'  url='carousel-2.jpg' title='UNIQUE DRESSES'
                                 position='top-[40%] right-1/3 z-40 translate-x-1/2 translate-y-1/2'>
                                 <livewire:category-scroll>
-                                    <livewire:carousel url='carousel-1.jpg' title='LUXURY AHAYAS'
+                                    <livewire:carousel :record='$carousel2' url='carousel-1.jpg' title='LUXURY AHAYAS'
                                         position='top-[40%] left-20 z-40 translate-y-1/2'>
                                         <livewire:categorywithimage lazy>
                                             <livewire:product-slider>

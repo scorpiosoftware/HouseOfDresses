@@ -3,7 +3,10 @@
         <div class="text-[#b69357] font-bold">
             <h2 class="underline text-xl font-semibold">COLLECTIONS</h2>
             <ul>
-                <li>You are a Gem</li>
+                @foreach ($collections as $collection)
+                    <li>{{ $collection->name_en }}</li>
+                @endforeach
+                {{-- <li>You are a Gem</li>
                 <li>Summer 2024</li>
                 <li>Ramadan / Eid 2024</li>
                 <li>Love Yourself volume II</li>
@@ -13,7 +16,7 @@
                 <li>Velvet</li>
                 <li>Shimmer</li>
                 <li>Pleated Glass</li>
-                <li>Femininity and Elegance</li>
+                <li>Femininity and Elegance</li> --}}
             </ul>
         </div>
         <div class="text-[#b69357] font-bold">
@@ -40,10 +43,10 @@
         <div class="text-[#b69357] font-bold">
             <h2 class="underline text-xl font-semibold">FOLLOW US</h2>
             <ul>
-                <li>Instagram</li>
-                <li>Facebook</li>
-                <li>Tiktok</li>
-                <li>Snapchat</li>
+                <li><a href="https://www.instagram.com/houseofdresses.ae?igsh=NnN4YmZjbndiNm0y&utm_source=qr">Instagram</a></li>
+                <li><a href="https://www.facebook.com/houseofdresses.ae?mibextid=LQQJ4d">Facebook</a></li>
+                <li><a href="https://www.tiktok.com/@houseofdresses?_t=8puq8suZwAB&_r=1">Tiktok</a></li>
+                <li><a href="">Snapchat</a></li>
             </ul>
         </div>
         <div class="text-[#b69357] font-bold">

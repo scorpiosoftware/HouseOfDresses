@@ -9,6 +9,8 @@ class Carousel extends Component
     public $url;
     public $title;
     public $position;
+
+    public $record;
     public function render()
     {
         return view('livewire.carousel');

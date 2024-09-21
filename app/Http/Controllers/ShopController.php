@@ -10,6 +10,7 @@ use App\Actions\Product\GetProduct;
 use App\Actions\Product\ListProduct;
 use App\Models\Brand;
 use App\Models\Category;
+use App\Models\Collection;
 use App\Models\Color;
 use App\Models\Product;
 use App\Models\ProductComments;
@@ -24,12 +25,14 @@ class ShopController extends Controller
     public function index(Request $request)
     {
         $inputs = $request->all();
+        // dd($inputs);
         $request->visit();
         $products = ListProduct::execute($inputs);
-        $collection = GetCollection::execute(1);
+        // dd($products);
+        $collection = Collection::find($inputs["collection"]);
         $categories = Category::all();
         $brands = Brand::all();
-        return view('shop.index', compact('products', 'categories', 'brands', 'inputs'));
+        return view('shop.index', compact('products','collection', 'categories', 'brands', 'inputs'));
     }
 
     public function addComment(Request $request)

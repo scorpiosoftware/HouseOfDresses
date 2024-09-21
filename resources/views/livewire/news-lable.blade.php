@@ -138,10 +138,12 @@
                             </div>
                             <ul class="py-2 text-sm text-gray-700 "
                                 aria-labelledby="dropdownUserAvatarButton">
+                                @if(Auth::user()->role_id == 1)
                                 <li>
                                     <a href="/dashboard/dashboard"
                                         class="block px-4 py-2 hover:bg-gray-100">Dashboard</a>
                                 </li>
+                                @endif
                             </ul>
                             <div class="py-2">
                                 <form action="/logout" method="POST">

@@ -78,8 +78,6 @@ Route::group(['prefix' => ''], function () {
             session()->forget('currency');
             session()->put('currency','ade');
         }
-
-
         $bestSeller = ListProductsByCategory::execute(1);
         $hair_care = ListProductsByCategory::execute(2);
         $body_care = ListProductsByCategory::execute(3);
@@ -87,9 +85,10 @@ Route::group(['prefix' => ''], function () {
         $sun_care = ListProductsByCategory::execute(5);
         $categories = ListCategory::execute();
         $brands = ListBrand::execute();
-        $carousel = Carousel::with('images')->first();
+        $carousel1 = Carousel::with('images')->find(1);
+        $carousel2 = Carousel::with('images')->find(2);
         $posts = Post::all();
-        return view('welcome', compact('posts','bestSeller','hair_care','body_care','face_care','sun_care', 'categories', 'brands','carousel'));
+        return view('welcome', compact('posts','bestSeller','hair_care','body_care','face_care','sun_care', 'categories', 'brands','carousel1','carousel2'));
     })->name('home');
     Route::resource('shop', ShopController::class);
     Route::get('/show-cart/address', [OrderController::class, 'create'])->name('address');
@@ -104,7 +103,7 @@ Route::group(['prefix' => ''], function () {
 
 
 Route::post('/shop', [ShopController::class, 'filter'])->name('filter.products');
-Route::get('/shop/collection/{name}', [ShopController::class, 'index'])->name('filter.products');
+Route::post('/shop/collection/', [ShopController::class, 'index'])->name('filter.products');
 Route::get('/add-to-cart/{id}/', [CartController::class, 'addToCart'])->name('cart.add');
 Route::get('/decrement-to-cart/{id}', [CartController::class, 'decrementToCart'])->name('cart.decrease');
 Route::get('/show-cart', [CartController::class, 'index'])->name('cart.show');

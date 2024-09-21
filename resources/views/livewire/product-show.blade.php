@@ -2,11 +2,10 @@
     <div id="filter"
         class="max-w-3xl mx-auto border-2 md:flex md:flex-wrap md:gap-4 justify-start items-center px-10 py-2 mt-10">
         <div class="">
-            <label for="categories"
-                class="block mb-2 text-sm font-medium text-gray-900">Categories</label>
+            <label for="categories" class="block mb-2 text-sm font-medium text-gray-900">Categories</label>
             <div class="relative flex w-full">
-                <select id="categories" name="categories" wire:model='selected_categories'
-                    placeholder="Select Category..." autocomplete="off"
+                <select id="categories" name="categories" wire:model='selected_categories' placeholder="Select Category..."
+                    autocomplete="off"
                     class="block w-full border-2 border-[#b69357] p-1 text-xs rounded-lg cursor-pointer focus:outline-none">
                     <option value=""></option>
                     @foreach ($categories as $cat)
@@ -45,8 +44,7 @@
             </div>
         </div>
         <div class="">
-            <label for="collections"
-                class="block mb-2 text-sm font-medium text-gray-900">collections</label>
+            <label for="collections" class="block mb-2 text-sm font-medium text-gray-900">collections</label>
             <div class="relative flex w-full">
                 <select id="collections" name="collections" wire:model='selected_collection'
                     placeholder="Select Collection..." autocomplete="off"
@@ -66,7 +64,9 @@
 
     <div class="max-w-6xl  grid md:grid-cols-4 items-start mt-12 md:mx-auto mx-8 grid-cols-2 gap-x-2">
         @foreach ($products as $product)
-            <livewire:product :product='$product' textcolor='text-black'>
+            @if ($product->colors->count() > 0 && $product->categories->count() > 0)
+                <livewire:product :product='$product' textcolor='text-black'>
+            @endif
         @endforeach
     </div>
 
