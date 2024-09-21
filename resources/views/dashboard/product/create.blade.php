@@ -101,7 +101,7 @@
                     <label for="categories"
                         class="block mb-2 text-sm font-medium text-gray-900 d:text-white">Categories</label>
                     <div class="relative flex w-full">
-                        <select id="categories" name="categories[]" multiple  placeholder="Select Collection..."
+                        <select id="categories" name="categories[]" multiple  placeholder="Select category..."
                             autocomplete="off" class="block w-full rounded-lg cursor-pointer focus:outline-none"
                             >
                             @foreach ($categories as $category)

@@ -35,6 +35,14 @@ class ListProduct {
             });
         }
 
+        if (!empty($inputs['category'])) {
+            $category = $inputs['category'];
+            // session(['category' => $category]);
+            $records = $records->whereHas('categories', function ($query) use ($category) {
+                $query->where('category_id', $category);
+            });
+        }
+
         if (!empty($inputs['min_price']) && !empty($inputs['max_price'])) {
             $records = $records->whereBetween('price', [$inputs['min_price'], $inputs['max_price']]);
         }

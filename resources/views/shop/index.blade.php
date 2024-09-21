@@ -7,7 +7,13 @@
               @else
               ALL - COLLECTION
             @endif  --}}
-            {{ $collection->name_en }} - COLLECTION
+            @if(!empty($collection))
+                {{ $collection->name_en }} - COLLECTION
+
+                @elseif (!empty($category))
+                  {{ $category->name_en }} - CATEGORY
+            @endif
+          
         </h1>
         <nav class="flex justify-center mt-5" aria-label="Breadcrumb">
             <ol class="inline-flex items-center space-x-1 md:space-x-2 rtl:space-x-reverse">
@@ -29,7 +35,14 @@
                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="m1 9 4-4-4-4" />
                         </svg>
-                        <span class="ms-1 text-sm font-medium text-[#b69357] md:ms-2 dark:text-gray-400">{{ $collection->name_en }} - COLLECTION</span>
+                        <span class="ms-1 text-sm font-medium text-[#b69357] md:ms-2 dark:text-gray-400">
+                            @if(!empty($collection))
+                            {{ $collection->name_en }} - COLLECTION
+            
+                            @elseif (!empty($category))
+                              {{ $category->name_en }} - CATEGORY
+                            @endif
+                        </span>
                     </div>
                 </li>
             </ol>

@@ -55,7 +55,12 @@
             {{-- categories --}}
             <div class="text-sm font-normal">
                 @foreach ($categories as $category)
-                <p class="border px-4 py-1 mt-5"><a href="/shop/category/{{$category->id}}">{{$category->name_en}}</a></p>
+                <form action="{{ route("filter.products.category") }}" method="POST">
+                    @csrf
+                    @method('POST')
+                    <input type="text" class="hidden" name="category" value="{{ $category->id }}" id="">
+                    <p class="border px-4 py-1 mt-5"><button type="submit">{{$category->name_en}}</button></p>
+                </form>
                 @endforeach
             </div>
 
