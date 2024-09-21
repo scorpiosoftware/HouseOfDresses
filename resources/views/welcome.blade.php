@@ -11,7 +11,7 @@
 
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
-    {{-- <link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.css" rel="stylesheet" /> --}}
+    <link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.css" rel="stylesheet" />
     <link href="{{ URL::to('css/productSlider.css') }}" rel="stylesheet" />
     <!-- Libraries Stylesheet -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
@@ -25,7 +25,7 @@
         rel="stylesheet">
 
     <!-- Styles -->
-    @vite('resources/css/app.css', 'resources/js/app.js')
+    {{-- @vite('resources/css/app.css', 'resources/js/app.js') --}}
 </head>
 
 <body class="antialiased bg-[#e4c7cb]" id="home">
