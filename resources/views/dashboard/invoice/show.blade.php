@@ -6,8 +6,8 @@
         
 
 <div class="relative overflow-x-auto">
-    <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-        <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+    <table class="w-full text-sm text-left rtl:text-right text-gray-500 d:text-gray-400">
+        <thead class="text-xs text-gray-700 uppercase bg-gray-50 d:bg-gray-700 d:text-gray-400">
             <tr>
                 <th scope="col" class="px-6 py-3">
                     Customer name
@@ -27,8 +27,8 @@
             </tr>
         </thead>
         <tbody>
-            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+            <tr class="bg-white border-b d:bg-gray-800 d:border-gray-700">
+                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap d:text-white">
                     {{$record->customer_name}}
                 </th>
                 <td class="px-6 py-4">
@@ -52,8 +52,8 @@
 
 
 
-        <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-            <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+        <table class="w-full text-sm text-left rtl:text-right text-gray-500 d:text-gray-400">
+            <thead class="text-xs text-gray-700 uppercase bg-gray-50 d:bg-gray-700 d:text-gray-400">
                 <tr>
                     <th scope="col" class="px-16 py-3">
                         <span class="sr-only">Image</span>
@@ -80,17 +80,17 @@
             </thead>
             <tbody>
                 @foreach ($items as $item)
-                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                <tr class="bg-white border-b d:bg-gray-800 d:border-gray-700 hover:bg-gray-50 d:hover:bg-gray-600">
                     <td class="p-4">
                         <img src="{{URL::to('storage/'.$item->product->colors()->first()->main_image_url)}}" class="w-16 md:w-24 max-w-full max-h-full" alt="Apple Watch">
                     </td>
-                    <td class="px-6 py-4 font-semibold text-gray-900 dark:text-white">
+                    <td class="px-6 py-4 font-semibold text-gray-900 d:text-white">
                         {{$item->product->name_en}}
                     </td>
-                    <td class="px-6 py-4 font-semibold text-gray-900 dark:text-white">
+                    <td class="px-6 py-4 font-semibold text-gray-900 d:text-white">
                         {{$item->color}}
                     </td>
-                    <td class="px-6 py-4 font-semibold text-gray-900 dark:text-white">
+                    <td class="px-6 py-4 font-semibold text-gray-900 d:text-white">
                         {{$item->size}}
                     </td>
                     <td class="px-6 py-4">
@@ -98,11 +98,11 @@
                               {{$item->quantity}}
                         </div>
                     </td>
-                    <td class="px-6 py-4 font-semibold text-gray-900 dark:text-white">
+                    <td class="px-6 py-4 font-semibold text-gray-900 d:text-white">
                         $599
                     </td>
                     <td class="px-6 py-4">
-                        <a href="#" class="font-medium text-red-600 dark:text-red-500 hover:underline">Remove</a>
+                        <a href="#" class="font-medium text-red-600 d:text-red-500 hover:underline">Remove</a>
                     </td>
                 </tr>
                 @endforeach

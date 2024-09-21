@@ -3,7 +3,7 @@
         class="max-w-3xl mx-auto border-2 md:flex md:flex-wrap md:gap-4 justify-start items-center px-10 py-2 mt-10">
         <div class="">
             <label for="categories"
-                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Categories</label>
+                class="block mb-2 text-sm font-medium text-gray-900">Categories</label>
             <div class="relative flex w-full">
                 <select id="categories" name="categories" wire:model='selected_categories'
                     placeholder="Select Category..." autocomplete="off"
@@ -17,7 +17,7 @@
             </div>
         </div>
         <div class="">
-            <label for="sizes" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Sizes</label>
+            <label for="sizes" class="block mb-2 text-sm font-medium text-gray-900">Sizes</label>
             <div class="relative flex w-full">
                 <select id="sizes" name="sizes[]" wire:model='selected_sizes' placeholder="Select Size..."
                     autocomplete="off"
@@ -31,7 +31,7 @@
             </div>
         </div>
         <div class="">
-            <label for="colors" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">colors</label>
+            <label for="colors" class="block mb-2 text-sm font-medium text-gray-900">colors</label>
             <div class="relative flex w-full">
                 <select id="colors" name="colors[]" wire:model='selected_colors' placeholder="Select Colors..."
                     autocomplete="off"
@@ -46,7 +46,7 @@
         </div>
         <div class="">
             <label for="collections"
-                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">collections</label>
+                class="block mb-2 text-sm font-medium text-gray-900">collections</label>
             <div class="relative flex w-full">
                 <select id="collections" name="collections" wire:model='selected_collection'
                     placeholder="Select Collection..." autocomplete="off"

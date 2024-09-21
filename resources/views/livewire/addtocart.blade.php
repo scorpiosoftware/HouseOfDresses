@@ -12,7 +12,7 @@
     <div class="mt-10">
         <label for="qty" class="font-bold text-gray-600">QUANTITY</label>
         <input type="number" wire:model.live="qty"
-            class="w-16 h-8 py-4 mx-6 shrink-0 border rounded-md border-gray-300 bg-transparent text-center text-sm font-medium text-gray-900 focus:outline-none focus:ring-0 dark:text-white"
+            class="w-16 h-8 py-4 mx-6 shrink-0 border rounded-md border-gray-300 bg-transparent text-center text-sm font-medium text-gray-900 focus:outline-none focus:ring-0"
             placeholder="" name="qty"
             @if (session('cart') && !empty($cart[$color->id]['quantity'])) value="{{ $cart[$color->id]['quantity'] }}"  
              @else
