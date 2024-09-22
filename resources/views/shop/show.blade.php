@@ -17,7 +17,7 @@
                 @endforeach
             </div>
             <div class="px-6 md:w-1/2">
-                <p class="text-xl">{{ $record->product->name_en }}</p>
+                <p class="text-xl">{{ $record->product->name_en }} - {{ $record->name }}</p>
                 <a href="/" class="text-lg font-semibold text-gray-600">HOD</a>
                 <p class="text-lg text-gray-600">ADE {{ $record->product->price }}</p>
                 <div class="flex flex-wrap justify-start items-center space-x-1">

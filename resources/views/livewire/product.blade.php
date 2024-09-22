@@ -2,10 +2,10 @@
     <div class="md:w-64 w-44">
         <a href="{{ route('shop.show', $product->colors()->first()->id) }}">
             <div class="relative">
-                <img class="relative mx-auto md:w-64 w-56 object-cover rounded-lg"
+                <img class="relative max-h-96 mx-auto md:w-64 w-56 object-cover rounded-lg"
                     src="{{ URL::to('storage/' . $product->colors()->first()->main_image_url) }}" alt="">
                     @if($product->colors->count() > 0 && $product->colors->first()->images->count() > 0 )
-                    <img class="absolute top-0 mx-auto w-full  opacity-0 transition-opacity delay-150 hover:opacity-100 rounded-lg"
+                    <img class="absolute top-0 max-h-96 mx-auto w-full object-cover  opacity-0 transition-opacity delay-150 hover:opacity-100 rounded-lg"
                     src="  {{ URL::to('storage/' . $product->colors()->first()->images()->first()->image_url) }}"
                     alt="">
                     @endif

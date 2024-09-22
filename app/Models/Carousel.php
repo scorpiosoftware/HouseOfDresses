@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Carousel extends Model
 {
     use HasFactory;
-    protected $fillable = ['logo_url','category_id'];
+    protected $fillable = ['logo_url','category_id','title'];
 
     public function images()
     {

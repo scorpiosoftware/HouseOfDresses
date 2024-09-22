@@ -36,47 +36,45 @@ use Illuminate\Support\Facades\Route;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 
-Route::get('/lang/{locale}',function(string $locale){
+Route::get('/lang/{locale}', function (string $locale) {
     session()->forget('lang');
-    session()->put('lang',$locale);
+    session()->put('lang', $locale);
     return redirect()->back();
 });
 
-Route::get('/currency/{currency}',function(string $currency){
+Route::get('/currency/{currency}', function (string $currency) {
     session()->forget('currency');
-    session()->put('currency',$currency);
+    session()->put('currency', $currency);
     return redirect('/');
 });
 
 Route::group(['prefix' => ''], function () {
-    
+
     Route::get('/', function () {
         $locale = session()->get('lang');
         $currency = session()->get('currency');
         // session()->put('lang',$locale);
-        if($locale == 'en'){
+        if ($locale == 'en') {
             session()->forget('lang');
-            session()->put('lang','en');
-        }else if($locale == 'ar'){
+            session()->put('lang', 'en');
+        } else if ($locale == 'ar') {
             session()->forget('lang');
-            session()->put('lang','ar');
-        }
-        else{
+            session()->put('lang', 'ar');
+        } else {
             session()->forget('lang');
-            session()->put('lang','en');
+            session()->put('lang', 'en');
         }
 
         //set currency
-        if($currency == 'usd'){
+        if ($currency == 'usd') {
             session()->forget('currency');
-            session()->put('currency','usd');
-        }else if($currency == 'ade'){
+            session()->put('currency', 'usd');
+        } else if ($currency == 'ade') {
             session()->forget('currency');
-            session()->put('currency',value: 'ade');
-        }
-        else{
+            session()->put('currency', value: 'ade');
+        } else {
             session()->forget('currency');
-            session()->put('currency','ade');
+            session()->put('currency', 'ade');
         }
         $bestSeller = ListProductsByCategory::execute(1);
         $hair_care = ListProductsByCategory::execute(2);
@@ -87,17 +85,18 @@ Route::group(['prefix' => ''], function () {
         $brands = ListBrand::execute();
         $carousel1 = Carousel::with('images')->find(1);
         $carousel2 = Carousel::with('images')->find(2);
+        $carousels = Carousel::with('images')->orderby('id','asc')->get();
         $posts = Post::all();
-        return view('welcome', compact('posts','bestSeller','hair_care','body_care','face_care','sun_care', 'categories', 'brands','carousel1','carousel2'));
+        return view('welcome', compact('posts', 'bestSeller', 'hair_care', 'body_care', 'face_care', 'sun_care', 'categories', 'brands', 'carousel1', 'carousel2','carousels'));
     })->name('home');
     Route::resource('shop', ShopController::class);
     Route::get('/show-cart/address', [OrderController::class, 'create'])->name('address');
     Route::resource('order', OrderController::class);
-    Route::post('/contactUs/send', [InboxController::class,'store'])->name('send-comment');
-    Route::post('/shop/send', [ShopController::class,'addComment'])->name('add-review');
-    Route::get('/contactUs',function(){
+    Route::post('/contactUs/send', [InboxController::class, 'store'])->name('send-comment');
+    Route::post('/shop/send', [ShopController::class, 'addComment'])->name('add-review');
+    Route::get('/contactUs', function () {
         $categories = ListCategory::execute();
-        return view('support.contact',compact('categories'));
+        return view('support.contact', compact('categories'));
     });
 });
 

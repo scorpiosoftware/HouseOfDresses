@@ -1,13 +1,12 @@
 <div id="controls-carousel" class="relative w-full overflow-x-hidden" data-carousel="static">
     <div class="absolute {{ $position }}">
-        <h1 class=" md:text-5xl font-bold text-white dancing-script">{{ $record->category->name_en }}</h1>
+        <h1 class="md:text-8xl text-3xl font-bold text-white dancing-script">{{ $record->category->name_en }}</h1>
     </div>
     <!-- Carousel wrapper -->
     <div class="relative md:h-[60rem] h-[26rem] overflow-x-hidden">
         <!-- Item 1 -->
         <div class="hidden duration-700 ease-in-out" data-carousel-item>
             @if ($record->images->count() > 0)
-                {{-- {{  dd($record->images()->first()->url) }} --}}
                 <form action="{{ route('filter.products.category') }}" method="POST">
                     @csrf
                     @method('POST')

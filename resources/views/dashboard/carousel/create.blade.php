@@ -36,21 +36,20 @@
                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="m1 9 4-4-4-4" />
                     </svg>
-                    <span class="ms-1 text-sm font-medium text-gray-500 md:ms-2 d:text-gray-400">Edit</span>
+                    <span class="ms-1 text-sm font-medium text-gray-500 md:ms-2 d:text-gray-400">create</span>
                 </div>
             </li>
         </ol>
     </nav>
     {{-- End Breadcrumb  --}}
-    <form class="pt-4" action="{{ route('carousel.update', $record->id) }}" enctype="multipart/form-data"
-        method="POST">
+    <form class="pt-4" action="{{route('carousel.store')}}" enctype="multipart/form-data" method="POST">
         @csrf
-        @method('PUT')
+        @method('POST')
         <div class="grid gap-6 mb-6 md:grid-cols-1">
             <div class="grid grid-cols-1 gap-4 border-2 p-4 md:grid-cols-2">
                 <div>
                     <label for="title" class="block mb-2 text-sm font-medium text-gray-900 d:text-white">Title</label>
-                    <input type="text" id="title" value="{{ $record->title }}" name="title"
+                    <input type="text" id="title" value="" name="title"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 d:bg-gray-700 d:border-gray-600 d:placeholder-gray-400 d:text-white d:focus:ring-blue-500 d:focus:border-blue-500"
                         placeholder="carousel title" required />
                 </div>
@@ -58,15 +57,16 @@
 
                     <div class="w-full mt-2">
                         <div class="flex justify-between items-center">
-                            <label for="logo_url"
+                            <label for="category_id"
                                 class="block mb-2 text-sm font-medium text-gray-900 d:text-white">Category</label>
                         </div>
                         <div class="mt-4">
-                            <select name="category_id" id="" required class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-[18px] d:bg-gray-700 d:border-gray-600 d:placeholder-gray-400 d:text-white d:focus:ring-blue-500 d:focus:border-blue-500">
+                            <select name="category_id" id="" required
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-[18px] d:bg-gray-700 d:border-gray-600 d:placeholder-gray-400 d:text-white d:focus:ring-blue-500 d:focus:border-blue-500">
                                 <option value=""></option>
                                 @foreach ($categories as $category)
-                                <option @if($category->id == $record->category_id) selected @endif  value="{{ $category->id }}">{{ $category->name_en }}</option>
-                                @endforeach                             
+                                    <option value="{{ $category->id }}">{{ $category->name_en }}</option>
+                                @endforeach
                             </select>
                         </div>
 
@@ -75,40 +75,15 @@
                     <div class="w-full mt-2">
                         <div class="flex justify-between items-center">
                             <label for="images"
-                                class="block mb-2 text-sm font-medium text-gray-900 d:text-white">Carousel 
+                                class="block mb-2 text-sm font-medium text-gray-900 d:text-white">Carousel
                                 Images</label>
                         </div>
                         <div class="mt-4">
-                            <input type="file" multiple id="images" name="images[]" value="{{ $record->images }}"
+                            <input type="file" multiple id="images" name="images[]" value=""
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 d:bg-gray-700 d:border-gray-600 d:placeholder-gray-400 d:text-white d:focus:ring-blue-500 d:focus:border-blue-500"
                                 placeholder="choose image" />
                         </div>
 
-                    </div>
-                    <div class="flex justify-center items-center md:col-start-1 md:col-end-3">
-
-                        <div aria-controls="gallery" data-collapse-toggle="gallery"
-                            class="cursor-pointer transition-all w-full text-center bg-blue-300 container mx-auto delay-75 hover:scale-95">
-                            Toggle Gallery
-                        </div>
-                    </div>
-                    <div id="gallery"
-                        class="grid md:grid-cols-1 grid-cols-1 gap-4">
-                        {{-- Main Image --}}
-                        <input class="hidden" type="text" name="image" value="{{ $record->logo_url }}">
-                        @if (!empty($record->logo_url))
-                        <div class="relative">
-                            <img class=" max-w-full w-[100%] rounded-lg"
-                                src="{{ URL::to('storage/' . $record->logo_url) }}" alt="">
-                        </div> 
-                        @endif
-                        {{-- Other Images --}}
-                        @foreach ($record->images as $image)
-                        <div class="relative">
-                            <img class=" max-w-full w-[100%] rounded-lg"
-                                src="{{ URL::to('storage/' . $image->url) }}" alt="">
-                        </div>
-                        @endforeach
                     </div>
                 </div>
 
