@@ -2,6 +2,7 @@
 
 namespace App\Livewire;
 
+use Livewire\Attributes\On;
 use Livewire\Component;
 
 class Addtocart extends Component
@@ -11,7 +12,7 @@ class Addtocart extends Component
     public $size;
     public $selected_size;
     public $qty = 1;
-
+    #[On('change-currency')] 
     public function mount(){
      
     }
@@ -66,15 +67,18 @@ class Addtocart extends Component
         $size =  $this->size != null ? $this->size : $product->sizes->first()->name;
         $qty = $this->qty;
         $id = $product->id;
-
         if (!$product) {
-
             abort(404);
         }
         $cart = session()->get('cart');
         $price = $product->price;
         if (!empty($product->offer_price) || $product->offer_price > 0) {
             $price = $product->offer_price;
+        }
+        if(session('currency') == "ade"){
+            $price = $product->price2;
+        }else{
+            $price = $product->price;
         }
         if (!$cart) {
             $cart = [

@@ -1,4 +1,25 @@
 <div>
+    <p class="text-xl">{{ $color->product->name_en }} - {{ $color->name }}</p>
+    <a href="/" class="text-lg font-semibold text-gray-600">HOD</a>
+    <p class="text-lg text-gray-600">
+        @if(session('currency') == 'ade')
+        ADE {{ $color->product->price2 }}
+        @else
+        USD {{ $color->product->price }}
+        @endif
+    </p>
+    <div class="flex flex-wrap justify-start items-center space-x-1">
+        <img src="{{ URL::to('media/new/visa.jpg') }}" class="w-12" alt="">
+        <img src="{{ URL::to('media/new/mastercard.jpg') }}" class="w-12" alt="">
+        <img src="{{ URL::to('media/new/pay.jpg') }}" class="w-12" alt="">
+        <img src="{{ URL::to('media/new/tabby.jpg') }}" class="w-12" alt="">
+    </div>
+    <div class="flex justify-start items-center space-x-1 mt-10">
+        @foreach ($color->product->colors as $color)
+            <a href="/shop/{{ $color->id }}"
+                class="rounded-full border-2 px-4 py-4 bg-[{{ $color->color }}]"></a>
+        @endforeach
+    </div>
     <div class="mt-10">
         <p>Size : {{$selected_size}}</p>
         {{--  onclick='this.classList.add("bg-[#b69357]","text-white","font-bold")' --}}

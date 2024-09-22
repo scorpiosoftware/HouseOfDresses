@@ -25,6 +25,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\ShopController;
 use App\Http\Controllers\SizeController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\WishlistController;
 use App\Models\Carousel;
 use App\Models\Inbox;
@@ -128,6 +129,7 @@ Route::group(['middleware' => 'auth', 'prefix' => 'dashboard'], function () {
     Route::resource('collection', CollectionController::class);
     Route::resource('size', SizeController::class);
     Route::resource('post', PostController::class);
+    Route::resource('users', UserController::class);
 });
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
