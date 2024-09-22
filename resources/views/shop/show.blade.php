@@ -108,28 +108,6 @@
                                 </p>
                             </div>
                         </div>
-
-                        {{-- item 2 --}}
-                        <h2 id="accordion-collapse-heading-2">
-                            <button type="button"
-                                class="flex items-center justify-between w-full p-5 font-medium text-[#b69357] border border-b-0 border-[#b69357] rounded-t-xl focus:ring-4 focus:ring-gray-200  hover:bg-gray-100 gap-3"
-                                data-accordion-target="#accordion-collapse-body-2" aria-expanded="true"
-                                aria-controls="accordion-collapse-body-2">
-                                <span class="text-[#b69357]">Model Measurements</span>
-                                <svg data-accordion-icon class="w-3 h-3 rotate-180 shrink-0" aria-hidden="true"
-                                    xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
-                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                        stroke-width="2" d="M9 5 5 1 1 5" />
-                                </svg>
-                            </button>
-                        </h2>
-                        <div id="accordion-collapse-body-2" class="hidden" aria-labelledby="accordion-collapse-heading-2">
-                            <div class="p-5 border border-b-0 border-[#b69357]">
-                                <p class="mb-2 text-[#b69357]">
-                                    {!! $record->product->description_en !!}
-                                </p>
-                            </div>
-                        </div>
                     </div>
 
             </div>
