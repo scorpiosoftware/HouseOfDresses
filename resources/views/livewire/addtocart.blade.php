@@ -21,14 +21,14 @@
     </div>
 
     <div class="flex justify-center items-center w-full bg-[#b69357] mt-10">
-        <button wire:click='addToCart()' class="py-3 w-full rounded-lg hover:bg-gray-500 text-white font-bold">Add to
+        <button id="add_to_cart_btn" wire:click='addToCart()' class="py-3 w-full rounded-lg hover:bg-gray-500 text-white font-bold">Add to
             Cart</button>
     </div>
 
     <div class="flex justify-center items-center w-full bg-[] mt-10">
-        <button wire:click='addToWishlist()' id='wishlist_btn'>
+        <button id='wishlist_btn' wire:click='addToWishlist()'>
             <div class="flex items-center justify-center space-x-2">
-                <svg id="wishlist_svg" class="frcp-wishlist__icon" width="20px" height="20px" fill="black"
+                <svg id="wishlist_svg" class="frcp-wishlist__icon" width="20px" height="20px" fill="white"
                     stroke="#b69357" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                     viewBox="0 0 24 24">
                     <path

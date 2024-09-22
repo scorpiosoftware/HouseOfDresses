@@ -1,5 +1,49 @@
 @extends('layouts.home')
 @section('content')
+    <div id="success_alert_cart"
+        class="hidden fixed top-0 z-50 w-full flex items-center p-4 mb-4 text-sm text-green-800 border border-green-300 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-green-400 dark:border-green-800"
+        role="alert">
+        {{-- <svg class="flex-shrink-0 inline w-4 h-4 me-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+            viewBox="0 0 20 20">
+            <path
+                d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z" />
+        </svg> --}}
+        <span class="sr-only">Info</span>
+        <div>
+            <span class="font-medium">Success!</span> item added to cart.
+        </div>
+    </div>
+    <div id="success_alert_wishtlist"
+    class="hidden fixed top-0 z-50 w-full flex items-center p-4 mb-4 text-sm text-green-800 border border-green-300 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-green-400 dark:border-green-800"
+    role="alert">
+    {{-- <svg class="flex-shrink-0 inline w-4 h-4 me-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+        viewBox="0 0 20 20">
+        <path
+            d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z" />
+    </svg> --}}
+    <span class="sr-only">Info</span>
+    <div>
+        <span class="font-medium">Success!</span> item added to wishlist.
+    </div>
+</div>
+    <script>
+        $(document).ready(function() {
+            $("#success_alert").hide();
+            $("#add_to_cart_btn").click(function(e) {
+                $("#success_alert_cart").fadeIn(200).show(200).delay(2000).queue(function(n) {
+                    $(this).fadeOut(200).hide(200);
+                    n();
+                });
+            });
+
+            $("#wishlist_btn").click(function(e) {
+                $("#success_alert_wishtlist").fadeIn(200).show(200).delay(2000).queue(function(n) {
+                    $(this).fadeOut(200).hide(200);
+                    n();
+                });
+            });
+        });
+    </script>
     <div class="max-w-6xl mx-auto mt-10">
         <div class="md:flex justify-start items-start mx-auto">
             <div
@@ -9,7 +53,8 @@
                 @endforeach
             </div>
             <div class="w-96 mx-auto">
-                <img src="{{ URL::to('storage/' . $record->images()->first()->image_url) }}" class="rounded-lg" alt="">
+                <img src="{{ URL::to('storage/' . $record->images()->first()->image_url) }}" class="rounded-lg"
+                    alt="">
             </div>
             <div class="md:hidden md:overflow-y-auto overflow-x-auto flex justify-start items-center gap-x-2 px-4 py-2">
                 @foreach ($record->images as $image)
@@ -35,7 +80,7 @@
 
                 <livewire:addtocart :product="$record->product" :color="$record">
 
-                    <div id="accordion-collapse" data-accordion="collapse">
+                    <div id="accordion-collapse" data-accordion="collapse" class="mt-10">
                         {{-- item 1 --}}
                         <h2 id="accordion-collapse-heading-1">
                             <button type="button"
@@ -98,7 +143,8 @@
                                 </svg>
                             </button>
                         </h2>
-                        <div id="accordion-collapse-body-3" class="hidden" aria-labelledby="accordion-collapse-heading-3">
+                        <div id="accordion-collapse-body-3" class="hidden"
+                            aria-labelledby="accordion-collapse-heading-3">
                             <div class="p-5 border border-t-0 border-gray-200 dark:border-gray-700">
                                 <p class="mb-2 text-gray-500 dark:text-gray-400">The main difference is that the core
                                     components from Flowbite are open source under the MIT license, whereas Tailwind UI is a
