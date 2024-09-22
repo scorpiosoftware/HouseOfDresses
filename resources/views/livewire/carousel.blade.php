@@ -12,7 +12,7 @@
                     @method('POST')
                     <input type="text" class="hidden" name="category" value="{{ $record->category->id }}">
                     <button> <img src="{{ URL::to('storage/' . $record->images()->first()->url) }}"
-                            class="absolute block w-full h-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 z-0"
+                            class="absolute block w-full h-full object-cover -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 z-0"
                             alt="...">
                     </button>
                 </form>
