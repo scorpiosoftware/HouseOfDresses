@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Post;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
@@ -12,6 +13,7 @@ class CartController extends Controller
     {
         $request->visit();
         $categories = Category::all();
+        $posts = Post::all();
         $cart = session()->get('cart');
         $totale = 0;
         if ($cart) {
@@ -21,7 +23,7 @@ class CartController extends Controller
         }
 
         // return 
-        return view('cart.index', compact('categories', 'totale'));
+        return view('cart.index', compact('categories', 'totale','posts'));
     }
     public function decrementToCart($id)
     {
