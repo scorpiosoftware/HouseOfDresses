@@ -10,7 +10,9 @@ use App\Actions\Product\GetProduct;
 use App\Actions\Product\ListProduct;
 use App\Models\Brand;
 use App\Models\Category;
+use App\Models\Collection;
 use App\Models\Color;
+use App\Models\Post;
 use App\Models\Product;
 use App\Models\ProductComments;
 use App\View\Components\home\brands;
@@ -24,12 +26,28 @@ class ShopController extends Controller
     public function index(Request $request)
     {
         $inputs = $request->all();
+        // dd($inputs);
         $request->visit();
         $products = ListProduct::execute($inputs);
-        $collection = GetCollection::execute(1);
+        // dd($products);
+        $posts = Post::all();
+        $collection = Collection::find($inputs["collection"]);
         $categories = Category::all();
         $brands = Brand::all();
-        return view('shop.index', compact('products', 'categories', 'brands', 'inputs'));
+        return view('shop.index', compact('products','posts','collection', 'categories', 'brands', 'inputs'));
+    }
+
+    public function filterByCategory(Request $request)
+    {
+        $inputs = $request->all();
+        $request->visit();
+        $posts = Post::all();
+        $products = ListProduct::execute($inputs);
+        $collection = !empty($inputs["collection"]) ? Collection::find($inputs["collection"]) : '';
+        $category = Category::find($inputs["category"]);
+        $categories = Category::all();
+        $brands = Brand::all();
+        return view('shop.index', compact('products','posts','collection', 'categories','category', 'brands', 'inputs'));
     }
 
     public function addComment(Request $request)
@@ -75,12 +93,12 @@ class ShopController extends Controller
         // $comments = $comments->where('product_id', $record->id)->get();
 
         // $total_rates = $comments->sum('rate');
-
+        $posts = Post::all();
         
         // $product_rate = $comments->count() > 0 ?($total_rates / $comments->count()) : 0;
         $cart = session()->get('cart');
         $categories = Category::all();
-        return view("shop.show", compact("record", 'categories', 'cart'));
+        return view("shop.show", compact("record",'posts', 'categories', 'cart'));
     }
 
 

@@ -7,7 +7,7 @@ use App\Models\Carousel;
 class GetCarousel
 {
     public static function execute($id) {
-        $record = Carousel::find($id);
+        $record = Carousel::with('images')->find($id);
         return $record;
     }
 }

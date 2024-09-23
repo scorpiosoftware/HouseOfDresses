@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Actions\Carousel\GetCarousel;
+use App\Actions\Carousel\StoreCarousel;
+use App\Actions\Category\ListCategory;
 use App\Actions\DeleteMedia;
 use App\Actions\StoreMedia;
 use App\Models\Carousel;
@@ -17,8 +19,10 @@ class CarouselController extends Controller
      */
     public function index()
     {
-        $record = Carousel::with('images')->first();
-        return view('dashboard.carousel.index',compact('record'));
+        $records = new Carousel();
+
+        $records = $records->orderBy('id', 'asc')->get();
+        return view('dashboard.carousel.index', compact('records'));
     }
 
     /**
@@ -26,6 +30,8 @@ class CarouselController extends Controller
      */
     public function create()
     {
+        $categories = ListCategory::execute();
+        return view('dashboard.carousel.create', compact('categories'));
     }
 
     /**
@@ -33,21 +39,45 @@ class CarouselController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([]);
+        $inputs = $request->all();
+        $record = StoreCarousel::execute($inputs);
+        $record->save();
+        if ($record) {
+            $record = GetCarousel::execute($record->id);
+            // add other product images
+            if (!empty($request->file('images'))) {
+                foreach ($request->file('images') as $imagefile) {
+                    $image = new CarouselImage();
+                    $path = StoreMedia::execute(
+                        $imagefile,
+                        'carousel/' . $record->id . '',
+                        'public'
+                    );
+                    $image->url = $path;
+                    $image->carousel_id = $record->id;
+                    $image->save();
+                }
+            }
+            return redirect()->back()->with("success", "Append Record Success !");
+        } else {
+            return redirect()->back()->with("error", "Check requirments error on validation !");
+        }
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
-    {
-    }
+    public function show(string $id) {}
 
     /**
      * Show the form for editing the specified resource.
      */
     public function edit(string $id)
     {
-      
+        $record = Carousel::with('images')->find(id: $id);
+        $categories = ListCategory::execute();
+        return view('dashboard.carousel.edit', compact('record', 'categories'));
     }
 
     /**
@@ -62,17 +92,19 @@ class CarouselController extends Controller
         $record = Carousel::find($id);
 
         // add new image and delete old
-        if ($request->has('logo_url')) {
-            $inputs['logo_url'] = StoreMedia::execute(
-                $request->file('logo_url'),
-                'carousel/' . $record->id . '/logo',
-                'public'
-            );
-            DeleteMedia::execute($record->logo_url);
-            $record->logo_url =  $inputs['logo_url'];
-            $record->save();
-        }
+        // if ($request->has('logo_url')) {
+        //     $inputs['logo_url'] = StoreMedia::execute(
+        //         $request->file('logo_url'),
+        //         'carousel/' . $record->id . '/logo',
+        //         'public'
+        //     );
+        //     DeleteMedia::execute($record->logo_url);
+        //     $record->logo_url =  $inputs['logo_url'];
+        //     $record->save();
+        // }
+
         if ($request->has('images')) {
+
             $record = GetCarousel::execute($id);
             foreach ($record->images as $image) {
                 DeleteMedia::execute($image->url);
@@ -81,6 +113,7 @@ class CarouselController extends Controller
             $record->save();
             // add other product images
             foreach ($request->file('images') as $imagefile) {
+
                 $image = new CarouselImage();
                 $path = StoreMedia::execute(
                     $imagefile,
@@ -103,8 +136,5 @@ class CarouselController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
-    {
-
-    }
+    public function destroy(string $id) {}
 }

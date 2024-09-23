@@ -12,17 +12,17 @@
         </div>
         <form class="max-w-md mx-auto">
             <label for="default-search"
-                class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
+                class="mb-2 text-sm font-medium text-gray-900 sr-only">Search</label>
             <div class="relative">
                 <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
-                    <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true"
+                    <svg class="w-4 h-4 text-gray-500" aria-hidden="true"
                         xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
                     </svg>
                 </div>
                 <input type="search" id="default-search"
-                    class="block w-full p-4 ps-10 text-sm text-gray-900 border border-[#b69357] rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    class="block w-full p-4 ps-10 text-sm text-gray-900 border border-[#b69357] rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500"
                     placeholder="Search..." required />
                 <button type="submit"
                     class="text-[#b69357] border-2 border-[#b69357] absolute end-2.5 bottom-2.5 bg-white hover:bg-slate-100 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 ">Search</button>
@@ -55,19 +55,13 @@
             {{-- categories --}}
             <div class="text-sm font-normal">
                 @foreach ($categories as $category)
-                <p class="border px-4 py-1 mt-5"><a href="/shop/category/{{$category->id}}">{{$category->name_en}}</a></p>
+                <form action="{{ route("filter.products.category") }}" method="POST">
+                    @csrf
+                    @method('POST')
+                    <input type="text" class="hidden" name="category" value="{{ $category->id }}" id="">
+                    <p class="border px-4 py-1 mt-5"><button type="submit">{{$category->name_en}}</button></p>
+                </form>
                 @endforeach
-                {{-- <p class="border px-4 py-1 mt-5"><a href="/">END OF SEASON SALE</a></p>
-                <p class="border px-4 py-1 mt-5"><a href="/">NEW ARRIVAL</a></p>
-                <p class="border px-4 py-1 mt-5"><a href="/">DRESSES</a></p>
-                <p class="border px-4 py-1 mt-5"><a href="/">PLAYSUITS + JUMPSUITS + SETS</a></p>
-                <p class="border px-4 py-1 mt-5"><a href="/">TOPS</a></p>
-                <p class="border px-4 py-1 mt-5"><a href="/">BRANDS</a></p>
-                <p class="border px-4 py-1 mt-5"><a href="/">BOTTOMS</a></p>
-                <p class="border px-4 py-1 mt-5"><a href="/">LINEN</a></p>
-                <p class="border px-4 py-1 mt-5"><a href="/">SWIMWEAR</a></p>
-                <p class="border px-4 py-1 mt-5"><a href="/">ACCESSORIES</a></p>
-                <p class="border px-4 py-1 mt-5"><a href="/">ALL</a></p> --}}
             </div>
 
             {{-- <div class="text-sm border font-normal flex justify-between space-x-2 items-center w-full mt-5 py-1">
@@ -88,7 +82,7 @@
                         </svg>
                 </div>
             </div> --}}
-
+            @guest
             <div class="flex justify-between items-center  w-full mt-5 py-1 border font-normal text-sm">
                 <div>
                     <svg width="24px" height="24px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -97,7 +91,9 @@
                         </svg>
                 </div>
                 <p class="px-4 w-full"><a href="/login">LOGIN</a></p>
-            </div>
+            </div> 
+            @endguest
+
             <div class="flex justify-between items-center  w-full mt-5 py-1 border font-normal text-sm">
                 <div>
                     <svg width="24px" height="24px" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" stroke-width="3" stroke="#000000" fill="none"><path d="M9.06,25C7.68,17.3,12.78,10.63,20.73,10c7-.55,10.47,7.93,11.17,9.55a.13.13,0,0,0,.25,0c3.25-8.91,9.17-9.29,11.25-9.5C49,9.45,56.51,13.78,55,23.87c-2.16,14-23.12,29.81-23.12,29.81S11.79,40.05,9.06,25Z"/></svg>

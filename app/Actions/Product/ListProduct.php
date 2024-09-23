@@ -14,9 +14,10 @@ class ListProduct {
         }else{
             $records = $records->where('status','!=','out_of_stock');
         }
-        if (!empty($inputs['brands'])) {
+
+        if (!empty($inputs['collection'])) {
             $collection_id = $inputs['collection'];
-            $records = $records->whereIn('brand_id', $collection_id);
+            $records = $records->where('collection_id', $collection_id);
         }
       
         if (!empty($inputs['search'])) {
@@ -31,6 +32,14 @@ class ListProduct {
             session(['category' => $categoriesArray]);
             $records = $records->whereHas('categories', function ($query) use ($categoriesArray) {
                 $query->whereIn('category_id', $categoriesArray);
+            });
+        }
+
+        if (!empty($inputs['category'])) {
+            $category = $inputs['category'];
+            // session(['category' => $category]);
+            $records = $records->whereHas('categories', function ($query) use ($category) {
+                $query->where('category_id', $category);
             });
         }
 

@@ -5,6 +5,7 @@ use App\Actions\Category\ListCategory;
 use App\Models\Option;
 use App\Models\Order;
 use App\Models\OrderItem;
+use App\Models\Post;
 use Illuminate\Http\Request;
 
 class OrderController extends Controller
@@ -37,7 +38,8 @@ class OrderController extends Controller
     public function create()
     {
         $categories = ListCategory::execute();
-        return view('shipping.index', compact('categories'));
+        $posts = Post::all();
+        return view('shipping.index', compact('categories','posts'));
     }
 
     /**
