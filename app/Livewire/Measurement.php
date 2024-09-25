@@ -4,10 +4,10 @@ namespace App\Livewire;
 
 use Livewire\Component;
 
-class Currency extends Component
+class Measurement extends Component
 {
     public function render()
     {
-        return view('livewire.currency');
+        return view('livewire.measurement');
     }
 }

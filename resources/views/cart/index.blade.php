@@ -56,7 +56,7 @@
                                             </div>
                                             <div class="text-end md:order-4 md:w-32">
                                                 <p class="text-base font-bold text-gray-900 dark:text-white">
-                                                    ${{ $details['price'] }}</p>
+                                                    {{$details['currency']}} {{ $details['price'] }}</p>
                                             </div>
                                         </div>
 
@@ -136,7 +136,7 @@
                                 <dl
                                     class="flex items-center justify-between gap-4 border-t border-gray-200 pt-2 dark:border-gray-700">
                                     <dt class="text-base font-bold text-gray-900 dark:text-white">Total</dt>
-                                    <dd class="text-base font-bold text-gray-900 dark:text-white">${{ $totale }}</dd>
+                                    <dd class="text-base font-bold text-gray-900 dark:text-white"> {{$details['currency']}} {{ $totale }}</dd>
                                 </dl>
                             </div>
 

@@ -12,9 +12,11 @@ class Addtocart extends Component
     public $size;
     public $selected_size;
     public $qty = 1;
+
+    public $bust = '' , $waist = '' , $hips = '' , $neck = '' , $chest = '' , $shoulder = '' , $sleeve = '' , $shoulder_floor = '' , $arm_hole = '' , $upper_arm = '';
     #[On('change-currency')] 
     public function mount(){
-     
+        $this->selected_size = !empty($this->product) ? $this->product->sizes()->first()->name : '';
     }
     public function setSize($size){
         $this->size = $size;
@@ -71,7 +73,8 @@ class Addtocart extends Component
             abort(404);
         }
         $cart = session()->get('cart');
-        $price = $product->price;
+        $price = session('currency') == 'ade' ?  $product->price2 : $product->price;
+        $currency = session('currency') == 'ade' ? 'AED' : 'USD';
         if (!empty($product->offer_price) || $product->offer_price > 0) {
             $price = $product->offer_price;
         }
@@ -89,13 +92,28 @@ class Addtocart extends Component
                     "photo" => $color->main_image_url,
                     "color" => $color->name,
                     "size" => $size,
+                    "currency" => $currency,
+                    "measurement" => [
+                        'bust' => $this->bust,
+                        'waist' => $this->waist,
+                        'hips' => $this->hips,
+                        'neck'=>$this->neck,
+                        'chest'=>$this->chest,
+                        'shoulder' =>$this->shoulder,
+                        'sleeve' => $this->sleeve,
+                        'shoulder_floor' => $this->shoulder_floor,
+                        'arm_hole' => $this->arm_hole,
+                        'upper_arm' => $this->upper_arm,
+                    ],
                 ]
             ];
             $cart[$id]['quantity'] = $qty;
             $cart[$id]['price'] = $cart[$id]['quantity'] * $price;
+            // dd($cart[$id]['measurement']);
             session()->put('cart', $cart);
             $this->dispatch('refreshCart');
             return redirect()->back()->with('success', 'Product added to cart successfully!');
+
         }
 
         if (isset($cart[$id])) {
@@ -120,6 +138,19 @@ class Addtocart extends Component
             "photo" => $color->main_image_url,
             "color" => $color->name,
             "size" => $size,
+            "currency" => $currency,
+            "measurement" => [
+                'bust' => $this->bust,
+                'waist' => $this->waist,
+                'hips' => $this->hips,
+                'neck'=>$this->neck,
+                'chest'=>$this->chest,
+                'shoulder' =>$this->shoulder,
+                'sleeve' => $this->sleeve,
+                'shoulder_floor' => $this->shoulder_floor,
+                'arm_hole' => $this->arm_hole,
+                'upper_arm' => $this->upper_arm,
+            ],
         ];
 
         session()->put('cart', $cart);

@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Actions\Post\ListPost;
 use App\Models\Category;
+use App\Models\Post;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
@@ -14,7 +16,8 @@ class WishlistController extends Controller
     public function index()
     {
         $categories = Category::all();
-        return view('wishlist.index',compact('categories'));
+        $posts = Post::all();
+        return view('wishlist.index',compact('categories','posts'));
     }
 
     /**

@@ -2,18 +2,14 @@
 @section('content')
     <div class="mt-14 text-center">
         <h1 class="underline-offset-8 underline text-[#b69357] md:text-2xl text-xl">
-            {{-- @if (!empty($inputs['collection']))
-             
-              @else
-              ALL - COLLECTION
-            @endif  --}}
             @if(!empty($collection))
                 {{ $collection->name_en }} - COLLECTION
 
                 @elseif (!empty($category))
                   {{ $category->name_en }} - CATEGORY
+                @else
+                ALL - Collections
             @endif
-          
         </h1>
         <nav class="flex justify-center mt-5" aria-label="Breadcrumb">
             <ol class="inline-flex items-center space-x-1 md:space-x-2 rtl:space-x-reverse">
@@ -41,7 +37,10 @@
             
                             @elseif (!empty($category))
                               {{ $category->name_en }} - CATEGORY
+                              @else
+                              ALL - COLLECTIONS
                             @endif
+    
                         </span>
                     </div>
                 </li>

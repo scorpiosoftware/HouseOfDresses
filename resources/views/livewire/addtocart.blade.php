@@ -3,7 +3,7 @@
     <a href="/" class="text-lg font-semibold text-gray-600">HOD</a>
     <p class="text-lg text-gray-600">
         @if(session('currency') == 'ade')
-        ADE {{ $color->product->price2 }}
+        AED {{ $color->product->price2 }}
         @else
         USD {{ $color->product->price }}
         @endif
@@ -71,4 +71,140 @@
             });
         </script>
     </div>
+    <div id="accordion-collapse" data-accordion="collapse" class="mt-10"
+    data-active-classes="bg-white text-[#b69357]">
+    {{-- item 1 --}}
+    <h2 id="accordion-collapse-heading-1">
+        <button type="button"
+            class="flex items-center justify-between w-full p-5 font-medium text-[#b69357] border border-b-0 border-[#b69357] rounded-t-xl focus:ring-4 focus:ring-gray-200  hover:bg-gray-100 gap-3"
+            data-accordion-target="#accordion-collapse-body-1" aria-expanded="true"
+            aria-controls="accordion-collapse-body-1">
+            <span class="text-[#b69357]">Description</span>
+            <svg data-accordion-icon class="w-3 h-3 rotate-180 shrink-0" aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                    stroke-width="2" d="M9 5 5 1 1 5" />
+            </svg>
+        </button>
+    </h2>
+    <div id="accordion-collapse-body-1" class="hidden" aria-labelledby="accordion-collapse-heading-1">
+        <div class="p-5 border border-b-0 border-[#b69357]">
+            <p class="mb-2 text-[#b69357]">
+                {!! $color->product->description_en !!}
+            </p>
+        </div>
+    </div>
+
+    {{-- item 2 --}}
+    <h2 id="accordion-collapse-heading-2">
+        <button type="button"
+            class="flex items-center justify-between w-full p-5 font-medium text-[#b69357] border border-b-0 border-[#b69357] rounded-t-xl focus:ring-4 focus:ring-gray-200  hover:bg-gray-100 gap-3"
+            data-accordion-target="#accordion-collapse-body-2" aria-expanded="true"
+            aria-controls="accordion-collapse-body-2">
+            <span class="text-[#b69357]">Model Measurements</span>
+            <svg data-accordion-icon class="w-3 h-3 rotate-180 shrink-0" aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                    stroke-width="2" d="M9 5 5 1 1 5" />
+            </svg>
+        </button>
+    </h2>
+    <div id="accordion-collapse-body-2" class="hidden" aria-labelledby="accordion-collapse-heading-2">
+        <div class="p-5 border border-b-0 border-[#b69357]">
+            <p class="mb-2 text-[#b69357]">
+                <div>
+                    <table>
+                        <thead>
+                            <tr>
+                
+                                <th class="">Measure all around Please</th>
+                                <th>INCHES</th>
+                            </tr>
+                        </thead>
+                        <tbody class="">
+                            <tr class="border-2 border-black">
+                                <td class="px-2">
+                                    <label for="bust">BUST</label>
+                                </td>
+                                <td class="px-2 py-1"><input id="bust" wire:model='bust' name="bust" type="text"></td>
+                            </tr>
+                            <tr class="border-2 border-black">
+                                <td class="px-2"> 
+                                    <label for="waist">WAIST</label>
+                                </td>
+                                <td class="px-2 py-1">
+                                    <input id="waist" wire:model='waist' name="waist" type="text">
+                                </td>
+                            </tr>
+                            <tr class="border-2 border-black">
+                                <td class="px-2">
+                                    <label for="hips">HIPS</label>
+                                </td>
+                                <td class="px-2 py-1"> 
+                                    <input id="hips" name="hips" wire:model='hips' type="text">
+                                </td>
+                            </tr>
+                            <tr class="border-2 border-black">
+                                <td class="px-2">
+                                    <label for="neck">NECK</label>
+                                </td>
+                                <td class="px-2 py-1">
+                                    <input id="neck" name="neck" wire:model='neck' type="text">
+                                </td>
+                            </tr>
+                            <tr class="border-2 border-black">
+                                <td class="px-2">
+                                    <label for="chest">CHEST</label>
+                                </td>
+                                <td class="px-2 py-1">
+                                    <input id="chest" name="chest" wire:model='chest' type="text">
+                                </td>
+                            </tr>
+                            <tr class="border-2 border-black">
+                                <td class="px-2">
+                                    <label for="shoulder">SHOULDER</label>
+                                </td>
+                                <td class="px-2 py-1">
+                                    <input id="shoulder" name="shoulder" wire:model='shoulder' type="text">
+                                </td>
+                            </tr>
+                            <tr class="border-2 border-black">
+                                <td class="px-2">
+                                    <label for="sleeve">SLEEVE</label>
+                                </td>
+                                <td class="px-2 py-1">
+                                    <input id="sleeve" name="sleeve" wire:model='sleeve' type="text">
+                                </td>
+                            </tr>
+                            <tr class="border-2 border-black">
+                                <td class="px-2"> 
+                                    <label for="shoulder_floor">SHOULDER FOR FLOOR</label>
+                                </td>
+                                <td class="px-2 py-1">
+                                    <input id="shoulder_floor" name="shoulder_floor" wire:model='shoulder_floor' type="text">
+                                </td>
+                            </tr>
+                            <tr class="border-2 border-black">
+                                <td class="px-2">
+                                    <label for="arm_hole">ARM HOLE</label>
+                                </td>
+                                <td class="px-2 py-1">
+                                    <input id="arm_hole" name="arm_hole" wire:model='arm_hole' type="text">
+                                </td>
+                            </tr>
+                            <tr class="border-2 border-black">
+                                <td class="px-2">
+                                    <label for="upper_arm">UPPER ARM</label>
+                                </td>
+                                <td class="px-2 py-1">
+                                    <input id="upper_arm" name="upper_arm" wire:model='upper_arm' type="text">
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>                                    
+            </p>
+        </div>
+    </div>
+</div>
 </div>

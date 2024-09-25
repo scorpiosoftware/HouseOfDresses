@@ -85,6 +85,18 @@ class OrderController extends Controller
                 $item->order_id = $order->id;
                 $item->quantity = $details['quantity'];
                 $item->subtotal = $details['price'];
+
+                $item->bust = $details['measurement']['bust'];
+                $item->waist = $details['measurement']['waist'];
+                $item->hips = $details['measurement']['hips'];
+                $item->neck = $details['measurement']['neck'];
+                $item->chest = $details['measurement']['chest'];
+                $item->shoulder = $details['measurement']['shoulder'];
+                $item->sleeve = $details['measurement']['sleeve'];
+                $item->shoulder_floor = $details['measurement']['shoulder_floor'];
+                $item->arm_hole = $details['measurement']['arm_hole'];
+                $item->upper_arm = $details['measurement']['upper_arm'];
+                
                 $item->save();
             }
         }
