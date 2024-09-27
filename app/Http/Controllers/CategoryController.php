@@ -7,6 +7,7 @@ use App\Actions\Category\GetCategory;
 use App\Actions\Category\ListCategory;
 use App\Actions\Category\StoreCategory;
 use App\Actions\Category\UpadateCategory;
+use App\Actions\Collection\ListCollection;
 use App\Actions\DeleteMedia;
 use App\Actions\StoreMedia;
 use Illuminate\Http\Request;
@@ -29,7 +30,8 @@ class CategoryController extends Controller
     public function create()
     {
         $categories = ListCategory::execute();
-        return view('dashboard.category.create', compact('categories'));
+        $collections = ListCollection::execute();
+        return view('dashboard.category.create', compact('categories','collections'));
     }
 
     /**
@@ -53,6 +55,9 @@ class CategoryController extends Controller
         $record = StoreCategory::execute($inputs);
 
         if ($record) {
+            if($request->has('collections')){
+                $record->collections()->attach($inputs['collections']);
+            }
             return redirect()->back()->with("success", "Append Record Success !");
         } else {
             return redirect()->back()->with("error", "Check requirments error on validation !");
@@ -74,7 +79,8 @@ class CategoryController extends Controller
     {
         $record = GetCategory::execute($id);
         $categories = ListCategory::execute();
-        return view("dashboard.category.edit", compact("record", "categories"));
+        $collections = ListCollection::execute();
+        return view("dashboard.category.edit", compact("record", "categories","collections"));
     }
 
     /**
@@ -87,6 +93,10 @@ class CategoryController extends Controller
         ]);
         $inputs = $request->all();
         $record = GetCategory::execute($id);
+        if($request->has('collections')){
+            $record->collections()->detach();
+            $record->collections()->attach($inputs['collections']);
+        }
         if (!empty($request->file('image_url'))) {
             DeleteMedia::execute($record->image_url);
             $inputs['image_url'] = StoreMedia::execute(

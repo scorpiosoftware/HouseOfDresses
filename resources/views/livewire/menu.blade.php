@@ -11,12 +11,11 @@
             </button>
         </div>
         <form class="max-w-md mx-auto">
-            <label for="default-search"
-                class="mb-2 text-sm font-medium text-gray-900 sr-only">Search</label>
+            <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only">Search</label>
             <div class="relative">
                 <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
-                    <svg class="w-4 h-4 text-gray-500" aria-hidden="true"
-                        xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                    <svg class="w-4 h-4 text-gray-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                        fill="none" viewBox="0 0 20 20">
                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
                     </svg>
@@ -53,14 +52,28 @@
             <p class="border px-4 py-1 mt-5"><a href="/">HOME</a></p>
 
             {{-- categories --}}
-            <div class="text-sm font-normal">
+            <div class="text-sm font-normal ">
                 @foreach ($categories as $category)
-                <form action="{{ route("filter.products.category") }}" method="POST">
+                    <p class="border px-4 py-1 mt-5"><button class="w-full text-start  " type="button"
+                            id="btn-{{ $category->id }}">{{ $category->name_en }}</button></p>
+                    <ul id="list-{{ $category->id }}" class="px-10 list-disc">
+                        @foreach ($category->collections as $collection)
+                           
+                    <form action="{{ route("filter.products") }}" method="POST">
+                    @csrf
+                    @method('POST')
+                    <input type="text" class="hidden" name="collection" value="{{ $collection->id }}" id="">
+                    <li class="underline underline-offset-2"><p
+                        class="z-10"><button type="submit">{{ $collection->name_en }}</button></p></li>
+                     </form>
+                        @endforeach
+                    </ul>
+                    {{-- <form action="{{ route("filter.products.category") }}" method="POST">
                     @csrf
                     @method('POST')
                     <input type="text" class="hidden" name="category" value="{{ $category->id }}" id="">
                     <p class="border px-4 py-1 mt-5"><button type="submit">{{$category->name_en}}</button></p>
-                </form>
+                </form> --}}
                 @endforeach
             </div>
 
@@ -83,20 +96,27 @@
                 </div>
             </div> --}}
             @guest
-            <div class="flex justify-between items-center  w-full mt-5 py-1 border font-normal text-sm">
-                <div>
-                    <svg width="24px" height="24px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <circle cx="12" cy="6" r="4" stroke="#1C274C" stroke-width="1.5"/>
-                        <path d="M19.9975 18C20 17.8358 20 17.669 20 17.5C20 15.0147 16.4183 13 12 13C7.58172 13 4 15.0147 4 17.5C4 19.9853 4 22 12 22C14.231 22 15.8398 21.8433 17 21.5634" stroke="#1C274C" stroke-width="1.5" stroke-linecap="round"/>
+                <div class="flex justify-between items-center  w-full mt-5 py-1 border font-normal text-sm">
+                    <div>
+                        <svg width="24px" height="24px" viewBox="0 0 24 24" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="12" cy="6" r="4" stroke="#1C274C" stroke-width="1.5" />
+                            <path
+                                d="M19.9975 18C20 17.8358 20 17.669 20 17.5C20 15.0147 16.4183 13 12 13C7.58172 13 4 15.0147 4 17.5C4 19.9853 4 22 12 22C14.231 22 15.8398 21.8433 17 21.5634"
+                                stroke="#1C274C" stroke-width="1.5" stroke-linecap="round" />
                         </svg>
+                    </div>
+                    <p class="px-4 w-full"><a href="/login">LOGIN</a></p>
                 </div>
-                <p class="px-4 w-full"><a href="/login">LOGIN</a></p>
-            </div> 
             @endguest
 
             <div class="flex justify-between items-center  w-full mt-5 py-1 border font-normal text-sm">
                 <div>
-                    <svg width="24px" height="24px" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" stroke-width="3" stroke="#000000" fill="none"><path d="M9.06,25C7.68,17.3,12.78,10.63,20.73,10c7-.55,10.47,7.93,11.17,9.55a.13.13,0,0,0,.25,0c3.25-8.91,9.17-9.29,11.25-9.5C49,9.45,56.51,13.78,55,23.87c-2.16,14-23.12,29.81-23.12,29.81S11.79,40.05,9.06,25Z"/></svg>
+                    <svg width="24px" height="24px" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg"
+                        stroke-width="3" stroke="#000000" fill="none">
+                        <path
+                            d="M9.06,25C7.68,17.3,12.78,10.63,20.73,10c7-.55,10.47,7.93,11.17,9.55a.13.13,0,0,0,.25,0c3.25-8.91,9.17-9.29,11.25-9.5C49,9.45,56.51,13.78,55,23.87c-2.16,14-23.12,29.81-23.12,29.81S11.79,40.05,9.06,25Z" />
+                    </svg>
                 </div>
                 <p class="px-4 w-full"><a href="/wishlist">WISHLIST</a></p>
             </div>

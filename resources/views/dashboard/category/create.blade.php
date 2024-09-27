@@ -77,6 +77,25 @@
                         @endforeach
                     </select>
                 </div>
+                <div class="w-full">
+                    <label for="collections"
+                        class="block mb-2 text-sm font-medium text-gray-900 d:text-white">Related Collections</label>
+                    <div class="relative flex w-full">
+                        <select id="collections" name="collections[]" multiple  placeholder="Select collections..."
+                            autocomplete="off" class="block w-full rounded-lg cursor-pointer focus:outline-none"
+                            >
+                            @foreach ($collections as $category)
+                                <option value="{{ $category->id }}">{{ $category->name_en }}</option>
+                            @endforeach
+
+                        </select>
+                    </div>
+                    <script>
+                        new TomSelect('#collections', {
+                            minItems: 1,
+                        });
+                    </script>
+                </div>
                 <div class="">
                     <div class="flex justify-between items-center">
                         <label for="image_url"

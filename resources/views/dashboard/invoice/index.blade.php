@@ -98,7 +98,7 @@
 
                             </div>
                             @endif
-                            {{ $record->auto_nb }}
+                            {{ $record->id }}
                         </td>
                         <td class="px-6 py-4 font-bold text-black text-base text-nowrap">
                             {{ $record->customer_name }}
@@ -111,7 +111,7 @@
                             {{ $record->phone }}
                         </td>
                         <td class="px-6 py-4 font-extrabold text-green-400 text-base text-nowrap">
-                            {{ $record->total_amount }} $
+                            {{ $record->total_amount }} {{strtoupper($record->currency)}}
                         </td>
                         <td class="px-6 py-4 font-extrabold text-green-400 text-base text-nowrap">
                             {{ $record->order_date }}

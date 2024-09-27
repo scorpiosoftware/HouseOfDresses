@@ -79,6 +79,28 @@
                         @endforeach
                     </select>
                 </div>
+                <div class="w-full">
+                    <label for="collections"
+                        class="block mb-2 text-sm font-medium text-gray-900 d:text-white">Categories</label>
+                    <div class="relative flex w-full">
+                        <select id="collections" name="collections[]" multiple placeholder="Select Collections..."
+                            autocomplete="off" class="block w-full rounded-sm cursor-pointer focus:outline-none"
+                             required>
+                            @foreach ($collections as $collection)
+                                <option value="{{ $collection->id }}"
+                                    @if ($record->collections()->Where('id', '=', $collection->id)->find($collection->id)) selected @endif>{{ $collection->name_en }}
+                                </option>
+                            @endforeach
+
+                        </select>
+                    </div>
+                    <script>
+                        new TomSelect('#collections', {
+                            minItems:1,
+                            maxItems: 100,
+                        });
+                    </script>
+                </div>
 
             </div>
             <div class="grid grid-cols-1 gap-4 border-2 p-4">

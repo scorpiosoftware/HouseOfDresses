@@ -29,6 +29,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\WishlistController;
 use App\Models\Carousel;
 use App\Models\Inbox;
+use App\Models\OrderItem;
 use App\Models\Post;
 use App\Models\ProductImage;
 use Illuminate\Http\Client\Request;
@@ -130,6 +131,11 @@ Route::group(['middleware' => 'auth', 'prefix' => 'dashboard'], function () {
     Route::resource('size', SizeController::class);
     Route::resource('post', PostController::class);
     Route::resource('users', UserController::class);
+
+    Route::get('/item/{id}/measurements', function($id){
+        $item = OrderItem::find($id);
+        return view('dashboard.invoice.measurement',compact('item'));
+    })->name('measurements');
 });
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

@@ -4,7 +4,7 @@
         <div class="grid grid-cols-2 border p-2">
             <div class="">
                 <a href="#"
-                    class="truncate text-sm font-semibold leading-none text-gray-900 hover:underline">{{ $details['name'] }}</a>
+                    class="truncate text-sm font-semibold leading-none text-gray-900 hover:underline">{{ $details['name'] }} - {{$details['color'] }}</a>
                 <p class="mt-0.5 truncate text-sm font-normal text-gray-500">
                     {{$details['currency']}} {{ $details['price'] }}</p>
             </div>

@@ -12,7 +12,11 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('category_collection', function (Blueprint $table) {
-            $table->id();
+            $table->unsignedBigInteger('category_id');
+            $table->unsignedBigInteger('collection_id');
+            $table->primary(['category_id', 'collection_id']);
+            $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
+            $table->foreign('collection_id')->references('id')->on('collections')->onDelete('cascade');
             $table->timestamps();
         });
     }

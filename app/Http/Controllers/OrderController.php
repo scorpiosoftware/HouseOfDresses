@@ -74,8 +74,12 @@ class OrderController extends Controller
         $order->city = $inputs['city'];
         // $order->zip = $inputs['zip'];
         $order->status = 'pending';
+        foreach (session('cart') as $id => $details) {
+            $order->currency = $details['currency'];
+            break;
+        }
         $order->save();
-
+          
         if ($cart) {
             foreach (session('cart') as $id => $details) {
                 $item = new OrderItem();

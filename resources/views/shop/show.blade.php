@@ -58,8 +58,6 @@
             </div>
             <div class="px-6 md:w-1/2">
                 <livewire:addtocart :product="$record->product" :color="$record">
-
-
             </div>
         </div>
     </div>
