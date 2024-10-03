@@ -21,7 +21,7 @@
                                         </a>
                                         <div class="text-end md:order-4 md:w-32">
                                             <p class="text-base font-bold text-gray-900 dark:text-white">
-                                                ${{ $details['price'] }}</p>
+                                                {{ strtoupper($details['currency']) }} {{ $details['price'] }}</p>
                                         </div>
 
                                         <div class="text-end md:order-4 md:w-32">

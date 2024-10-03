@@ -31,6 +31,8 @@ class Addtocart extends Component
         $color = $this->color;
         $size = $this->size;
         $id = $product->id;
+        $price = session('currency') == 'ade' ?  $product->price2 : $product->price;
+        $currency = session('currency') == 'ade' ? 'AED' : 'USD';
         if (!$product) {
 
             abort(404);
@@ -41,8 +43,9 @@ class Addtocart extends Component
             $wishlist = [
                 $id => [
                     "name" => $product->name_en,
-                    "price" => empty($product->offer_price) ?  $product->price : $product->offer_price,
-                    "photo" =>  $color->main_image_url
+                    "price" => $price,
+                    "photo" =>  $color->main_image_url,
+                    "currency" => $currency,
                 ]
             ];
             session()->put('wishlist', $wishlist);
@@ -53,8 +56,9 @@ class Addtocart extends Component
         $wishlist[$id] =
             [
                 "name" => $product->name_en,
-                "price" => empty($product->offer_price) ?  $product->price : $product->offer_price,
-                "photo" => $color->main_image_url
+                "price" => $price,
+                "photo" =>  $color->main_image_url,
+                "currency" => $currency,
             ];
 
         session()->put('wishlist', $wishlist);
@@ -74,7 +78,7 @@ class Addtocart extends Component
         $size =  $this->size != null ? $this->size : $product->sizes->first()->name;
         $qty = $this->qty;
         $id = $color->id;
-        // $id = $product->id;
+        $product_id = $product->id;
         if (!$product) {
             dd(1);
             abort(404);
@@ -103,6 +107,7 @@ class Addtocart extends Component
                     "photo" => $color->main_image_url,
                     "color" => $color->name,
                     "color_id" => $color_id,
+                    "product_id" => $product_id,
                     "size" => $size,
                     "currency" => $currency,
                     "measurement" => [
@@ -149,6 +154,7 @@ class Addtocart extends Component
             "photo" => $color->main_image_url,
             "color" => $color->name,
             "color_id" => $color_id,
+            "product_id" => $product_id,
             "size" => $size,
             "currency" => $currency,
             "measurement" => [

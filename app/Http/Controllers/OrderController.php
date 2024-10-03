@@ -6,7 +6,11 @@ use App\Models\Option;
 use App\Models\Order;
 use App\Models\OrderItem;
 use App\Models\Post;
+use App\Models\Product;
+use App\Services\StripeServices;
 use Illuminate\Http\Request;
+use Stripe\Checkout\Session;
+use Stripe\Stripe;
 
 class OrderController extends Controller
 {
@@ -83,13 +87,12 @@ class OrderController extends Controller
         if ($cart) {
             foreach (session('cart') as $id => $details) {
                 $item = new OrderItem();
-                $item->product_id = $id;
+                $item->product_id =  $details['product_id'];
                 $item->color = $details['color'];
                 $item->size = $details['size'];
                 $item->order_id = $order->id;
                 $item->quantity = $details['quantity'];
                 $item->subtotal = $details['price'];
-
                 $item->bust = $details['measurement']['bust'];
                 $item->waist = $details['measurement']['waist'];
                 $item->hips = $details['measurement']['hips'];
@@ -100,12 +103,43 @@ class OrderController extends Controller
                 $item->shoulder_floor = $details['measurement']['shoulder_floor'];
                 $item->arm_hole = $details['measurement']['arm_hole'];
                 $item->upper_arm = $details['measurement']['upper_arm'];
-                
                 $item->save();
             }
         }
-        session()->forget('cart');
-        return redirect()->to('/')->with('success','nice !');
+        // StripeServices::execute($order->id);
+        Stripe::setApiKey(env('STRIPE_SECRET'));
+        $order = Order::find($order->id);
+        if(!$order){
+            abort(404);
+        }
+        $items = OrderItem::where('order_id', $order->id)->get();
+        $lineItems = [];
+        foreach($items as $item){
+          $currentProduct = Product::find($item->product_id);
+          $lineItems[] = [
+              'price_data' => [
+                 'currency' => strtoupper($order->currency),
+                 'product_data' => [
+                  "name" => $currentProduct->name_en,
+                 ],
+                 'unit_amount' => $item->subtotal * 100,
+              ],
+              'quantity' => $item->quantity,
+          ];
+        }
+
+        $session = Session::create([
+            'line_items' => $lineItems,
+            'mode' => 'payment',
+            'success_url' => route('home'),
+            'cancel_url' => route('home'),
+        ]);
+
+        if($session->status == "complete"){
+            dd(1);
+        }
+        return redirect()->away($session->url);
+        // return redirect()->to('/')->with('success','nice !');
     }
 
     /**

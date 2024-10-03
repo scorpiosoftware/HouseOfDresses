@@ -2,8 +2,10 @@
 
 namespace App\Providers;
 
+use App\Models\User;
 use Illuminate\Support\Facades\Schema as FacadesSchema;
 use Illuminate\Support\ServiceProvider;
+use Laravel\Cashier\Cashier;
 use Nette\Schema\Schema;
 
 class AppServiceProvider extends ServiceProvider
@@ -22,5 +24,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         FacadesSchema::defaultStringLength(191);
+        Cashier::useCustomerModel(User::class);
+        Cashier::calculateTaxes();
     }
 }

@@ -17,6 +17,7 @@ use App\Http\Controllers\ColorController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\InboxController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProductImageController;
@@ -29,6 +30,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\WishlistController;
 use App\Models\Carousel;
 use App\Models\Inbox;
+use App\Models\Order;
 use App\Models\OrderItem;
 use App\Models\Post;
 use App\Models\ProductImage;
@@ -43,6 +45,16 @@ Route::get('/lang/{locale}', function (string $locale) {
     session()->put('lang', $locale);
     return redirect()->back();
 });
+
+Route::get('/checkout/{id}',[PaymentController::class,'applyPayment']);
+
+Route::get('/checkout/success/{id}',function($id){
+       $order = Order::find($id);
+       $order->status = 'delivered';
+       $order->save();
+       session()->forget('cart');
+       return redirect('/');
+})->name('checkout.success');
 
 Route::get('/currency/{currency}', function (string $currency) {
     session()->forget('currency');
