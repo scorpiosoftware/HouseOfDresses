@@ -63,7 +63,9 @@
                                 <livewire:category-scroll>
                                     <livewire:categorywithimage lazy>
                                         {{-- <livewire:product-slider> --}}
-                                            <livewire:featured-product-slider>
+                                            @foreach ($productViews as $view)
+                                            <livewire:featured-product-slider :view='$view'>
+                                            @endforeach
                                             <livewire:post-section :posts='$posts'>
                                                 <livewire:footer>
                                                     <x-home.speed-dial />

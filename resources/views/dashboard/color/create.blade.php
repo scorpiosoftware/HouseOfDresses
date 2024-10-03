@@ -52,11 +52,11 @@
                     <label for="name" class="block mb-2 text-sm font-medium text-gray-900 d:text-white">Title</label>
                     <input type="text" id="name" value="" name="name"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 d:bg-gray-700 d:border-gray-600 d:placeholder-gray-400 d:text-white d:focus:ring-blue-500 d:focus:border-blue-500"
-                        placeholder="color name" />
+                        placeholder="color name"  required/>
                 </div>
                 <div>
                     <label for="color" class="block mb-2 text-sm font-medium text-gray-900 d:text-white">Hex Code
-                        Arabic</label>
+                        </label>
                     <input type="color" id="color" value="" name="color"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-5 py-1 h-10  d:bg-gray-700 d:border-gray-600 d:placeholder-gray-400 d:text-white d:focus:ring-blue-500 d:focus:border-blue-500"
                         placeholder="color code" />

@@ -178,5 +178,9 @@
                 </div>
             </div>
         </section>
+        @else
+        <div class="flex items-center justify-center mt-24 mb-10">
+            <p class="text-4xl">No Items in the Cart  ! <a href="/shop" class="text-lg underline underline-offset-8 font-bold text-[#b69357]">continue shopping</a></p>
+        </div>
     @endif
 @endsection

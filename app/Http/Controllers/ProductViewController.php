@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Collection;
 use App\Models\ProductView;
 use Illuminate\Http\Request;
 
@@ -14,7 +15,7 @@ class ProductViewController extends Controller
     public function index()
     {
         $records = new ProductView();
-        $records = $records->orderBy("id","desc")->paginate(10);
+        $records = $records->orderBy("id","desc")->paginate(1000);
 
        
       return view("dashboard.productView.index",compact("records"));
@@ -25,8 +26,8 @@ class ProductViewController extends Controller
      */
     public function create()
     { 
-        $categories = Category::all();
-        return view('dashboard.productView.create',compact('categories'));
+        $collections = Collection::all();
+        return view('dashboard.productView.create',compact('collections'));
     }
 
     /**
@@ -36,7 +37,6 @@ class ProductViewController extends Controller
     {
         $inputs = $request->all();
         $record = ProductView::create($inputs);
-
         if($record){
             return redirect()->back()->with('success','record created successfuly');
         }else{
@@ -57,8 +57,9 @@ class ProductViewController extends Controller
      */
     public function edit(string $id)
     {
-        $categories = Category::all();
-        return view('dashboard.productView.edit',compact('categories'));
+        $record = ProductView::find($id);
+        $collections = Collection::all();
+        return view('dashboard.productView.edit',compact('record','collections'));
     }
 
     /**

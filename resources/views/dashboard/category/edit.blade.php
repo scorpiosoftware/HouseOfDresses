@@ -67,7 +67,7 @@
                         placeholder= "الاسم" />
                 </div>
 
-                <div>
+                {{-- <div>
                     <label for="parent_id" class="block mb-2 text-sm font-medium text-gray-900 d:text-white">Parent
                         Category</label>
                     <select id="parent_id" name="parent_id"
@@ -78,7 +78,7 @@
                                 {{ $category->name_en }}</option>
                         @endforeach
                     </select>
-                </div>
+                </div> --}}
                 <div class="w-full">
                     <label for="collections"
                         class="block mb-2 text-sm font-medium text-gray-900 d:text-white">Categories</label>

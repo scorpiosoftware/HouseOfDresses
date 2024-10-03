@@ -80,7 +80,6 @@ class Addtocart extends Component
         $id = $color->id;
         $product_id = $product->id;
         if (!$product) {
-            dd(1);
             abort(404);
         }
 
