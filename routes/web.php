@@ -40,15 +40,19 @@ use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Route;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
+// Route::get('/transactions', function () {
+//     $stripe = new \Stripe\StripeClient(env('STRIPE_SECRET'));
+//     $charges = $stripe->charges->all(['limit' => 3]);
+//     return view('test',compact('charges'));
+//     // dd($stripe->customers->all(['limit' => 3]));
+// });
 
 Route::get('/lang/{locale}', function (string $locale) {
     session()->forget('lang');
     session()->put('lang', $locale);
     return redirect()->back();
 });
-
 Route::get('/checkout/{id}', [PaymentController::class, 'applyPayment']);
-
 Route::get('/checkout/success/{id}', function ($id) {
     $order = Order::find($id);
     $order->status = 'delivered';
@@ -57,12 +61,25 @@ Route::get('/checkout/success/{id}', function ($id) {
     return redirect('/');
 })->name('checkout.success');
 
+Route::get('/checkout/canceled/{id}', function ($id) {
+    $order = Order::find($id);
+    $items = $order->items();
+
+    foreach($items as $item){
+        $item->delete();
+    }
+    if($order){
+     $order->delete();
+    }
+    // session()->forget('cart');
+    return redirect('/');
+})->name('checkout.canceled');
+
 Route::get('/currency/{currency}', function (string $currency) {
     session()->forget('currency');
     session()->put('currency', $currency);
     return redirect('/');
 });
-
 Route::group(['prefix' => ''], function () {
 
     Route::get('/', function () {
@@ -95,7 +112,7 @@ Route::group(['prefix' => ''], function () {
         $carousels = Carousel::with('images')->orderby('id', 'asc')->get();
         $posts = Post::all();
         $productViews = ProductView::all();
-        return view('welcome', compact('posts', 'categories', 'carousels','productViews'));
+        return view('welcome', compact('posts', 'categories', 'carousels', 'productViews'));
     })->name('home');
 
 
@@ -109,8 +126,6 @@ Route::group(['prefix' => ''], function () {
         return view('support.contact', compact('categories'));
     });
 });
-
-
 Route::post('/shop', [ShopController::class, 'filter'])->name('filter.products');
 Route::post('/shop/collection/', [ShopController::class, 'index'])->name('filter.products');
 Route::post('/shop/category/', [ShopController::class, 'filterByCategory'])->name('filter.products.category');

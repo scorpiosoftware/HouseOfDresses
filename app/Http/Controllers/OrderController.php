@@ -131,8 +131,8 @@ class OrderController extends Controller
         $session = Session::create([
             'line_items' => $lineItems,
             'mode' => 'payment',
-            'success_url' => route('home'),
-            'cancel_url' => route('home'),
+            'success_url' => route('checkout.success',$order->id),
+            'cancel_url' => route('checkout.canceled',$order->id),
         ]);
 
         if($session->status == "complete"){
