@@ -7,6 +7,7 @@ use App\Models\Carousel;
 use App\Models\Post;
 use App\Models\ProductView;
 use Illuminate\Http\Request;
+use Spatie\Referer\Referer;
 
 class HomeController extends Controller
 {
@@ -16,6 +17,8 @@ class HomeController extends Controller
     public function index(Request $request)
     {
         $request->visit();
+        $referer = app(Referer::class)->get();
+        dd($referer);
         $locale = session()->get('lang');
         $currency = session()->get('currency');
 
