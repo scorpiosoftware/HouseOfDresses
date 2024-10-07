@@ -2,11 +2,15 @@
 
 namespace App\Livewire;
 
+use App\Models\General;
 use Livewire\Attributes\On;
 use Livewire\Component;
 
 class Addtocart extends Component
 {
+    public $shipping;
+    public $exchange;
+
     public $product;
     public $color;
     public $size;
@@ -17,6 +21,11 @@ class Addtocart extends Component
     #[On('change-currency')]
     public function mount()
     {
+        $general = General::first();
+        if($general){
+            $this->shipping = $general->shipping;
+            $this->exchange = $general->exchange;
+        }
         $this->selected_size = !empty($this->product) ? $this->product->sizes()->first()->name : '';
     }
     public function setSize($size)

@@ -33,9 +33,9 @@
                                                 <div class="text-2xl">
                                                     {{ $applied_orders->count() }}
                                                 </div>
-                                                <div class="text-xs text-green-800 bg-green-200 rounded-md p-1">
+                                                {{-- <div class="text-xs text-green-800 bg-green-200 rounded-md p-1">
                                                     +0.0%
-                                                </div>
+                                                </div> --}}
                                             </div>
                                         </div>
                                     </div>
@@ -61,11 +61,11 @@
                                         <div class="mt-1">
                                             <div class="flex space-x-2 items-center">
                                                 <div class="text-2xl">
-                                                    ${{ $revenue }}
+                                                    AED {{ $revenue }}
                                                 </div>
-                                                <div class="text-xs text-red-500 bg-red-200 rounded-md p-1">
+                                                {{-- <div class="text-xs text-red-500 bg-red-200 rounded-md p-1">
                                                     -0.0%
-                                                </div>
+                                                </div> --}}
                                             </div>
                                         </div>
                                     </div>
@@ -91,11 +91,11 @@
                                         <div class="mt-1">
                                             <div class="flex space-x-2 items-center">
                                                 <div class="text-2xl">
-                                                    ${{ $unpaid }}
+                                                    AED {{ $unpaid }}
                                                 </div>
-                                                <div class="text-xs text-green-800 bg-green-200 rounded-md p-1">
+                                                {{-- <div class="text-xs text-green-800 bg-green-200 rounded-md p-1">
                                                     +0.0%
-                                                </div>
+                                                </div> --}}
                                             </div>
                                         </div>
                                     </div>
@@ -121,11 +121,11 @@
                                         <div class="mt-1">
                                             <div class="flex space-x-2 items-center">
                                                 <div class="text-2xl">
-                                                    ${{ $total }}
+                                                    AED {{ $total }}
                                                 </div>
-                                                <div class="text-xs text-green-800 bg-green-200 rounded-md p-1">
+                                                {{-- <div class="text-xs text-green-800 bg-green-200 rounded-md p-1">
                                                     +0.0%
-                                                </div>
+                                                </div> --}}
                                             </div>
                                         </div>
                                     </div>
@@ -196,7 +196,7 @@
                         </div>
                         <h1
                             class="text-3xl sm:text-4xl xl:text-5xl font-bold text-gray-700 mt-12 group-hover:text-gray-50">
-                            0.0</h1>
+                            {{$facebook}}</h1>
                         <div class="flex flex-row justify-between group-hover:text-gray-200">
                             <p>Facebook</p>
                             <span>
@@ -245,7 +245,7 @@
                         </div>
                         <h1
                             class="text-3xl sm:text-4xl xl:text-5xl font-bold text-gray-700 mt-12 group-hover:text-gray-50">
-                            0.0</h1>
+                            {{$instagram}}</h1>
                         <div class="flex flex-row justify-between group-hover:text-gray-200">
                             <p>Instagram</p>
                             <span>
@@ -282,7 +282,7 @@
                         </div>
                         <h1
                             class="text-3xl sm:text-4xl xl:text-5xl font-bold text-gray-700 mt-12 group-hover:text-gray-50">
-                            0.0
+                            {{$snapchat}}
                         </h1>
                         <div class="flex flex-row justify-between group-hover:text-gray-200">
                             <p>Snapchat</p>
@@ -315,7 +315,7 @@
                         </div>
                         <h1
                             class="text-3xl sm:text-4xl xl:text-5xl font-bold text-gray-700 mt-12 group-hover:text-gray-50">
-                            0.0
+                            {{$tiktok}}
                         </h1>
                         <div class="flex flex-row justify-between group-hover:text-gray-200">
                             <p>Tiktok</p>
@@ -355,7 +355,7 @@
                         </div>
                         <h1
                             class="text-3xl sm:text-4xl xl:text-5xl font-bold text-gray-700 mt-12 group-hover:text-gray-50">
-                            0.0
+                            {{$google}}
                         </h1>
                         <div class="flex flex-row justify-between group-hover:text-gray-200">
                             <p>Google</p>

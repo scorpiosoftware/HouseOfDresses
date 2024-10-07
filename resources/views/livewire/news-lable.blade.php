@@ -84,7 +84,7 @@
             </svg>
         </button>
         <div id="scroll-container">
-            <div id="scroll-text">FREE SHIPPING FOR ORDERS ABOVE AED1000</div>
+            <div id="scroll-text">{{$title}}</div>
         </div>
         <div class="items-center justify-start hidden w-full md:flex md:w-auto md:order-1" id="navbar-language">
             <ul

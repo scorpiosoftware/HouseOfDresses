@@ -28,8 +28,14 @@ class DashboardController extends Controller
 
         $total = new Order();
         $total = $total->sum('total_amount');
-        $totalVisits = visitors()->count();
-        return view('dashboard.dashboard',compact('applied_orders','revenue','unpaid','total','totalVisits'));
+        // $totalVisits = visitors()->count();
+        $totalVisits = visitors()->uniqueCount();
+        $facebook = visitors()->referrers('https://facebook.com')->count();
+        $instagram = visitors()->referrers('https://www.instagram.com/')->count();
+        $snapchat = visitors()->referrers('https://www.snapchat.com/')->count();
+        $tiktok = visitors()->referrers('https://www.tiktok.com/')->count();
+        $google = visitors()->referrers('https://www.google.com/')->count();
+        return view('dashboard.dashboard',compact('applied_orders','revenue','unpaid','total','totalVisits','facebook','instagram','snapchat','tiktok','google'));
     }
 
     /**

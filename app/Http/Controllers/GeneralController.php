@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\General;
 use Illuminate\Http\Request;
 
 class GeneralController extends Controller
@@ -11,7 +12,9 @@ class GeneralController extends Controller
      */
     public function index()
     {
-        //
+        $records = new General();
+        $records = $records->orderBy("id","desc")->paginate(10);
+        return view("dashboard.general.index", compact("records"));
     }
 
     /**
@@ -43,7 +46,9 @@ class GeneralController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $record = General::find($id);
+
+        return view("dashboard.general.edit", compact("record"));
     }
 
     /**
@@ -51,7 +56,19 @@ class GeneralController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+           
+        ]);
+
+        $inputs = $request->all();
+        $record = General::find($id);
+        $update = $record->update($inputs);
+        if($update){
+            return redirect()->back()->with("success","Append Record Success !");
+        }else
+        {
+            return redirect()->back()->with("error","Check requirments error on validation !");
+        }
     }
 
     /**

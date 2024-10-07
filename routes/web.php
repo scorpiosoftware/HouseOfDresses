@@ -15,6 +15,8 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CollectionController;
 use App\Http\Controllers\ColorController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\GeneralController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\InboxController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PaymentController;
@@ -65,11 +67,11 @@ Route::get('/checkout/canceled/{id}', function ($id) {
     $order = Order::find($id);
     $items = $order->items();
 
-    foreach($items as $item){
+    foreach ($items as $item) {
         $item->delete();
     }
-    if($order){
-     $order->delete();
+    if ($order) {
+        $order->delete();
     }
     // session()->forget('cart');
     return redirect('/');
@@ -81,41 +83,7 @@ Route::get('/currency/{currency}', function (string $currency) {
     return redirect('/');
 });
 Route::group(['prefix' => ''], function () {
-
-    Route::get('/', function () {
-        $locale = session()->get('lang');
-        $currency = session()->get('currency');
-
-        if ($locale == 'en') {
-            session()->forget('lang');
-            session()->put('lang', 'en');
-        } else if ($locale == 'ar') {
-            session()->forget('lang');
-            session()->put('lang', 'ar');
-        } else {
-            session()->forget('lang');
-            session()->put('lang', 'en');
-        }
-
-        //set currency
-        if ($currency == 'usd') {
-            session()->forget('currency');
-            session()->put('currency', 'usd');
-        } else if ($currency == 'ade') {
-            session()->forget('currency');
-            session()->put('currency', value: 'ade');
-        } else {
-            session()->forget('currency');
-            session()->put('currency', 'ade');
-        }
-        $categories = ListCategory::execute();
-        $carousels = Carousel::with('images')->orderby('id', 'asc')->get();
-        $posts = Post::all();
-        $productViews = ProductView::all();
-        return view('welcome', compact('posts', 'categories', 'carousels', 'productViews'));
-    })->name('home');
-
-
+    Route::get('/', [HomeController::class, 'index'])->name('home');
     Route::resource('shop', ShopController::class);
     Route::get('/show-cart/address', [OrderController::class, 'create'])->name('address');
     Route::resource('order', OrderController::class);
@@ -154,6 +122,7 @@ Route::group(['middleware' => 'auth', 'prefix' => 'dashboard'], function () {
     Route::resource('size', SizeController::class);
     Route::resource('post', PostController::class);
     Route::resource('users', UserController::class);
+    Route::resource('general', GeneralController::class);
 
     Route::get('/item/{id}/measurements', function ($id) {
         $item = OrderItem::find($id);
