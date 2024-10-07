@@ -18,7 +18,6 @@ class HomeController extends Controller
     {
         $request->visit();
         $referer = app(Referer::class)->get();
-        dd($referer);
         $locale = session()->get('lang');
         $currency = session()->get('currency');
 
