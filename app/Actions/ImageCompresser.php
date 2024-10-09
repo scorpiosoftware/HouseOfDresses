@@ -14,6 +14,5 @@ class ImageCompresser
         $image = $manager->read($store_path);
         $image = $image->scale(width:$width,height:$height);
         $image->toPng()->save($store_path);
-        // dd($image);
     }
 }

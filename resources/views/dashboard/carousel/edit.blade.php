@@ -71,8 +71,20 @@
                         </div>
 
                     </div>
-
-                    <div class="w-full mt-2">
+                    <div></div>
+                    <div>
+                        <label for="width" class="block mb-2 text-sm font-medium text-gray-900 d:text-white">Width Scale</label>
+                        <input type="text" id="width" value="{{ $record->width }}" name="width"
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 d:bg-gray-700 d:border-gray-600 d:placeholder-gray-400 d:text-white d:focus:ring-blue-500 d:focus:border-blue-500"
+                            placeholder="width scale" required />
+                    </div>
+                    <div>
+                        <label for="height" class="block mb-2 text-sm font-medium text-gray-900 d:text-white">Height Scale</label>
+                        <input type="text" id="height" value="{{ $record->height }}" name="height"
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 d:bg-gray-700 d:border-gray-600 d:placeholder-gray-400 d:text-white d:focus:ring-blue-500 d:focus:border-blue-500"
+                            placeholder="height scale" required />
+                    </div>
+                    <div class="w-full mt-2 col-start-1 col-end-3">
                         <div class="flex justify-between items-center">
                             <label for="images"
                                 class="block mb-2 text-sm font-medium text-gray-900 d:text-white">Carousel 

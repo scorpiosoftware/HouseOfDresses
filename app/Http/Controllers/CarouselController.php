@@ -42,6 +42,14 @@ class CarouselController extends Controller
     {
         $request->validate([]);
         $inputs = $request->all();
+        $width = '400';
+        $height = '400';
+        if(!empty($inputs['width'])){
+            $width = $inputs['width'];
+        }
+        if(!empty($inputs['height'])){
+            $height = $inputs['height'];
+        }
         $record = StoreCarousel::execute($inputs);
         $record->save();
         if ($record) {
@@ -57,7 +65,7 @@ class CarouselController extends Controller
                     );
                     $image->url = $path;
                     $image->carousel_id = $record->id;
-                    ImageCompresser::execute('storage/'. $path);
+                    ImageCompresser::execute('storage/'. $path,$width,$height);
                     $image->save();
                 }
             }
@@ -90,6 +98,15 @@ class CarouselController extends Controller
         $request->validate([]);
 
         $inputs = $request->all();
+
+        $width = '400';
+        $height = '400';
+        if(!empty($inputs['width'])){
+            $width = $inputs['width'];
+        }
+        if(!empty($inputs['height'])){
+            $height = $inputs['height'];
+        }
 
         $record = Carousel::find($id);
 
@@ -124,7 +141,7 @@ class CarouselController extends Controller
                 );
                 $image->url = $path;
                 $image->carousel_id = $record->id;
-                ImageCompresser::execute('storage/'. $path);
+                ImageCompresser::execute('storage/'. $path,$width,$height);
                 $image->save();
             }
             //
