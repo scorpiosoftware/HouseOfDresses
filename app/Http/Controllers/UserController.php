@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Actions\User\ListUser;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -62,6 +64,16 @@ class UserController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $user = User::find($id);
+        if(Auth::user()->id == $user->id){
+            return redirect()->back()->with('error','Cannot delete current user auth');
+        }else{
+            if($user->delete($id)){
+                return redirect()->back()->with('success','user deleted successfully');
+            }
+            else{
+                return redirect()->back()->with('error','Cannot delete user');
+            }
+        }
     }
 }

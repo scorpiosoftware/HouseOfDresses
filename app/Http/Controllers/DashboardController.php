@@ -17,24 +17,19 @@ class DashboardController extends Controller
         if(Auth::user()->role_id == 2){
             return redirect('/');
         }
-
         $applied_orders = AppliedOrders::execute();
-
         $revenue = new  Order();
         $revenue = $applied_orders->sum('total_amount');
-
         $unpaid = new Order();
         $unpaid = $unpaid->where('status','pending')->sum('total_amount');
-
         $total = new Order();
         $total = $total->sum('total_amount');
-        // $totalVisits = visitors()->count();
         $totalVisits = visitors()->uniqueCount();
-        $facebook = visitors()->referrers('https://facebook.com')->count();
-        $instagram = visitors()->referrers('https://www.instagram.com/')->count();
+        $facebook = visitors()->referrers('https://facebook.com','https://lm.facebook.com/')->uniqueCount();
+        $instagram = visitors()->referrers('https://www.instagram.com/','https://l.instagram.com/')->uniqueCount();
         $snapchat = visitors()->referrers('https://www.snapchat.com/')->count();
         $tiktok = visitors()->referrers('https://www.tiktok.com/')->count();
-        $google = visitors()->referrers('https://www.google.com/')->count();
+        $google = visitors()->referrers('')->uniqueCount();
         return view('dashboard.dashboard',compact('applied_orders','revenue','unpaid','total','totalVisits','facebook','instagram','snapchat','tiktok','google'));
     }
 

@@ -6,6 +6,7 @@ use App\Actions\Color\DestroyColor;
 use App\Actions\Color\ListColor;
 use App\Actions\Color\StoreColor;
 use App\Actions\DeleteMedia;
+use App\Actions\ImageCompresser;
 use App\Actions\Product\ListProduct;
 use App\Actions\StoreMedia;
 use App\Models\Color;
@@ -23,8 +24,8 @@ class ColorController extends Controller
         $inputs = $request->all();
         $records = ListColor::execute($inputs);
         $products = ListProduct::execute();
-         
-        return view("dashboard.color.index", compact("records",'products','inputs'));
+
+        return view("dashboard.color.index", compact("records", 'products', 'inputs'));
     }
 
     /**
@@ -50,10 +51,11 @@ class ColorController extends Controller
             if (!empty($request->file('main_image_url'))) {
                 $main_image = StoreMedia::execute(
                     $request->file('main_image_url'),
-                    'product/'. $record->id . '/main',
+                    'product/' . $record->id . '/main',
                     'public'
                 );
                 $record->main_image_url = $main_image;
+                ImageCompresser::execute('storage/'.$record->main_image_url);
             }
             $record->save();
             // add other product images
@@ -68,6 +70,7 @@ class ColorController extends Controller
                     $image->image_url = $path;
                     $image->product_id = $record->product_id;
                     $image->color_id = $record->id;
+                    ImageCompresser::execute('storage/'. $path);
                     $image->save();
                 }
             }
@@ -101,16 +104,16 @@ class ColorController extends Controller
     public function update(Request $request, string $id)
     {
         $request->validate([]);
-    
+
         $inputs = $request->all();
 
         $record = Color::find($id);
-        
+
         // add new image and delete old
         if ($request->has('main_image_url')) {
             $inputs['main_image_url'] = StoreMedia::execute(
                 $request->file('main_image_url'),
-                'product/'. $record->id . '/main',
+                'product/' . $record->id . '/main',
                 'public'
             );
             DeleteMedia::execute($record->main_image_url);
@@ -122,7 +125,8 @@ class ColorController extends Controller
             $record = Color::find($id);
             foreach ($record->images as $image) {
                 DeleteMedia::execute($image->image_url);
-            }            $record->images()->delete();
+            }
+            $record->images()->delete();
             $record->save();
 
             // add other product images
@@ -134,10 +138,18 @@ class ColorController extends Controller
                     'public'
                 );
                 $image->image_url = $path;
-                $image->product_id = $record->id;
+                $image->product_id = $record->product_id;
+                $image->color_id = $record->id;
+                ImageCompresser::execute('storage/'. $path);
                 $image->save();
             }
             //
+
+        }
+        
+        if ($request->has('main_image_url')){
+            $record->main_image_url =  $inputs['main_image_url'];
+            ImageCompresser::execute('storage/'.$record->main_image_url);
         }
         if ($record->update($inputs)) {
             return redirect()->back()->with("success", "Append Record Success !");

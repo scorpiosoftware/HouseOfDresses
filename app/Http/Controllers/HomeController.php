@@ -7,6 +7,7 @@ use App\Models\Carousel;
 use App\Models\Post;
 use App\Models\ProductView;
 use Illuminate\Http\Request;
+use Masoudi\Laravel\Visitors\Models\Visitor;
 use Spatie\Referer\Referer;
 
 class HomeController extends Controller
@@ -17,7 +18,9 @@ class HomeController extends Controller
     public function index(Request $request)
     {
         $request->visit();
-        $referer = app(Referer::class)->get();
+        $visitor = Visitor::latest('created_at')->first();
+        $visitor->referer = request()->headers->get("referer");
+        $visitor->save();
         $locale = session()->get('lang');
         $currency = session()->get('currency');
 

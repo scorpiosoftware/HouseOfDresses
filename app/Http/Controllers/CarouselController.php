@@ -6,6 +6,7 @@ use App\Actions\Carousel\GetCarousel;
 use App\Actions\Carousel\StoreCarousel;
 use App\Actions\Category\ListCategory;
 use App\Actions\DeleteMedia;
+use App\Actions\ImageCompresser;
 use App\Actions\StoreMedia;
 use App\Models\Carousel;
 use App\Models\CarouselImage;
@@ -56,6 +57,7 @@ class CarouselController extends Controller
                     );
                     $image->url = $path;
                     $image->carousel_id = $record->id;
+                    ImageCompresser::execute('storage/'. $path);
                     $image->save();
                 }
             }
@@ -122,6 +124,7 @@ class CarouselController extends Controller
                 );
                 $image->url = $path;
                 $image->carousel_id = $record->id;
+                ImageCompresser::execute('storage/'. $path);
                 $image->save();
             }
             //
