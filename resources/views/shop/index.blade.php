@@ -34,13 +34,11 @@
                         <span class="ms-1 text-sm font-medium text-[#b69357] md:ms-2">
                             @if(!empty($collection))
                             {{ $collection->name_en }} - COLLECTION
-            
                             @elseif (!empty($category))
                               {{ $category->name_en }} - CATEGORY
                               @else
                               ALL - COLLECTIONS
                             @endif
-    
                         </span>
                     </div>
                 </li>
@@ -48,9 +46,29 @@
         </nav>
     </div>
 
-    <div class="flex justify-end md:max-w-[80rem] space-x-1 mt-10">
-        <button id="filter_btn" class="rounded-xl border border-[#b69357] px-6 py-1 text-xl text-[#b69357] font-semibold">Filter</button>
-        <button class="rounded-xl border border-[#b69357] px-6 py-1 text-xl text-[#b69357] font-semibold">Sort by</button>
+    <div class="flex justify-center space-x-1 mt-10">
+        {{-- <button id="filter_btn" class="rounded-xl border border-[#b69357] px-6 py-1 text-xl text-[#b69357] font-semibold">Filter</button> --}}
+        {{-- <button class="rounded-xl border border-[#b69357] px-6 py-1 text-xl text-[#b69357] font-semibold">Sort by</button> --}}
+        @if(!empty($category))
+         @foreach ($category->collections as $coll )
+         <form action="{{ route("filter.products") }}" method="POST">
+            @csrf
+            @method('POST')
+            <input type="text" class="hidden" name="collection" value="{{ $coll->id }}" id="coll-{{$coll->name_en}}">
+         <button type='submit' class="rounded-lg shadow-lg px-4 py-1 text-[#b69357] font-bold">{{$coll->name_en}}</button>
+         </form>
+         @endforeach
+         
+         @elseif(!empty($collection))
+         @foreach ($collection->categories as $cat)
+         <form action="{{ route("filter.products.category") }}" method="POST">
+            @csrf
+            @method('POST')
+         <input type="text" class="hidden" name="category" value="{{ $cat->id }}" id="cat-{{$cat->name_en}}">
+         <button type="submit" class="rounded-lg shadow-lg px-4 py-1 text-[#b69357] font-bold">{{$cat->name_en}}</a>  
+         </form>
+         @endforeach
+         @endif
     </div>
     <livewire:product-show :products='$products'>
         <script>

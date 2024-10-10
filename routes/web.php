@@ -42,12 +42,12 @@ use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Route;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
-// Route::get('/transactions', function () {
-//     $stripe = new \Stripe\StripeClient(env('STRIPE_SECRET'));
-//     $charges = $stripe->charges->all(['limit' => 3]);
-//     return view('test',compact('charges'));
-//     // dd($stripe->customers->all(['limit' => 3]));
-// });
+Route::get('transactions', function () {
+    $stripe = new \Stripe\StripeClient(env('STRIPE_SECRET'));
+    $charges = $stripe->charges->all(['limit' => 3]);
+    return view('testView',compact('charges'));
+    // dd($stripe->customers->all(['limit' => 3]));
+});
 
 Route::get('/lang/{locale}', function (string $locale) {
     session()->forget('lang');
@@ -108,6 +108,7 @@ Route::resource('wishlist', WishlistController::class);
 
 Route::group(['middleware' => 'auth', 'prefix' => 'dashboard'], function () {
     Route::resource('dashboard', DashboardController::class);
+    Route::post('dashboard', [DashboardController::class,'index'])->name('dashboard.index');
     Route::resource('product', ProductController::class);
     Route::resource('category', CategoryController::class);
     Route::resource('brand', BrandController::class);

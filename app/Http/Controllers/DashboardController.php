@@ -6,17 +6,21 @@ use App\Actions\Dashboard\AppliedOrders;
 use App\Models\Order;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use Masoudi\Laravel\Visitors\Models\Visitor;
 
 class DashboardController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
         if(Auth::user()->role_id == 2){
             return redirect('/');
         }
+        $inputs = $request->all();
+        $date = !empty( $inputs['date'] ) ? $inputs['date'] : '';
         $applied_orders = AppliedOrders::execute();
         $revenue = new  Order();
         $revenue = $applied_orders->sum('total_amount');
@@ -24,12 +28,13 @@ class DashboardController extends Controller
         $unpaid = $unpaid->where('status','pending')->sum('total_amount');
         $total = new Order();
         $total = $total->sum('total_amount');
-        $totalVisits = visitors()->uniqueCount();
-        $facebook = visitors()->referrers('https://facebook.com','https://lm.facebook.com/')->uniqueCount();
-        $instagram = visitors()->referrers('https://www.instagram.com/','https://l.instagram.com/')->uniqueCount();
-        $snapchat = visitors()->referrers('https://www.snapchat.com/')->count();
-        $tiktok = visitors()->referrers('https://www.tiktok.com/')->count();
-        $google = visitors()->referrers('')->uniqueCount();
+        $totalVisits =  !empty($date) ? visitors()->whereDate('created_at','<=',$date)->uniqueCount() : visitors()->uniqueCount();
+        $facebook =  !empty($date) ? visitors()->referrers('https://facebook.com','https://lm.facebook.com/')->whereDate('created_at','<=',$date)->uniqueCount() : visitors()->referrers('https://facebook.com','https://lm.facebook.com/')->uniqueCount();
+        $instagram =  !empty($date) ? visitors()->referrers('https://www.instagram.com/','https://l.instagram.com/')->whereDate('created_at','<=',$date)->uniqueCount() : visitors()->referrers('https://www.instagram.com/','https://l.instagram.com/')->uniqueCount();
+        $snapchat =  !empty($date) ?  visitors()->referrers('https://www.snapchat.com/')->whereDate('created_at','<=',$date)->uniqueCount() : visitors()->referrers('https://www.snapchat.com/')->uniqueCount();
+        $tiktok =  !empty($date) ? visitors()->referrers('https://www.tiktok.com/')->whereDate('created_at','<=',$date)->uniqueCount() : visitors()->referrers('https://www.tiktok.com/')->uniqueCount();
+        $google =  !empty($date)  ? visitors()->referrers('/')->whereDate('created_at','<=',$date)->uniqueCount() : visitors()->referrers('/')->uniqueCount();
+        // $google = DB::table('visitors')->where('referer' , '=','null')->distinct()->count('id');
         return view('dashboard.dashboard',compact('applied_orders','revenue','unpaid','total','totalVisits','facebook','instagram','snapchat','tiktok','google'));
     }
 

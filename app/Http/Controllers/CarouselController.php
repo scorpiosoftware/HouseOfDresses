@@ -65,7 +65,7 @@ class CarouselController extends Controller
                     );
                     $image->url = $path;
                     $image->carousel_id = $record->id;
-                    ImageCompresser::execute('storage/'. $path,$width,$height);
+                    // ImageCompresser::execute('storage/'. $path,$width,$height);
                     $image->save();
                 }
             }
@@ -141,7 +141,7 @@ class CarouselController extends Controller
                 );
                 $image->url = $path;
                 $image->carousel_id = $record->id;
-                ImageCompresser::execute('storage/'. $path,$width,$height);
+                // ImageCompresser::execute('storage/'. $path,$width,$height);
                 $image->save();
             }
             //

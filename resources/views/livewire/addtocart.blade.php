@@ -111,7 +111,7 @@
         <div id="accordion-collapse-body-2" class="hidden" aria-labelledby="accordion-collapse-heading-2">
             <div class="p-5 border border-b-0 border-[#b69357]">
                 <p class="mb-2 text-[#b69357]">
-                <div class="container mx-auto flex justify-center items-center">
+                <div class="container mx-auto flex justify-center items-center overflow-scroll">
                     <img src="{{ URL::to('img/s.jpeg') }}" class="w-32" alt="">
                     <table>
                         <thead>

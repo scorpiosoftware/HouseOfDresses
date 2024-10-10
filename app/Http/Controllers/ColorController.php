@@ -62,7 +62,7 @@ class ColorController extends Controller
                     'public'
                 );
                 $record->main_image_url = $main_image;
-                ImageCompresser::execute('storage/'.$record->main_image_url,$width,$height);
+                // ImageCompresser::execute('storage/'.$record->main_image_url,$width,$height);
             }
             $record->save();
             // add other product images
@@ -77,7 +77,7 @@ class ColorController extends Controller
                     $image->image_url = $path;
                     $image->product_id = $record->product_id;
                     $image->color_id = $record->id;
-                    ImageCompresser::execute('storage/'. $path,$width,$height);
+                    // ImageCompresser::execute('storage/'. $path,$width,$height);
                     $image->save();
                 }
             }
@@ -154,7 +154,7 @@ class ColorController extends Controller
                 $image->image_url = $path;
                 $image->product_id = $record->product_id;
                 $image->color_id = $record->id;
-                ImageCompresser::execute('storage/'. $path,$width,$height);
+                // ImageCompresser::execute('storage/'. $path,$width,$height);
                 $image->save();
             }
             //
@@ -163,7 +163,7 @@ class ColorController extends Controller
         
         if ($request->has('main_image_url')){
             $record->main_image_url =  $inputs['main_image_url'];
-            ImageCompresser::execute('storage/'.$record->main_image_url,$width,$height);
+            // ImageCompresser::execute('storage/'.$record->main_image_url,$width,$height);
         }
         if ($record->update($inputs)) {
             return redirect()->back()->with("success", "Append Record Success !");

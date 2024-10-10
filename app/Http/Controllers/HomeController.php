@@ -19,7 +19,8 @@ class HomeController extends Controller
     {
         $request->visit();
         $visitor = Visitor::latest('created_at')->first();
-        $visitor->referer = request()->headers->get("referer");
+        $ref =  request()->headers->get("referer") != null ? request()->headers->get("referer") : '/';
+        $visitor->referer =  $ref ;
         $visitor->save();
         $locale = session()->get('lang');
         $currency = session()->get('currency');

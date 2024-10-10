@@ -46,12 +46,12 @@ class categories extends Seeder
         );
         DB::table(table: 'sizes')->insert(
             [
-                ['name' => "XS",],
-                ['name_en' => "S",],
-                ['name_en' => "M",],
-                ['name_en' => "L",],
-                ['name_en' => "XL",],
+                ['name_en' => "custom measurement",],
             ]
         );
+
+        DB::table("generals")->insert([
+            ["news_title"=> "FREE INTERNATIONAL SHIPPING FOR ORDERS ABOVE AED1000 | NOW ON APPSTORE AND PLAYSTORE",],
+        ]);
     }
 }
