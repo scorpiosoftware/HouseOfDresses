@@ -15,8 +15,11 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CollectionController;
 use App\Http\Controllers\ColorController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\GeneralController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\InboxController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProductImageController;
@@ -29,67 +32,58 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\WishlistController;
 use App\Models\Carousel;
 use App\Models\Inbox;
+use App\Models\Order;
+use App\Models\OrderItem;
 use App\Models\Post;
 use App\Models\ProductImage;
+use App\Models\ProductView;
 use Illuminate\Http\Client\Request;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Route;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
+// Route::get('/transactions', function () {
+//     $stripe = new \Stripe\StripeClient(env('STRIPE_SECRET'));
+//     $charges = $stripe->charges->all(['limit' => 3]);
+//     return view('test',compact('charges'));
+//     // dd($stripe->customers->all(['limit' => 3]));
+// });
 
 Route::get('/lang/{locale}', function (string $locale) {
     session()->forget('lang');
     session()->put('lang', $locale);
     return redirect()->back();
 });
+Route::get('/checkout/{id}', [PaymentController::class, 'applyPayment']);
+Route::get('/checkout/success/{id}', function ($id) {
+    $order = Order::find($id);
+    $order->status = 'delivered';
+    $order->save();
+    session()->forget('cart');
+    return redirect('/');
+})->name('checkout.success');
+
+Route::get('/checkout/canceled/{id}', function ($id) {
+    $order = Order::find($id);
+    $items = $order->items();
+
+    foreach ($items as $item) {
+        $item->delete();
+    }
+    if ($order) {
+        $order->delete();
+    }
+    // session()->forget('cart');
+    return redirect('/');
+})->name('checkout.canceled');
 
 Route::get('/currency/{currency}', function (string $currency) {
     session()->forget('currency');
     session()->put('currency', $currency);
     return redirect('/');
 });
-
 Route::group(['prefix' => ''], function () {
-
-    Route::get('/', function () {
-        $locale = session()->get('lang');
-        $currency = session()->get('currency');
-        // session()->put('lang',$locale);
-        if ($locale == 'en') {
-            session()->forget('lang');
-            session()->put('lang', 'en');
-        } else if ($locale == 'ar') {
-            session()->forget('lang');
-            session()->put('lang', 'ar');
-        } else {
-            session()->forget('lang');
-            session()->put('lang', 'en');
-        }
-
-        //set currency
-        if ($currency == 'usd') {
-            session()->forget('currency');
-            session()->put('currency', 'usd');
-        } else if ($currency == 'ade') {
-            session()->forget('currency');
-            session()->put('currency', value: 'ade');
-        } else {
-            session()->forget('currency');
-            session()->put('currency', 'ade');
-        }
-        $bestSeller = ListProductsByCategory::execute(1);
-        $hair_care = ListProductsByCategory::execute(2);
-        $body_care = ListProductsByCategory::execute(3);
-        $face_care = ListProductsByCategory::execute(4);
-        $sun_care = ListProductsByCategory::execute(5);
-        $categories = ListCategory::execute();
-        $brands = ListBrand::execute();
-        $carousel1 = Carousel::with('images')->find(1);
-        $carousel2 = Carousel::with('images')->find(2);
-        $carousels = Carousel::with('images')->orderby('id','asc')->get();
-        $posts = Post::all();
-        return view('welcome', compact('posts', 'bestSeller', 'hair_care', 'body_care', 'face_care', 'sun_care', 'categories', 'brands', 'carousel1', 'carousel2','carousels'));
-    })->name('home');
+    Route::get('/', [HomeController::class, 'index'])->name('home');
     Route::resource('shop', ShopController::class);
     Route::get('/show-cart/address', [OrderController::class, 'create'])->name('address');
     Route::resource('order', OrderController::class);
@@ -100,8 +94,6 @@ Route::group(['prefix' => ''], function () {
         return view('support.contact', compact('categories'));
     });
 });
-
-
 Route::post('/shop', [ShopController::class, 'filter'])->name('filter.products');
 Route::post('/shop/collection/', [ShopController::class, 'index'])->name('filter.products');
 Route::post('/shop/category/', [ShopController::class, 'filterByCategory'])->name('filter.products.category');
@@ -130,6 +122,12 @@ Route::group(['middleware' => 'auth', 'prefix' => 'dashboard'], function () {
     Route::resource('size', SizeController::class);
     Route::resource('post', PostController::class);
     Route::resource('users', UserController::class);
+    Route::resource('general', GeneralController::class);
+
+    Route::get('/item/{id}/measurements', function ($id) {
+        $item = OrderItem::find($id);
+        return view('dashboard.invoice.measurement', compact('item'));
+    })->name('measurements');
 });
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

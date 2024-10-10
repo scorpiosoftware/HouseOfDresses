@@ -1,21 +1,8 @@
 <x-app-layout>
-    <div class="text-2xl py-4 font-bold underline text-gray-900 d:text-white">Dashboard</div>
+    <div class="text-2xl py-4 font-bold underline text-gray-900">Dashboard</div>
     <div class="container mx-auto mt-10">
         <br>
         <br>
-
-        <div class="relative max-w-sm">
-            <div class="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none">
-                <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                    fill="currentColor" viewBox="0 0 20 20">
-                    <path
-                        d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z" />
-                </svg>
-            </div>
-            <input datepicker id="default-datepicker"
-                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                placeholder="Select date">
-        </div>
 
         <div class="flex flex-col md:flex-row justify-center overflow-auto">
             <div class="md:w-11/12  overflow-x-scroll">
@@ -33,9 +20,9 @@
                                                 <div class="text-2xl">
                                                     {{ $applied_orders->count() }}
                                                 </div>
-                                                <div class="text-xs text-green-800 bg-green-200 rounded-md p-1">
+                                                {{-- <div class="text-xs text-green-800 bg-green-200 rounded-md p-1">
                                                     +0.0%
-                                                </div>
+                                                </div> --}}
                                             </div>
                                         </div>
                                     </div>
@@ -61,11 +48,11 @@
                                         <div class="mt-1">
                                             <div class="flex space-x-2 items-center">
                                                 <div class="text-2xl">
-                                                    ${{ $revenue }}
+                                                    AED {{ $revenue }}
                                                 </div>
-                                                <div class="text-xs text-red-500 bg-red-200 rounded-md p-1">
+                                                {{-- <div class="text-xs text-red-500 bg-red-200 rounded-md p-1">
                                                     -0.0%
-                                                </div>
+                                                </div> --}}
                                             </div>
                                         </div>
                                     </div>
@@ -91,11 +78,11 @@
                                         <div class="mt-1">
                                             <div class="flex space-x-2 items-center">
                                                 <div class="text-2xl">
-                                                    ${{ $unpaid }}
+                                                    AED {{ $unpaid }}
                                                 </div>
-                                                <div class="text-xs text-green-800 bg-green-200 rounded-md p-1">
+                                                {{-- <div class="text-xs text-green-800 bg-green-200 rounded-md p-1">
                                                     +0.0%
-                                                </div>
+                                                </div> --}}
                                             </div>
                                         </div>
                                     </div>
@@ -121,11 +108,11 @@
                                         <div class="mt-1">
                                             <div class="flex space-x-2 items-center">
                                                 <div class="text-2xl">
-                                                    ${{ $total }}
+                                                    AED {{ $total }}
                                                 </div>
-                                                <div class="text-xs text-green-800 bg-green-200 rounded-md p-1">
+                                                {{-- <div class="text-xs text-green-800 bg-green-200 rounded-md p-1">
                                                     +0.0%
-                                                </div>
+                                                </div> --}}
                                             </div>
                                         </div>
                                     </div>
@@ -144,6 +131,18 @@
             </div>
         </div>
         <div class="container items-center px-4 py-8 m-auto mt-5">
+            <div class="relative max-w-sm ml-2">
+                <div class="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none">
+                    <svg class="w-4 h-4 text-gray-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                        fill="currentColor" viewBox="0 0 20 20">
+                        <path
+                            d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z" />
+                    </svg>
+                </div>
+                <input datepicker id="default-datepicker"
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5"
+                    placeholder="Select date">
+            </div>
             <div class="flex flex-wrap pb-3 mx-4 md:mx-24 lg:mx-0">
                 <div class="w-full p-2 lg:w-1/4 md:w-1/2">
                     <div
@@ -196,7 +195,7 @@
                         </div>
                         <h1
                             class="text-3xl sm:text-4xl xl:text-5xl font-bold text-gray-700 mt-12 group-hover:text-gray-50">
-                            0.0</h1>
+                            {{$facebook}}</h1>
                         <div class="flex flex-row justify-between group-hover:text-gray-200">
                             <p>Facebook</p>
                             <span>
@@ -245,7 +244,7 @@
                         </div>
                         <h1
                             class="text-3xl sm:text-4xl xl:text-5xl font-bold text-gray-700 mt-12 group-hover:text-gray-50">
-                            0.0</h1>
+                            {{$instagram}}</h1>
                         <div class="flex flex-row justify-between group-hover:text-gray-200">
                             <p>Instagram</p>
                             <span>
@@ -282,7 +281,7 @@
                         </div>
                         <h1
                             class="text-3xl sm:text-4xl xl:text-5xl font-bold text-gray-700 mt-12 group-hover:text-gray-50">
-                            0.0
+                            {{$snapchat}}
                         </h1>
                         <div class="flex flex-row justify-between group-hover:text-gray-200">
                             <p>Snapchat</p>
@@ -315,7 +314,7 @@
                         </div>
                         <h1
                             class="text-3xl sm:text-4xl xl:text-5xl font-bold text-gray-700 mt-12 group-hover:text-gray-50">
-                            0.0
+                            {{$tiktok}}
                         </h1>
                         <div class="flex flex-row justify-between group-hover:text-gray-200">
                             <p>Tiktok</p>
@@ -355,7 +354,7 @@
                         </div>
                         <h1
                             class="text-3xl sm:text-4xl xl:text-5xl font-bold text-gray-700 mt-12 group-hover:text-gray-50">
-                            0.0
+                            {{$google}}
                         </h1>
                         <div class="flex flex-row justify-between group-hover:text-gray-200">
                             <p>Google</p>

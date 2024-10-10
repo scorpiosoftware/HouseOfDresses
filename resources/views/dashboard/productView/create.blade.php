@@ -59,24 +59,26 @@
                         placeholder="View name" />
                 </div>
                 <div>
-                    <label for="category_id" class="block mb-2 text-sm font-medium text-gray-900 d:text-white">Select
+                    <label for="collection_id" class="block mb-2 text-sm font-medium text-gray-900 d:text-white">Select
                         an
                         option</label>
-                    <select id="category_id" name="category_id"
+                    <select id="collection_id" name="collection_id"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 d:bg-gray-700 d:border-gray-600 d:placeholder-gray-400 d:text-white d:focus:ring-blue-500 d:focus:border-blue-500">
                         <option selected></option>
-                        @foreach ($categories as $category)
-                            <option value="{{$category->id}}">{{$category->name_en}}</option>
+                        @foreach ($collections as $collection)
+                            <option value="{{ $collection->id }}">{{ $collection->name_en }}</option>
                         @endforeach
                     </select>
                 </div>
 
-                <div>
-                    <label for="selected" class="block mb-2 text-sm font-medium text-gray-900 d:text-white">Selected</label>
-                    <input type="checkbox" id="selected" value="" name="selected"
-                    class="bg-gray-50 border border-gray-300 text-blue-400 text-sm  focus:ring-blue-500 focus:border-blue-500 block  d:bg-gray-700 d:border-gray-600 d:placeholder-gray-400 d:text-white d:focus:ring-blue-500 d:focus:border-blue-500"
-                    placeholder="View selected" />
-                </div>
+                {{-- <div>
+                    <label for="selected"
+                        class="block mb-2 text-sm font-medium text-gray-900 d:text-white">Selected</label>
+                    <input type="checkbox" id="selected" value="" name=""
+                        class="bg-gray-50 border border-gray-300 text-blue-400 text-sm  focus:ring-blue-500 focus:border-blue-500 block  d:bg-gray-700 d:border-gray-600 d:placeholder-gray-400 d:text-white d:focus:ring-blue-500 d:focus:border-blue-500"
+                        placeholder="View selected" />
+                    <input id="selected_input" type="text" value="" name="selected" class="hidden">
+                </div> --}}
             </div>
         </div>
         <div class="flex justify-end">

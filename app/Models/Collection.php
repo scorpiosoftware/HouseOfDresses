@@ -14,4 +14,9 @@ class Collection extends Model
     {
         return $this->hasMany(Product::class);
     }
+
+    public function cateogries()
+    {
+        return $this->belongsToMany(Category::class);
+    }
 }

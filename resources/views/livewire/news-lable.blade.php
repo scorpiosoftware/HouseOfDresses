@@ -6,7 +6,7 @@
                 @if (session('currency') == 'ade')
                     <img class="h-3.5 w-3.5 rounded-full me-2" src="{{ URL::to('media/flags/ADE_FLAG.png') }}"
                         alt="">
-                    ADE
+                    AED
                 @else
                     <svg aria-hidden="true" class="h-3.5 w-3.5 rounded-full me-2" xmlns="http://www.w3.org/2000/svg"
                         id="flag-icon-css-us" viewBox="0 0 512 512">
@@ -38,7 +38,7 @@
                             <div class="inline-flex items-center">
                                 <img class="h-3.5 w-3.5 rounded-full me-2"
                                     src="{{ URL::to('media/flags/ADE_FLAG.png') }}" alt="">
-                                ADE
+                                AED
                             </div>
                         </button>
                     </li>
@@ -84,7 +84,7 @@
             </svg>
         </button>
         <div id="scroll-container">
-            <div id="scroll-text">FREE SHIPPING FOR ORDERS ABOVE AED1000</div>
+            <div id="scroll-text">{{$title}}</div>
         </div>
         <div class="items-center justify-start hidden w-full md:flex md:w-auto md:order-1" id="navbar-language">
             <ul

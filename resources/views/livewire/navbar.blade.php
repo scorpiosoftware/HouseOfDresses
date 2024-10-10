@@ -12,7 +12,7 @@
         </div>
 
         <div>
-            <img class="md:w-44 w-24" src="{{ URL::to('media/new/logo.png') }}" alt="">
+            <a href="/"><img class="md:w-44 w-24" src="{{ URL::to('media/new/logo.png') }}" alt=""></a>
         </div>
         <div>
               <img class="cursor-pointer md:w-8 w-6" src="{{ URL::to('media/tools/home.png') }}"  alt="">

@@ -52,10 +52,7 @@
                         name
                     </th>
                     <th scope="col" class="px-6 py-3 ">
-                        category
-                    </th>
-                    <th scope="col" class="px-6 py-3 ">
-                        selected
+                        collection
                     </th>
                     <th scope="col" class="px-6 py-3">
                         <span class="">Actions</span>
@@ -66,15 +63,12 @@
             <tbody>
                 @foreach ($records as $record)
                     <tr class="bg-white border-b d:bg-gray-800 d:border-gray-700">
-                        <th scope="row" class="p-2 text-gray-900  d:text-white">
+                        <th scope="row" class="px-6 py-4 text-gray-900  d:text-white">
                             {{ $record->name }}
                         </th>
 
                         <td class="px-6 py-4  whitespace-nowrap text-black text-base">
-                            {{ $record->category->name_en }}
-                        </td>
-                        <td class="px-6 py-4  whitespace-nowrap text-black text-base">
-                            {{ $record->selected }}
+                            {{ $record->collection->name_en }}
                         </td>
                         <td class="px-6 py-3 text-right flex justify-start items-center space-x-4">
                             <a href="{{ route('productView.edit', $record->id) }}"

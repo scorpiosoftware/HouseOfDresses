@@ -62,7 +62,7 @@
         </div>
     </div>
 
-    <div class="max-w-6xl  grid md:grid-cols-4 items-start mt-12 md:mx-auto mx-8 grid-cols-2 gap-x-2">
+    <div class="max-w-6xl  grid md:grid-cols-4 items-start mt-12 md:mx-auto mx-8 grid-cols-2 gap-x-2 gap-y-4">
         @foreach ($products as $product)
             @if ($product->colors->count() > 0 && $product->categories->count() > 0)
                 <livewire:product :product='$product' textcolor='text-black'>

@@ -32,7 +32,7 @@
             </ol>
         </nav>
 
-        <div class="text-2xl font-extralight pt-3 ">Cash on Delivery</div>
+        <div class="text-2xl font-extralight pt-3 ">Prodceed to Cashout</div>
         <form action="{{ route('order.store') }}" method="POST" class=" md:mx-0 mx-auto md:px-0 px-4 pt-4 pb-4">
             @csrf
             @method('POST')

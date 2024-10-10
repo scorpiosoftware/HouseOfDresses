@@ -26,12 +26,9 @@ class ShopController extends Controller
     public function index(Request $request)
     {
         $inputs = $request->all();
-        // dd($inputs);
-        $request->visit();
         $products = ListProduct::execute($inputs);
-        // dd($products);
         $posts = Post::all();
-        $collection = Collection::find($inputs["collection"]);
+        $collection = !empty($inputs["collection"]) ? Collection::find($inputs["collection"])  : '';
         $categories = Category::all();
         $brands = Brand::all();
         return view('shop.index', compact('products','posts','collection', 'categories', 'brands', 'inputs'));

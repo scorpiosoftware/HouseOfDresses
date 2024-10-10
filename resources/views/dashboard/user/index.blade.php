@@ -54,9 +54,9 @@
                     <th scope="col" class="px-6 py-3">
                         email
                     </th>
-                    {{-- <th scope="col" class="px-6 py-3">
+                    <th scope="col" class="px-6 py-3">
                         <span class="">Actions</span>
-                    </th> --}}
+                    </th>
                 </tr>
             </thead>
             <tbody>
@@ -68,16 +68,16 @@
                         <td class="px-6 py-4 font-extrabold text-black text-base">
                             {{ $record->email }}
                         </td>
-                        {{-- <td class="px-6 py-3 text-right flex justify-start items-center pt-[30px] space-x-4">
-                            <a href="{{ route('size.edit', $record->id) }}"
-                                class="font-medium text-blue-600 d:text-blue-500 hover:underline">Edit</a>
+                        <td class="px-6 py-3 text-right flex justify-start items-center pt-[30px] space-x-4">
+                            {{-- <a href="{{ route('size.edit', $record->id) }}"
+                                class="font-medium text-blue-600 d:text-blue-500 hover:underline">Edit</a> --}}
 
                             <form action="{{ route('users.destroy', $record->id) }}" method="POST">
                                 @csrf
                                 @method('DELETE')
                                 <button class=" text-red-600 hover:text-red-700">Delete</button>
                             </form>
-                        </td> --}}
+                        </td>
                     </tr>
                 @endforeach
             </tbody>
