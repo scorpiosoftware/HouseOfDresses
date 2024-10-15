@@ -1,5 +1,5 @@
 <div class="mb-10">
-    <div class="text-center md:text-4xl text-2xl text-white font-bold p-6 drop-shadow-2xl dancing-script">@if(session('lang')=='en') OUR COLLECTION @else مجموعتنا @endif</div>
+    <div class="text-center md:text-4xl text-2xl text-white font-bold p-6 drop-shadow-2xl dancing-script">@if(session('lang')=='en') Our Collections @else مجموعتنا @endif</div>
     <div class="max-w-[1850px] mx-auto flex justify-center items-center space-x-2 overflow-x-auto py-2">
         @foreach ($collections as $collection)
             <div class="relative">

@@ -10,8 +10,8 @@
     <div class="py-10">
         <h3 class="text-center {{$textcolor}} font-bold text-2xl underline leading-loose underline-offset-8 drop-shadow-2xl">
             @if(session('lang') == 'en') HOUSE OF DRESSES @else بيت الفساتين @endif</h3>
-        <p class="text-center md:text-3xl text-lg text-[#b69357] font-bold leading-relaxed">@if(session('lang') == 'en')A Dress to every Story! @else فستان لكل قصة! @endif <br>
-            @if(session('lang') == 'en')UAE-based fashion boutique, We deliver to GCC countries! @else بوتيك أزياء مقره في الإمارات العربية المتحدة، نقوم بالتوصيل إلى دول مجلس التعاون الخليجي! @endif</p>
+        <p class="text-center md:text-3xl text-lg text-[#b69357] font-bold leading-relaxed">@if(session('lang') == 'en')A Dress To Every Story! @else فستان لكل قصة! @endif <br>
+            @if(session('lang') == 'en')UAE-Based Fashion Boutique, We Deliver To GCC Countries! @else بوتيك أزياء مقره في الإمارات العربية المتحدة، نقوم بالتوصيل إلى دول مجلس التعاون الخليجي! @endif</p>
         <div class="flex justify-center items-center pt-4">
             <button class="text-white bg-[#b69357] px-3.5 py-2 rounded-xl leading-relaxed font-bold text-2xl">@if(session('lang') == 'en') Read
                 more @else اقرأ المزيد @endif</button>

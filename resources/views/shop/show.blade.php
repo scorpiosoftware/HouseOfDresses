@@ -41,9 +41,7 @@
         </h1>
     </div>
     <div class="max-w-6xl mx-auto mt-10">
-
         <div class="md:flex justify-start items-start mx-auto">
-
             <div
                 class="hidden md:overflow-y-auto overflow-x-auto flex justify-start items-center md:grid md:grid-cols-1 md:max-h-[36rem] md:gap-y-2 gap-x-2 p-3 ">
                 @foreach ($record->images as $image)

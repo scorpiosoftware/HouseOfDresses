@@ -7,6 +7,7 @@ use App\Actions\Carousel\StoreCarousel;
 use App\Actions\Category\ListCategory;
 use App\Actions\DeleteMedia;
 use App\Actions\ImageCompresser;
+use App\Actions\ImageInfo;
 use App\Actions\StoreMedia;
 use App\Models\Carousel;
 use App\Models\CarouselImage;
@@ -65,7 +66,7 @@ class CarouselController extends Controller
                     );
                     $image->url = $path;
                     $image->carousel_id = $record->id;
-                    // ImageCompresser::execute('storage/'. $path,$width,$height);
+                    ImageCompresser::execute('storage/'. $path,$width,$height);
                     $image->save();
                 }
             }
@@ -99,8 +100,8 @@ class CarouselController extends Controller
 
         $inputs = $request->all();
 
-        $width = '400';
-        $height = '400';
+        $width = '1920';
+        $height = '1080';
         if(!empty($inputs['width'])){
             $width = $inputs['width'];
         }
@@ -109,7 +110,7 @@ class CarouselController extends Controller
         }
 
         $record = Carousel::find($id);
-
+        
         // add new image and delete old
         // if ($request->has('logo_url')) {
         //     $inputs['logo_url'] = StoreMedia::execute(
@@ -141,7 +142,10 @@ class CarouselController extends Controller
                 );
                 $image->url = $path;
                 $image->carousel_id = $record->id;
-                // ImageCompresser::execute('storage/'. $path,$width,$height);
+                $scale = ImageInfo::execute('storage/'. $path);
+                $width = 1920;
+                $height = 1080;
+                ImageCompresser::execute('storage/'. $path,$width,$height);
                 $image->save();
             }
             //

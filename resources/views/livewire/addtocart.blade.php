@@ -26,7 +26,13 @@
         @endforeach
     </div>
     <div class="mt-10">
-        <p>@if(session('lang')=='en') Size @else مقاس @endif : {{ $selected_size }}</p>
+        <p>
+            @if (session('lang') == 'en')
+                Size
+            @else
+                مقاس
+            @endif : {{ $selected_size }}
+        </p>
         {{--  onclick='this.classList.add("bg-[#b69357]","text-white","font-bold")' --}}
         <div class="flex justify-start items-center space-x-2">
             @foreach ($color->product->sizes as $size)
@@ -37,7 +43,13 @@
         </div>
     </div>
     <div class="mt-10">
-        <label for="qty" class="font-bold text-gray-600">@if(session('lang')=='en')QUANTITY @else كمية @endif</label>
+        <label for="qty" class="font-bold text-gray-600">
+            @if (session('lang') == 'en')
+                QUANTITY
+            @else
+                كمية
+            @endif
+        </label>
         <input type="number" wire:model.live="qty"
             class="w-16 h-8 py-4 mx-6 shrink-0 border rounded-md border-gray-300 bg-transparent text-center text-sm font-medium text-gray-900 focus:outline-none focus:ring-0"
             placeholder="" name="qty"
@@ -130,7 +142,7 @@
                 aria-controls="accordion-collapse-body-2">
                 <span class="text-[#b69357]">
                     @if (session('lang') == 'en')
-                        Model Measurements
+                        Size measurements
                     @else
                         قياسات النموذج
                     @endif
