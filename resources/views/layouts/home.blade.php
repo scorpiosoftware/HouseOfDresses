@@ -33,7 +33,7 @@
             @yield('content')
             <br>
             <br>
-            <livewire:post-section :posts='$posts'>
+            <livewire:post-section :posts='$posts' textcolor="text-[#b69357]">
         </main>
         <livewire:footer>
             <x-section.scripts />

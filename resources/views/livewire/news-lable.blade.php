@@ -1,7 +1,7 @@
 <nav class="bg-[#e4c7cb] fixed top-0 z-50 w-full border-gray-200">
     <div class="max-w-full px-4 flex flex-wrap items-center justify-between mx-auto">
         <div class="flex items-center space-x-1 md:space-x-0 rtl:space-x-reverse">
-            <button type="button" data-dropdown-toggle="language-dropdown-menu"
+            <button type="button" data-dropdown-toggle="currency-dropdown-menu"
                 class="inline-flex items-center font-medium justify-center px-4 py-2 text-sm text-gray-900  rounded-lg cursor-pointer hover:bg-gray-100">
                 @if (session('currency') == 'ade')
                     <img class="h-3.5 w-3.5 rounded-full me-2" src="{{ URL::to('media/flags/ADE_FLAG.png') }}"
@@ -29,12 +29,11 @@
                 @endif
             </button>
             <div class="z-50 hidden my-4 text-base list-none bg-transparent divide-y divide-gray-100 rounded-lg shadow "
-                id="language-dropdown-menu">
+                id="currency-dropdown-menu">
                 <ul class="py-2 font-medium" role="none">
                     <li>
                         <button wire:click='setCurrency("ade")'
-                            class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                            role="menuitem">
+                            class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">
                             <div class="inline-flex items-center">
                                 <img class="h-3.5 w-3.5 rounded-full me-2"
                                     src="{{ URL::to('media/flags/ADE_FLAG.png') }}" alt="">
@@ -44,8 +43,7 @@
                     </li>
                     <li>
                         <button wire:click='setCurrency("usd")'
-                            class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100  "
-                            role="menuitem">
+                            class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100  " role="menuitem">
                             <div class="inline-flex items-center">
                                 <svg aria-hidden="true" class="h-3.5 w-3.5 rounded-full me-2"
                                     xmlns="http://www.w3.org/2000/svg" id="flag-icon-css-us" viewBox="0 0 512 512">
@@ -71,7 +69,7 @@
 
                 </ul>
             </div>
-
+            <livewire:language>
         </div>
         <button data-collapse-toggle="navbar-language" type="button"
             class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200"
@@ -83,8 +81,9 @@
                     d="M1 1h15M1 7h15M1 13h15" />
             </svg>
         </button>
+   
         <div id="scroll-container">
-            <div id="scroll-text">{{$title}}</div>
+            <div id="scroll-text">{{ $title }}</div>
         </div>
         <div class="items-center justify-start hidden w-full md:flex md:w-auto md:order-1" id="navbar-language">
             <ul
@@ -136,13 +135,12 @@
                                 <div>{{ Auth::user()->name }}</div>
                                 <div class="font-medium truncate">{{ Auth::user()->email }}</div>
                             </div>
-                            <ul class="py-2 text-sm text-gray-700 "
-                                aria-labelledby="dropdownUserAvatarButton">
-                                @if(Auth::user()->role_id == 1)
-                                <li>
-                                    <a href="/dashboard/dashboard"
-                                        class="block px-4 py-2 hover:bg-gray-100">Dashboard</a>
-                                </li>
+                            <ul class="py-2 text-sm text-gray-700 " aria-labelledby="dropdownUserAvatarButton">
+                                @if (Auth::user()->role_id == 1)
+                                    <li>
+                                        <a href="/dashboard/dashboard"
+                                            class="block px-4 py-2 hover:bg-gray-100">Dashboard</a>
+                                    </li>
                                 @endif
                             </ul>
                             <div class="py-2">

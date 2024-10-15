@@ -37,7 +37,7 @@
     </script>
     <div class="flex justify-center items-center text-center">
         <h1 class="underline-offset-8 underline text-[#b69357] md:text-2xl text-xl">
-            {{$record->product->collection->name_en}} - COLLECTION
+           @if(session('lang')=='en') {{$record->product->collection->name_en}} - COLLECTION @else  مجموعة - {{$record->product->collection->name_ar}}@endif
         </h1>
     </div>
     <div class="max-w-6xl mx-auto mt-10">

@@ -66,7 +66,7 @@
                                             @foreach ($productViews as $view)
                                             <livewire:featured-product-slider :view='$view'>
                                             @endforeach
-                                            <livewire:post-section :posts='$posts'>
+                                            <livewire:post-section :posts='$posts' textcolor="text-white">
                                                 <livewire:footer>
                                                     <x-home.speed-dial />
                                                     <livewire:top>

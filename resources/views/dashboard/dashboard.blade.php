@@ -131,7 +131,8 @@
             </div>
         </div>
         <div class="container items-center px-4 py-8 m-auto mt-5">
-            <form action="{{route('dashboard.index')}}" method="get" class="flex items-center justify-start gap-x-4">
+            <form action="{{ route('dashboard.index') }}" method="get"
+                class="flex items-center justify-start gap-x-4">
                 @method('get')
                 <div class="relative max-w-sm ml-2">
                     <div class="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none">
@@ -145,7 +146,8 @@
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5"
                         placeholder="Select date">
                 </div>
-                <div><button class="rounded-lg bg-white px-6 py-2 font-bold shadow-lg" type="submit">Apply</button></div>
+                <div><button class="rounded-lg bg-white px-6 py-2 font-bold shadow-lg" type="submit">Apply</button>
+                </div>
             </form>
 
             <div class="flex flex-wrap pb-3 mx-4 md:mx-24 lg:mx-0">
@@ -200,7 +202,7 @@
                         </div>
                         <h1
                             class="text-3xl sm:text-4xl xl:text-5xl font-bold text-gray-700 mt-12 group-hover:text-gray-50">
-                            {{$facebook}}</h1>
+                            {{ $facebook }}</h1>
                         <div class="flex flex-row justify-between group-hover:text-gray-200">
                             <p>Facebook</p>
                             <span>
@@ -249,9 +251,39 @@
                         </div>
                         <h1
                             class="text-3xl sm:text-4xl xl:text-5xl font-bold text-gray-700 mt-12 group-hover:text-gray-50">
-                            {{$instagram}}</h1>
+                            {{ $instagram }}</h1>
                         <div class="flex flex-row justify-between group-hover:text-gray-200">
                             <p>Instagram</p>
+                            <span>
+                                <svg xmlns="http://www.w3.org/2000/svg"
+                                    class="h-5 w-5 text-indigo-600 group-hover:text-gray-200" viewBox="0 0 20 20"
+                                    fill="currentColor">
+                                    <path fill-rule="evenodd"
+                                        d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-8-3a1 1 0 00-.867.5 1 1 0 11-1.731-1A3 3 0 0113 8a3.001 3.001 0 01-2 2.83V11a1 1 0 11-2 0v-1a1 1 0 011-1 1 1 0 100-2zm0 8a1 1 0 100-2 1 1 0 000 2z"
+                                        clip-rule="evenodd" />
+                                </svg>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="w-full p-2 lg:w-1/4 md:w-1/2">
+                    <div
+                        class="flex flex-col px-6 py-10 overflow-hidden bg-white hover:bg-gradient-to-br hover:from-purple-400 hover:via-blue-400 hover:to-blue-500 rounded-xl shadow-lg duration-300 hover:shadow-2xl group">
+                        <div class="flex flex-row justify-between items-center">
+                            <div class=" rounded-xl bg-opacity-30">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="none" id="whatsapp">
+                                    <path fill="#25D366" d="M24 48c13.255 0 24-10.745 24-24S37.255 0 24 0 0 10.745 0 24s10.745 24 24 24Z"></path>
+                                    <path fill="#FDFDFD" fill-rule="evenodd" d="M24.791 37.353h-.006c-2.388-.001-4.735-.6-6.82-1.738L10.4 37.6l2.025-7.395a14.246 14.246 0 0 1-1.905-7.135c.003-7.868 6.405-14.27 14.27-14.27 3.819.002 7.402 1.488 10.096 4.185a14.185 14.185 0 0 1 4.176 10.097c-.003 7.866-6.402 14.267-14.27 14.27Zm-6.475-4.321.433.257a11.844 11.844 0 0 0 6.037 1.653h.005c6.538 0 11.859-5.32 11.862-11.861a11.79 11.79 0 0 0-3.471-8.392 11.78 11.78 0 0 0-8.386-3.479c-6.543 0-11.864 5.321-11.867 11.861 0 2.241.626 4.424 1.814 6.313l.282.448-1.199 4.378 4.49-1.178Zm13.176-6.878c.25.12.417.201.489.321.089.149.089.863-.208 1.696s-1.722 1.593-2.407 1.695c-.614.092-1.392.13-2.246-.14a20.465 20.465 0 0 1-2.033-.752c-3.343-1.444-5.602-4.684-6.029-5.296-.03-.043-.05-.073-.063-.088l-.002-.004c-.189-.252-1.453-1.94-1.453-3.685 0-1.643.806-2.504 1.178-2.9l.07-.075a1.31 1.31 0 0 1 .95-.446c.238 0 .476.002.684.012.026.002.052.002.08.001.207 0 .467-.002.722.612.099.236.242.586.394.956.307.747.646 1.572.706 1.691.089.179.148.387.03.625l-.05.102c-.09.182-.156.316-.307.493-.06.07-.121.144-.183.22-.123.149-.245.298-.352.405-.179.177-.364.37-.157.727.209.357.924 1.525 1.984 2.47 1.14 1.017 2.13 1.447 2.632 1.664.098.043.178.077.236.106.356.179.564.15.772-.089.208-.238.892-1.041 1.13-1.398.237-.357.475-.297.802-.179.327.12 2.08.982 2.436 1.16l.195.096Z" clip-rule="evenodd"></path>
+                                  </svg>
+                            </div>
+                        </div>
+                        <h1
+                            class="text-3xl sm:text-4xl xl:text-5xl font-bold text-gray-700 mt-12 group-hover:text-gray-50">
+                            {{ $whatsapp }}
+                        </h1>
+                        <div class="flex flex-row justify-between group-hover:text-gray-200">
+                            <p>Whatsapp</p>
                             <span>
                                 <svg xmlns="http://www.w3.org/2000/svg"
                                     class="h-5 w-5 text-indigo-600 group-hover:text-gray-200" viewBox="0 0 20 20"
@@ -286,7 +318,7 @@
                         </div>
                         <h1
                             class="text-3xl sm:text-4xl xl:text-5xl font-bold text-gray-700 mt-12 group-hover:text-gray-50">
-                            {{$snapchat}}
+                            {{ $snapchat }}
                         </h1>
                         <div class="flex flex-row justify-between group-hover:text-gray-200">
                             <p>Snapchat</p>
@@ -319,7 +351,7 @@
                         </div>
                         <h1
                             class="text-3xl sm:text-4xl xl:text-5xl font-bold text-gray-700 mt-12 group-hover:text-gray-50">
-                            {{$tiktok}}
+                            {{ $tiktok }}
                         </h1>
                         <div class="flex flex-row justify-between group-hover:text-gray-200">
                             <p>Tiktok</p>
@@ -359,7 +391,7 @@
                         </div>
                         <h1
                             class="text-3xl sm:text-4xl xl:text-5xl font-bold text-gray-700 mt-12 group-hover:text-gray-50">
-                            {{$google}}
+                            {{ $google }}
                         </h1>
                         <div class="flex flex-row justify-between group-hover:text-gray-200">
                             <p>Google</p>

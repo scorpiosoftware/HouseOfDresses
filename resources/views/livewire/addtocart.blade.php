@@ -1,5 +1,11 @@
 <div>
-    <p class="text-xl">{{ $color->product->name_en }} - {{ $color->name }}</p>
+    <p class="text-xl">
+        @if (session('lang') == 'en')
+            {{ $color->product->name_en }}
+        @else
+            {{ $color->product->name_ar }}
+        @endif - {{ $color->name }}
+    </p>
     <a href="/" class="text-lg font-semibold text-gray-600">HOD</a>
     <p class="text-lg text-gray-600">
         @if (session('currency') == 'ade')
@@ -20,7 +26,7 @@
         @endforeach
     </div>
     <div class="mt-10">
-        <p>Size : {{ $selected_size }}</p>
+        <p>@if(session('lang')=='en') Size @else مقاس @endif : {{ $selected_size }}</p>
         {{--  onclick='this.classList.add("bg-[#b69357]","text-white","font-bold")' --}}
         <div class="flex justify-start items-center space-x-2">
             @foreach ($color->product->sizes as $size)
@@ -31,7 +37,7 @@
         </div>
     </div>
     <div class="mt-10">
-        <label for="qty" class="font-bold text-gray-600">QUANTITY</label>
+        <label for="qty" class="font-bold text-gray-600">@if(session('lang')=='en')QUANTITY @else كمية @endif</label>
         <input type="number" wire:model.live="qty"
             class="w-16 h-8 py-4 mx-6 shrink-0 border rounded-md border-gray-300 bg-transparent text-center text-sm font-medium text-gray-900 focus:outline-none focus:ring-0"
             placeholder="" name="qty"
@@ -43,8 +49,14 @@
 
     <div class="flex justify-center items-center w-full bg-[#b69357] mt-10">
         <button id="add_to_cart_btn" wire:click='addToCart()'
-            class="py-3 w-full rounded-lg hover:bg-gray-500 text-white font-bold">Add to
-            Cart</button>
+            class="py-3 w-full rounded-lg hover:bg-gray-500 text-white font-bold">
+            @if (session('lang') == 'en')
+                Add to
+                Cart
+            @else
+                أضف إلى السلة
+            @endif
+        </button>
     </div>
 
     <div class="flex justify-center items-center w-full bg-[] mt-10">
@@ -57,7 +69,13 @@
                         d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z">
                     </path>
                 </svg>
-                <span class="font-bold text-base text-[#b69357]">Add to wishlist</span>
+                <span class="font-bold text-base text-[#b69357]">
+                    @if (session('lang') == 'en')
+                        Add to wishlist
+                    @else
+                        أضف إلى قائمة الرغبات
+                    @endif
+                </span>
             </div>
         </button>
         <script>
@@ -79,7 +97,13 @@
                 class="flex items-center justify-between w-full p-5 font-medium text-[#b69357] border border-b-0 border-[#b69357] rounded-t-xl focus:ring-4 focus:ring-gray-200  hover:bg-gray-100 gap-3"
                 data-accordion-target="#accordion-collapse-body-1" aria-expanded="true"
                 aria-controls="accordion-collapse-body-1">
-                <span class="text-[#b69357]">Description</span>
+                <span class="text-[#b69357]">
+                    @if (session('lang') == 'en')
+                        Description
+                    @else
+                        وصف
+                    @endif
+                </span>
                 <svg data-accordion-icon class="w-3 h-3 rotate-180 shrink-0" aria-hidden="true"
                     xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -90,7 +114,11 @@
         <div id="accordion-collapse-body-1" class="hidden" aria-labelledby="accordion-collapse-heading-1">
             <div class="p-5 border border-b-0 border-[#b69357]">
                 <p class="mb-2 text-[#b69357]">
-                    {!! $color->product->description_en !!}
+                    @if (session('lang') == 'en')
+                        {!! $color->product->description_en !!}
+                    @else
+                        {!! $color->product->description_ar !!}
+                    @endif
                 </p>
             </div>
         </div>
@@ -100,7 +128,13 @@
                 class="flex items-center justify-between w-full p-5 font-medium text-[#b69357] border border-b-0 border-[#b69357] rounded-t-xl focus:ring-4 focus:ring-gray-200  hover:bg-gray-100 gap-3"
                 data-accordion-target="#accordion-collapse-body-2" aria-expanded="true"
                 aria-controls="accordion-collapse-body-2">
-                <span class="text-[#b69357]">Model Measurements</span>
+                <span class="text-[#b69357]">
+                    @if (session('lang') == 'en')
+                        Model Measurements
+                    @else
+                        قياسات النموذج
+                    @endif
+                </span>
                 <svg data-accordion-icon class="w-3 h-3 rotate-180 shrink-0" aria-hidden="true"
                     xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -235,7 +269,13 @@
                 class="flex items-center justify-between w-full p-5 font-medium text-[#b69357] border border-b-0 border-[#b69357] rounded-t-xl focus:ring-4 focus:ring-gray-200  hover:bg-gray-100 gap-3"
                 data-accordion-target="#accordion-collapse-body-3" aria-expanded="true"
                 aria-controls="accordion-collapse-body-3">
-                <span class="text-[#b69357]">Shipping & Delivery Info</span>
+                <span class="text-[#b69357]">
+                    @if (session('lang') == 'en')
+                        Shipping & Delivery Info
+                    @else
+                        معلومات الشحن والتسليم
+                    @endif
+                </span>
                 <svg data-accordion-icon class="w-3 h-3 rotate-180 shrink-0" aria-hidden="true"
                     xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -257,7 +297,13 @@
                 class="flex items-center justify-between w-full p-5 font-medium text-[#b69357] border border-b-0 border-[#b69357] rounded-t-xl focus:ring-4 focus:ring-gray-200  hover:bg-gray-100 gap-3"
                 data-accordion-target="#accordion-collapse-body-4" aria-expanded="true"
                 aria-controls="accordion-collapse-body-4">
-                <span class="text-[#b69357]">Returns & Exchanger Info</span>
+                <span class="text-[#b69357]">
+                    @if (session('lang') == 'en')
+                        Returns & Exchanger Info
+                    @else
+                        معلومات الإرجاع والمبادلات
+                    @endif
+                </span>
                 <svg data-accordion-icon class="w-3 h-3 rotate-180 shrink-0" aria-hidden="true"
                     xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -273,7 +319,7 @@
             </div>
         </div>
         {{-- item 5 --}}
-        <h2 id="accordion-collapse-heading-5">
+        {{-- <h2 id="accordion-collapse-heading-5">
             <button type="button"
                 class="flex items-center justify-between w-full p-5 font-medium text-[#b69357] border border-b-0 border-[#b69357] rounded-t-xl focus:ring-4 focus:ring-gray-200  hover:bg-gray-100 gap-3"
                 data-accordion-target="#accordion-collapse-body-5" aria-expanded="true"
@@ -289,9 +335,9 @@
         <div id="accordion-collapse-body-5" class="hidden" aria-labelledby="accordion-collapse-heading-5">
             <div class="p-5 border border-b-0 border-[#b69357]">
                 <p class="mb-2 text-[#b69357]">
-                    {{-- {!! $color->product->description_en !!} --}}
+      
                 </p>
             </div>
-        </div>
+        </div> --}}
     </div>
 </div>

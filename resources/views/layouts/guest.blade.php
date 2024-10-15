@@ -26,7 +26,7 @@
             <livewire:news-lable>
                 <div class=" mt-20 mb-6 ">
                     <a href="/">
-                        <x-application-logo class="pt-10 fill-current text-gray-500" />
+                        <x-application-logo class="pt-10 w-60 fill-current text-gray-500" />
                     </a>
                 </div>
             <div class="w-full sm:max-w-md px-6 py-4 mb-20 bg-white shadow-md overflow-hidden sm:rounded-lg">

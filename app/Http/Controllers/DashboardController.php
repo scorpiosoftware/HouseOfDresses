@@ -33,9 +33,10 @@ class DashboardController extends Controller
         $instagram =  !empty($date) ? visitors()->referrers('https://www.instagram.com/','https://l.instagram.com/')->whereDate('created_at','<=',$date)->uniqueCount() : visitors()->referrers('https://www.instagram.com/','https://l.instagram.com/')->uniqueCount();
         $snapchat =  !empty($date) ?  visitors()->referrers('https://www.snapchat.com/')->whereDate('created_at','<=',$date)->uniqueCount() : visitors()->referrers('https://www.snapchat.com/')->uniqueCount();
         $tiktok =  !empty($date) ? visitors()->referrers('https://www.tiktok.com/')->whereDate('created_at','<=',$date)->uniqueCount() : visitors()->referrers('https://www.tiktok.com/')->uniqueCount();
+        $whatsapp =  !empty($date) ? visitors()->referrers('https://www.whatsapp.com/','https://l.wl.co/')->whereDate('created_at','<=',$date)->uniqueCount() : visitors()->referrers('https://l.wl.co/')->uniqueCount();
         $google =  !empty($date)  ? visitors()->referrers('/')->whereDate('created_at','<=',$date)->uniqueCount() : visitors()->referrers('/')->uniqueCount();
         // $google = DB::table('visitors')->where('referer' , '=','null')->distinct()->count('id');
-        return view('dashboard.dashboard',compact('applied_orders','revenue','unpaid','total','totalVisits','facebook','instagram','snapchat','tiktok','google'));
+        return view('dashboard.dashboard',compact('applied_orders','revenue','unpaid','total','totalVisits','facebook','instagram','snapchat','tiktok','google','whatsapp'));
     }
 
     /**

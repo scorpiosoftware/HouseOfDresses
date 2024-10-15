@@ -13,13 +13,13 @@
             </div>
         </a>
         <h3
-            class="text-center {{ $textcolor }}  font-bold md:text-xl text-xs underline leading-loose underline-offset-8 drop-shadow-2xl">
-            {{ $product->categories()->first()->name_en }}</h3>
+            class="text-center {{ $textcolor }}  font-bold md:text-xl text-xs underline leading-loose underline-offset-8 drop-shadow-2xl">@if(session('lang')=='en')
+            {{ $product->categories()->first()->name_en }} @else {{$product->categories()->first()->name_ar}} @endif</h3>
         <br>
 
         <div class="grid grid-cols-1">
             <div>
-                <h3 class="text-center text-[#b69357] font-bold text-xs md:text-lg">{{ $product->name_en }}</h3>
+                <h3 class="text-center text-[#b69357] font-bold text-xs md:text-lg">   @if(session('lang')=='en'){{ $product->name_en }} @else {{$product->name_ar}} @endif</h3>
                 <h3 class="text-center"><span class="text-[#b69357] font-bold text-xs md:text-lg" data-amount="799">
                         @if (session('currency') == 'ade')
                             ADE {{ $product->price2 }}

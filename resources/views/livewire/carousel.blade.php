@@ -1,6 +1,6 @@
 <div id="controls-carousel" class="relative w-full overflow-x-hidden" data-carousel="static">
     <div class="absolute {{ $position }}">
-        <h1 class="md:text-8xl text-3xl font-bold text-white dancing-script">{{ $record->title }}</h1>
+        <h1 class="md:text-8xl text-3xl font-bold text-white dancing-script">@if(session('lang')=='en') {{ $record->title }} @else {{$record->category->name_ar}} @endif</h1>
     </div>
     <!-- Carousel wrapper -->
     <div class="relative md:h-[60rem] h-[26rem] overflow-x-hidden">

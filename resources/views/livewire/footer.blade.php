@@ -6,17 +6,6 @@
                 @foreach ($collections as $collection)
                     <li>{{ $collection->name_en }}</li>
                 @endforeach
-                {{-- <li>You are a Gem</li>
-                <li>Summer 2024</li>
-                <li>Ramadan / Eid 2024</li>
-                <li>Love Yourself volume II</li>
-                <li>Fall / Winter 2023</li>
-                <li>Summer 2023</li>
-                <li>Love Yourself volume I</li>
-                <li>Velvet</li>
-                <li>Shimmer</li>
-                <li>Pleated Glass</li>
-                <li>Femininity and Elegance</li> --}}
             </ul>
         </div>
         <div class="text-[#b69357] font-bold">
@@ -203,7 +192,7 @@
 
     <div class="md:flex justify-center items-start space-x-2 pt-12 overflow-auto">
         <div class="flex justify-start space-x-3">
-            <img src="{{ URL::to('media/new/logo.png') }}" alt="">
+            <img class="w-60" src="{{ URL::to('media/new/logo.png') }}" alt="">
             <div class="px-[1px] h-44 bg-[#b69357]"></div>
         </div>
 
