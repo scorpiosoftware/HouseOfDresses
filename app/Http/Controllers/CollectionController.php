@@ -94,6 +94,7 @@ class CollectionController extends Controller
                 'collections/',
                 'public'
             );
+            ImageCompresser::execute('storage/'. $inputs['image_url'],1300,2500);
         }
         $update = $record->update($inputs);
         if($update){
