@@ -29,9 +29,8 @@ class ProductImageSlider extends Component
         $this->id = $this->record->images()->where('id','>', $this->id)->first()->id;
         $this->current =  $this->next;    
     }
-
-    public function setImage($url){
-        $this->current = $url;
+    public function selectImg(string $url){
+        $this->current = $url;    
     }
     public function setPrevious(){
         if($this->record->images()->where('id','<', $this->id)->first() == null){

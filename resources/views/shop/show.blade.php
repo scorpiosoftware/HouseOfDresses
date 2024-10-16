@@ -37,26 +37,19 @@
     </script>
     <div class="flex justify-center items-center text-center">
         <h1 class="underline-offset-8 underline text-[#b69357] md:text-2xl text-xl">
-           @if(session('lang')=='en') {{$record->product->collection->name_en}} - COLLECTION @else  مجموعة - {{$record->product->collection->name_ar}}@endif
+            @if (session('lang') == 'en')
+                {{ $record->product->collection->name_en }} - COLLECTION
+            @else
+                مجموعة - {{ $record->product->collection->name_ar }}
+            @endif
         </h1>
     </div>
     <div class="max-w-6xl mx-auto mt-10">
         <div class="md:flex justify-start items-start mx-auto">
-            <div
-                class="hidden md:overflow-y-auto overflow-x-auto flex justify-start items-center md:grid md:grid-cols-1 md:max-h-[36rem] md:gap-y-2 gap-x-2 p-3 ">
-                @foreach ($record->images as $image)
-                    <img class="md:w-32 w-20 rounded-lg" src="{{ URL::to('storage/' . $image->image_url) }}" alt="">
-                @endforeach
-            </div>
             <livewire:product-image-slider :record='$record'>
-            <div class="md:hidden md:overflow-y-auto overflow-x-auto flex justify-start items-center gap-x-2 px-4 py-2">
-                @foreach ($record->images as $image)
-                    <img class="md:w-32 w-28 rounded-lg" src="{{ URL::to('storage/' . $image->image_url) }}" alt="">
-                @endforeach
-            </div>
-            <div class="px-6 md:w-1/2">
-                <livewire:addtocart :product="$record->product" :color="$record">
-            </div>
+                <div class="px-6 md:w-1/2">
+                    <livewire:addtocart :product="$record->product" :color="$record">
+                </div>
         </div>
     </div>
 @endsection
