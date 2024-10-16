@@ -7,6 +7,7 @@ use App\Actions\Collection\GetCollection;
 use App\Actions\Collection\ListCollection;
 use App\Actions\Collection\StoreCollection;
 use App\Actions\DeleteMedia;
+use App\Actions\ImageCompresser;
 use App\Actions\StoreMedia;
 use App\Models\Collection;
 use Illuminate\Http\Request;
@@ -46,6 +47,7 @@ class CollectionController extends Controller
                 'collections/',
                 'public'
             );
+            ImageCompresser::execute('storage/'. $inputs['image_url'],1300,2500);
         }
         $record = StoreCollection::execute($inputs);
         if($record){
