@@ -22,7 +22,7 @@
                 <h3 class="text-center text-[#b69357] font-bold text-xs md:text-lg">   @if(session('lang')=='en'){{ $product->name_en }} @else {{$product->name_ar}} @endif</h3>
                 <h3 class="text-center"><span class="text-[#b69357] font-bold text-xs md:text-lg" data-amount="799">
                         @if (session('currency') == 'ade')
-                            ADE {{ $product->price2 }}
+                            AED {{ $product->price2 }}
                         @else
                             USD {{ $product->price }}
                         @endif

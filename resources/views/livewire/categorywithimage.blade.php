@@ -8,10 +8,10 @@
                     @method('POST')
                     <button type="submit">
                         <input type="text" name="collection" class="hidden" value="{{ $collection->id }}">
-                        <img class="" src="{{ URL::to('storage/' . $collection->image_url) }}" alt="">
-                        <div class="absolute top-0 w-full   h-full ">
+                        <img class=" w-full" src="{{ URL::to('storage/' . $collection->image_url) }}" alt="">
+                        <div class="absolute top-0 w-full h-full ">
                             <div
-                                class="absolute top-1/2 flex items-center justify-center w-full text-center md:text-3xl text-sm font-bold text-white transition-all delay-0 hover:scale-110">
+                                class="absolute top-1/2 flex items-center justify-center text-wrap w-full text-center md:text-3xl text-sm font-bold text-white transition-all delay-0 hover:scale-110">
                                @if(session('lang')=='en')
                                 {{ $collection->name_en }}
                                 
