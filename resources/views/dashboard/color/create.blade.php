@@ -67,7 +67,9 @@
                     <select id="product_id" name="product_id"
                         class="bg-gray-50 border border-gray-300 text-gray-900 mb-6 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 d:bg-gray-700 d:border-gray-600 d:placeholder-gray-400 d:text-white d:focus:ring-blue-500 d:focus:border-blue-500">
                         @foreach ($products as $product)
-                            <option value="{{ $product->id }}">{{ $product->name_en }}</option>
+                            <option @if ($selected_product->id == $product->id)
+                                selected
+                            @endif value="{{ $product->id }}">{{ $product->name_en }}</option>
                         @endforeach
                     </select>
                 </div>

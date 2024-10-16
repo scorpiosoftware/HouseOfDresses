@@ -88,7 +88,8 @@ class ProductController extends Controller
             }
 
 
-            return redirect()->back()->with("success", "Append Record Success !");
+            // return redirect()->back()->with("success", "Append Record Success !");
+            return redirect()->route('color.create')->with('success','Append Record Success ! now add colors');
         } else {
             return redirect()->back()->with("error", "Check requirments error on validation !");
         }

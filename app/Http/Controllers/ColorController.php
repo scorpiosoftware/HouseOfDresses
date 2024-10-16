@@ -7,6 +7,7 @@ use App\Actions\Color\ListColor;
 use App\Actions\Color\StoreColor;
 use App\Actions\DeleteMedia;
 use App\Actions\ImageCompresser;
+use App\Actions\Product\GetProduct;
 use App\Actions\Product\ListProduct;
 use App\Actions\StoreMedia;
 use App\Models\Color;
@@ -31,10 +32,16 @@ class ColorController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(Request $request)
     {
+        $inputs = $request->all();
         $products = ListProduct::execute();
-        return view("dashboard.color.create", compact('products'));
+        if (!empty($inputs['product'])) {
+            $selected_product = GetProduct::execute($inputs['product']);
+            return view("dashboard.color.create", compact('products','selected_product'));
+        }else{
+            return view("dashboard.color.create", compact('products'));
+        }
     }
 
     /**
