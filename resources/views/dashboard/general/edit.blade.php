@@ -62,7 +62,7 @@
             <div class="grid grid-cols-1 gap-4 border-2 p-4 md:grid-cols-2">
                 <div class="">
                     <label for="shipping" class="block mb-2 text-sm font-medium text-gray-900 d:text-white">
-                         Shipping & Delivery Info</label>
+                         Shipping & Delivery Info <b>ENGLISH</b></label>
                     <section>
                         <div
                             class="w-full mb-4 border border-gray-200 rounded-lg bg-gray-50 d:bg-gray-700 d:border-gray-600">
@@ -90,8 +90,37 @@
                     </section>
                 </div>
                 <div class="">
+                    <label for="shipping_ar" class="block mb-2 text-sm font-medium text-gray-900 d:text-white">
+                         Shipping & Delivery Info <b>ARABIC</b></label>
+                    <section>
+                        <div
+                            class="w-full mb-4 border border-gray-200 rounded-lg bg-gray-50 d:bg-gray-700 d:border-gray-600">
+                            <div class="flex items-center justify-between px-3 py-2 border-b d:border-gray-600">
+                                <div
+                                    class="flex flex-wrap items-center divide-gray-200 sm:divide-x sm:rtl:divide-x-reverse d:divide-gray-600">
+                                    <div class="flex items-center space-x-1 rtl:space-x-reverse sm:pe-4">
+
+                                    </div>
+                                    <div class="flex flex-wrap items-center space-x-1 rtl:space-x-reverse sm:ps-4">
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="px-4 py-2 bg-white rounded-b-lg d:bg-gray-800">
+                                <label for="shipping_ar" class="sr-only">Publish post</label>
+                                <textarea id="shipping_ar" rows="8" name="shipping_ar"
+                                    class="block w-full px-0 text-sm text-gray-800 bg-white border-0 d:bg-gray-800 focus:ring-0 d:text-white d:placeholder-gray-400"
+                                    placeholder="Write an article...">{{ $record->shipping_ar }}</textarea>
+                                <script>
+                                    CKEDITOR.replace('shipping_ar');
+                                </script>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+                <div class="">
                     <label for="exchange" class="block mb-2 text-sm font-medium text-gray-900 d:text-white">
-                         Returns & Exchanges Info</label>
+                         Returns & Exchanges Info <b>ENGLISH</b></label>
                     <section>
                         <div
                             class="w-full mb-4 border border-gray-200 rounded-lg bg-gray-50 d:bg-gray-700 d:border-gray-600">
@@ -116,6 +145,35 @@
                     </section>
                     <script>
                         CKEDITOR.replace('exchange');
+                    </script>
+                </div>
+                <div class="">
+                    <label for="exchange_ar" class="block mb-2 text-sm font-medium text-gray-900 d:text-white">
+                         Returns & Exchanges Info <b>ARABIC</b></label>
+                    <section>
+                        <div
+                            class="w-full mb-4 border border-gray-200 rounded-lg bg-gray-50 d:bg-gray-700 d:border-gray-600">
+                            <div class="flex items-center justify-between px-3 py-2 border-b d:border-gray-600">
+                                <div
+                                    class="flex flex-wrap items-center divide-gray-200 sm:divide-x sm:rtl:divide-x-reverse d:divide-gray-600">
+                                    <div class="flex items-center space-x-1 rtl:space-x-reverse sm:pe-4">
+
+                                    </div>
+                                    <div class="flex flex-wrap items-center space-x-1 rtl:space-x-reverse sm:ps-4">
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="px-4 py-2 bg-white rounded-b-lg d:bg-gray-800">
+                                <label for="exchange_ar" class="sr-only">Publish post</label>
+                                <textarea id="exchange_ar" rows="8" name="exchange_ar"
+                                    class="block w-full px-0 text-sm text-gray-800 bg-white border-0 d:bg-gray-800 focus:ring-0 d:text-white d:placeholder-gray-400"
+                                    placeholder="">{{ $record->exchange_ar }}</textarea>
+                            </div>
+                        </div>
+                    </section>
+                    <script>
+                        CKEDITOR.replace('exchange_ar');
                     </script>
                 </div>
             </div>
