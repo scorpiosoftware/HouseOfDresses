@@ -10,7 +10,7 @@ class Language extends Component
         session()->forget('lang');
         session()->put('lang',$locale);
         $this->dispatch('change-lang'); 
-        return redirect()->back()->with('success','Language set to' . $locale);
+        return redirect('/');
     }
     public function render()
     {
