@@ -23,8 +23,8 @@ class Addtocart extends Component
     {
         $general = General::first();
         if($general){
-            $this->shipping = $general->shipping;
-            $this->exchange = $general->exchange;
+            $this->shipping = session('lang')== 'en' ? $general->shipping : $general->shipping_ar;
+            $this->exchange = session('lang')== 'en' ? $general->exchange : $general->exchange_ar;
         }
         $this->selected_size = !empty($this->product) ? $this->product->sizes()->first()->name : '';
     }
