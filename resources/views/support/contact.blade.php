@@ -1,8 +1,54 @@
 @extends('layouts.home')
 @section('content')
+    <div class="max-w-6xl mx-auto text-start px-4">
+
+        <div class="grid md:grid-cols-2 grid-cols-1 gap-x-20 items-center border-2 rounded-lg">
+            <div class="">
+                <img class="" src="{{ URL::to('img/about.jpeg') }}" alt="">
+            </div>
+            <div class="p-4">
+                <h2 class="text-xl  text-gray-900 sm:text-2xl text-center">Customer Care</h2>
+                <div>We are open on all days - 9am to 6pm Gulf Standard Time</div>
+                <br>
+                <div class="flex justify-start space-x-4 items-start">
+                    <img class="w-12"
+                        src="https://chiclefrique.com/cdn/shop/t/117/assets/mail.png?v=34107127278551497921710222377"
+                        alt="">
+                    <div>
+                        Email :
+                        <br>
+                        <span>info.houseofdresses.fashion</span>
+                        <br>
+                        <span>We will reply to you in 12-24 hours.</span>
+                    </div>
+                </div>
+                <br>
+                <hr>
+                <div class="flex justify-start space-x-4 items-start">
+                    <img class="w-12"
+                        src="https://chiclefrique.com/cdn/shop/t/117/assets/telephone.png?v=21009935013959724091710222383"
+                        alt="">
+                    <div>
+                        Phone :
+                        <br>
+                        <span>UAE Toll Free Number: 800 CLF DXB (800 253 392)</span>
+                        <br>
+                        <span>Rest Of The World : +971 54 364 9606</span>
+                    </div>
+                </div>
+                <br>
+                <hr>
+            </div>
+        </div>
+    </div>
+
+
+
+
     <section class="bg-white dark:bg-gray-900 max-w-2xl mx-auto">
         <div class="py-8 lg:py-16 px-4 mx-auto max-w-screen-md">
-            <h2 class="mb-4 text-4xl tracking-tight font-extrabold text-center text-gray-900 dark:text-white">Contact Us</h2>
+            <h2 class="mb-4 text-4xl tracking-tight font-extrabold text-center text-gray-900 dark:text-white">Contact Us
+            </h2>
             <p class="mb-8 lg:mb-16 font-light text-center text-gray-500 dark:text-gray-400 sm:text-xl">Got a technical
                 issue? Want to send feedback about a beta feature? Need details about our Business plan? Let us know.</p>
             <form action="{{ route('send-comment') }}" class="space-y-8" method="POST">
@@ -38,10 +84,10 @@
                 </div>
                 <div class="mt-2 flex justify-end">
                     <button type="submit"
-                    class="py-3 px-5 text-sm font-medium text-center text-white rounded-lg bg-green-300 sm:w-fit hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">Send
-                    message</button>
+                        class="py-3 px-5 text-sm font-medium text-center text-white rounded-lg bg-[#b69357] sm:w-fit hover:bg-[#b69357] focus:ring-4 focus:outline-none focus:ring-primary-300">Send
+                        message</button>
                 </div>
- 
+
             </form>
         </div>
     </section>

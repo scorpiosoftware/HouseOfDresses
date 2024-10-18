@@ -38,6 +38,15 @@
                 }).show(500);
             });
 
+            $("#cart_btn_sm").click(function(e) {
+                $('#cart_element').animate({
+                    width: 320
+                }).show(500);
+                $('#cart_content').animate({
+                    width: 320
+                }).show(500);
+            });
+
             $("#close_cart_btn").click(function(e) {
                 $('#cart_element').animate({
                     width: 0

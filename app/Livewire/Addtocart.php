@@ -91,7 +91,6 @@ class Addtocart extends Component
         if (!$product) {
             abort(404);
         }
-
         $cart = session()->get('cart');
         $price = session('currency') == 'ade' ?  $product->price2 : $product->price;
         $currency = session('currency') == 'ade' ? 'AED' : 'USD';
@@ -106,7 +105,6 @@ class Addtocart extends Component
         }
 
         if (!$cart) {
-            // dd(2);
             $cart = [
                 $id => [
                     "name" => $product->name_en,

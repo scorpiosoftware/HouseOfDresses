@@ -71,6 +71,12 @@
             </div>
             <livewire:language>
         </div>
+        <button class="md:hidden" id="cart_btn_sm">
+            <div class="flex items-center justify-center space-x-2">
+                <span class="font-bold text-base text-[#b69357]">My Cart</span>
+                <img src="{{ URL::to('media/tools/shop.png') }}" class="w-[20px]" alt="">
+            </div>
+        </button>
         <button data-collapse-toggle="navbar-language" type="button"
             class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200"
             aria-controls="navbar-language" aria-expanded="false">
@@ -81,10 +87,11 @@
                     d="M1 1h15M1 7h15M1 13h15" />
             </svg>
         </button>
-   
+
         <div id="scroll-container">
             <div id="scroll-text">{{ $title }}</div>
         </div>
+
         <div class="items-center justify-start hidden w-full md:flex md:w-auto md:order-1" id="navbar-language">
             <ul
                 class="flex flex-col font-medium p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-transparent md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0">
@@ -104,7 +111,7 @@
                     </a>
                 </li>
 
-                <li>
+                <li class="hidden md:block">
                     <button id="cart_btn">
                         <div class="flex items-center justify-center space-x-2">
                             <span class="font-bold text-base text-[#b69357]">My Cart</span>
@@ -115,7 +122,7 @@
                 <li>
                     @if (!Auth::check())
                         <a href="/login">
-                            <div class="flex items-center justify-center space-x-2">
+                            <div class="flex items-center justify-start space-x-2">
                                 <span class="font-bold text-base text-[#b69357]">Login</span>
                                 <img src="{{ URL::to('media/tools/user.png') }}" class="w-[20px]" alt="">
                             </div>

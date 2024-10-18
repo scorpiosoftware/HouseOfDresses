@@ -11,10 +11,10 @@
         <div class="text-[#b69357] font-bold">
             <h2 class="underline text-xl font-semibold">INFORMATION</h2>
             <ul>
-                <li>Careers</li>
-                <li>About us</li>
+                <li><a href="/careers">Careers</a></li>
+                <li><a href="/aboutus">About us</a></li>
                 <li>Terms of Service</li>
-                <li>Privacy Policy</li>
+                <li><a href="/privacy">Privacy Policy</a></li>
                 <li>Do not sell my personal</li>
                 <li>information</li>
             </ul>
@@ -22,8 +22,8 @@
         <div class="text-[#b69357] font-bold">
             <h2 class="underline text-xl font-semibold">CUSTOMER CARE</h2>
             <ul>
-                <li>Contact Us</li>
-                <li>Shipping + Delivery</li>
+                <li><a href="/contactUs">Contact us</a></li>
+                <li>Shipping & Delivery</li>
                 <li>Returns & Exchanges</li>
                 <li>Sizing</li>
                 <li>Gift Cards</li>

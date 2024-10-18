@@ -90,8 +90,20 @@ Route::group(['prefix' => ''], function () {
     Route::post('/contactUs/send', [InboxController::class, 'store'])->name('send-comment');
     Route::post('/shop/send', [ShopController::class, 'addComment'])->name('add-review');
     Route::get('/contactUs', function () {
-        $categories = ListCategory::execute();
-        return view('support.contact', compact('categories'));
+        $posts = Post::all();
+        return view('support.contact', compact('posts'));
+    });
+    Route::get('/careers', function () {
+        $posts = Post::all();
+        return view('support.careers',compact('posts'));
+    });
+    Route::get('/aboutus', function () {
+        $posts = Post::all();
+        return view('support.about',compact('posts'));
+    });
+    Route::get('/privacy', function () {
+        $posts = Post::all();
+        return view('support.privacy',compact('posts'));
     });
 });
 Route::post('/shop', [ShopController::class, 'filter'])->name('filter.products');

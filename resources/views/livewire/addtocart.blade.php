@@ -36,12 +36,22 @@
         {{--  onclick='this.classList.add("bg-[#b69357]","text-white","font-bold")' --}}
         <div class="flex justify-start items-center space-x-2">
             @foreach ($color->product->sizes as $size)
-                <button id="size_btn" wire:click="setSize('{{ $size->name }}')" wire:model="selected_size"
+            {{-- wire:click="setSize('{{ $size->name }}')" wire:model="selected_size" --}}
+                <button id="size_btn" 
                     onclick='this.classList.add("bg-[#b69357]","text-white","font-bold")'
                     class="px-4 py-2.5 border @if ($selected_size == $size->name) bg-[#b69357] text-white font-bold @endif">{{ $size->name }}</button>
             @endforeach
         </div>
     </div>
+    <script>
+        $(document).ready(function() {
+            $("#size_btn").click(function() {
+                $('html, body').animate({
+                    scrollTop: $("#size_element").offset().top
+                }, 500);
+            });
+        });
+    </script>
     <div class="mt-10">
         <label for="qty" class="font-bold text-gray-600">
             @if (session('lang') == 'en')
@@ -63,8 +73,7 @@
         <button id="add_to_cart_btn" wire:click='addToCart()'
             class="py-3 w-full rounded-lg hover:bg-gray-500 text-white font-bold">
             @if (session('lang') == 'en')
-                Add to
-                Cart
+                Add to Cart
             @else
                 أضف إلى السلة
             @endif
@@ -107,7 +116,7 @@
         <h2 id="accordion-collapse-heading-1">
             <button type="button"
                 class="flex items-center justify-between w-full p-5 font-medium text-[#b69357] border border-b-0 border-[#b69357] rounded-t-xl focus:ring-4 focus:ring-gray-200  hover:bg-gray-100 gap-3"
-                data-accordion-target="#accordion-collapse-body-1" aria-expanded="true"
+                data-accordion-target="#accordion-collapse-body-1" aria-expanded="false"
                 aria-controls="accordion-collapse-body-1">
                 <span class="text-[#b69357]">
                     @if (session('lang') == 'en')
@@ -136,6 +145,7 @@
         </div>
         {{-- item 2 --}}
         <h2 id="accordion-collapse-heading-2">
+            <div id="size_element"></div>
             <button type="button"
                 class="flex items-center justify-between w-full p-5 font-medium text-[#b69357] border border-b-0 border-[#b69357] rounded-t-xl focus:ring-4 focus:ring-gray-200  hover:bg-gray-100 gap-3"
                 data-accordion-target="#accordion-collapse-body-2" aria-expanded="true"
