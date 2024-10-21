@@ -8,7 +8,22 @@
             </div>
             <div class="p-4">
                 <h2 class="text-xl  text-gray-900 sm:text-2xl text-center">Customer Care</h2>
-                <div>We are open on all days - 9am to 6pm Gulf Standard Time</div>
+                {{-- <div>We are open on all days - 9am to 6pm Gulf Standard Time</div> --}}
+                <div class="pt-4 w-80">
+                    <h1>Opening Schedule:</h1>
+                    <div class="flex justify-between items-center">
+                        <p>Monday to Thursday:</p>
+                        <p>10 AM - 9 PM</p>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <p>Friday:</p>
+                        <p>Closed</p>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <p>Saturday & Sunday:</p>
+                        <p>10 AM - 9 PM</p>
+                    </div>
+                </div>
                 <br>
                 <div class="flex justify-start space-x-4 items-start">
                     <img class="w-12"
@@ -17,7 +32,7 @@
                     <div>
                         Email :
                         <br>
-                        <span>info.houseofdresses.fashion</span>
+                        <a class="text-[#b69357]" href="mailto: info@houseofdresses.fashion">info@houseofdresses.fashion</a>
                         <br>
                         <span>We will reply to you in 12-24 hours.</span>
                     </div>
@@ -30,12 +45,11 @@
                         alt="">
                     <div>
                         Phone :
-                        {{-- <br> --}}
-                        {{-- <span>UAE Toll Free Number: 800 CLF DXB (800 253 392)</span> --}}
                         <br>
-                        <span>Rest Of The World : +971 54 364 9606</span>
+                        <span>+971 54 364 9606</span>
                     </div>
                 </div>
+
                 <br>
                 <hr>
             </div>

@@ -23,8 +23,8 @@
             <h2 class="underline text-xl font-semibold">CUSTOMER CARE</h2>
             <ul>
                 <li><a href="/contactUs">Contact us</a></li>
-                <li>Shipping & Delivery</li>
-                <li>Returns & Exchanges</li>
+                <li><a href="/shipping&delivery">Shipping & Delivery</a></li>
+                <li><a href="/returns&exchanges">Returns & Exchanges</a></li>
                 <li>Sizing</li>
                 <li>Gift Cards</li>
             </ul>
@@ -42,8 +42,8 @@
             <h2 class="underline text-xl font-semibold">QUICK LINK</h2>
             <ul>
                 <li>FAQ's</li>
-                <li>Are you a Fashion</li>
-                <li>Blogger?</li>
+                <li><a href="/blogger">Are you a Fashion <br> Blogger?</a></li>
+                {{-- <li></li> --}}
                 <li>Make A Return or Exchange</li>
             </ul>
         </div>

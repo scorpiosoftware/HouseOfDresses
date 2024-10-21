@@ -31,6 +31,7 @@ use App\Http\Controllers\SizeController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\WishlistController;
 use App\Models\Carousel;
+use App\Models\General;
 use App\Models\Inbox;
 use App\Models\Order;
 use App\Models\OrderItem;
@@ -112,6 +113,20 @@ Route::group(['prefix' => ''], function () {
     Route::get('/personal', function () {
         $posts = Post::all();
         return view('support.personal',compact('posts'));
+    });
+    Route::get('/shipping&delivery', function () {
+        $posts = Post::all();
+        $general = General::first();
+        return view('support.shipping',compact('posts','general'));
+    });
+    Route::get('/returns&exchanges', function () {
+        $posts = Post::all();
+        $general = General::first();
+        return view('support.exchange',compact('posts','general'));
+    });
+    Route::get('/blogger', function () {
+        $posts = Post::all();
+        return view('support.bloger',compact('posts'));
     });
 });
 Route::post('/shop', [ShopController::class, 'filter'])->name('filter.products');
