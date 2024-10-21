@@ -13,10 +13,10 @@
             <ul>
                 <li><a href="/careers">Careers</a></li>
                 <li><a href="/aboutus">About us</a></li>
-                <li>Terms of Service</li>
+                <li><a href="/terms">Terms of Service</a></li>
                 <li><a href="/privacy">Privacy Policy</a></li>
-                <li>Do not sell my personal</li>
-                <li>information</li>
+                <li><a href="/personal">Do not sell my personal</a></li>
+                <li><a href="/personal">information</a></li>
             </ul>
         </div>
         <div class="text-[#b69357] font-bold">

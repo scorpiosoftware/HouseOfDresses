@@ -105,6 +105,14 @@ Route::group(['prefix' => ''], function () {
         $posts = Post::all();
         return view('support.privacy',compact('posts'));
     });
+    Route::get('/terms', function () {
+        $posts = Post::all();
+        return view('support.terms',compact('posts'));
+    });
+    Route::get('/personal', function () {
+        $posts = Post::all();
+        return view('support.personal',compact('posts'));
+    });
 });
 Route::post('/shop', [ShopController::class, 'filter'])->name('filter.products');
 Route::post('/shop/collection/', [ShopController::class, 'index'])->name('filter.products');
