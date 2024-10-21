@@ -126,7 +126,11 @@ Route::group(['prefix' => ''], function () {
     });
     Route::get('/blogger', function () {
         $posts = Post::all();
-        return view('support.bloger',compact('posts'));
+        return view('support.blogger',compact('posts'));
+    });
+    Route::get('/sizing', function () {
+        $posts = Post::all();
+        return view('support.sizing',compact('posts'));
     });
 });
 Route::post('/shop', [ShopController::class, 'filter'])->name('filter.products');

@@ -25,7 +25,7 @@
                 <li><a href="/contactUs">Contact us</a></li>
                 <li><a href="/shipping&delivery">Shipping & Delivery</a></li>
                 <li><a href="/returns&exchanges">Returns & Exchanges</a></li>
-                <li>Sizing</li>
+                <li><a href="/sizing">Sizing</a></li>
                 <li>Gift Cards</li>
             </ul>
         </div>
@@ -43,7 +43,6 @@
             <ul>
                 <li>FAQ's</li>
                 <li><a href="/blogger">Are you a Fashion <br> Blogger?</a></li>
-                {{-- <li></li> --}}
                 <li>Make A Return or Exchange</li>
             </ul>
         </div>
